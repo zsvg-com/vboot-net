@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Vboot.Application</name>
+    </assembly>
+    <members>
+        <member name="P:Vboot.Application.Sd.Proj.Main.SdProjMain.addre">
+            <summary>
+            项目地址
+            </summary>
+        </member>
+        <member name="P:Vboot.Application.Sd.Proj.Main.SdProjMain.notes">
+            <summary>
+            项目地址
+            </summary>
+        </member>
+        <member name="T:Vboot.Application.Sd.Proj.Main.SdProjMainApi">
+            <summary>
+            项目信息接口
+            </summary>
+        </member>
+        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.Get(System.Int32,System.Int32)">
+            <summary>
+            获取项目信息的分页数据
+            </summary>
+            <param name="page">第几页</param>
+            <param name="pageSize">每页数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.GetOne(System.String)">
+            <summary>
+            获取单个项目的详细信息
+            </summary>
+            <param name="id">项目ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.Post(Vboot.Application.Sd.Proj.Main.SdProjMain)">
+            <summary>
+            新增项目
+            </summary>
+        </member>
+        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.Put(Vboot.Application.Sd.Proj.Main.SdProjMain)">
+            <summary>
+            修改项目
+            </summary>
+        </member>
+        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.Delete(System.String)">
+            <summary>
+            删除项目
+            </summary>
+        </member>
+    </members>
+</doc>

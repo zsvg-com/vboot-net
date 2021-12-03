@@ -1,0 +1,1229 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Vboot.Core</name>
+    </assembly>
+    <members>
+        <member name="F:Vboot.Core.Common.ClaimConst.CLAINM_USERID">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ClaimConst.CLAINM_ACCOUNT">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ClaimConst.CLAINM_NAME">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ClaimConst.CLAINM_SUPERADMIN">
+            <summary>
+            是否超级管理
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ClaimConst.TENANT_ID">
+            <summary>
+            是否超级管理
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.AdminType">
+            <summary>
+            账号类型
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.AdminType.SuperAdmin">
+            <summary>
+            超级管理员
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.AdminType.Admin">
+            <summary>
+            管理员
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.AdminType.None">
+            <summary>
+            普通账号
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.DataOpType">
+            <summary>
+            数据操作类型
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.OTHER">
+            <summary>
+            其它
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.ADD">
+            <summary>
+            增加
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.DELETE">
+            <summary>
+            删除
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.EDIT">
+            <summary>
+            编辑
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.UPDATE">
+            <summary>
+            更新
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.QUERY">
+            <summary>
+            查询
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.DETAIL">
+            <summary>
+            详情
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.TREE">
+            <summary>
+            树
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.IMPORT">
+            <summary>
+            导入
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.EXPORT">
+            <summary>
+            导出
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.GRANT">
+            <summary>
+            授权
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.FORCE">
+            <summary>
+            强退
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.CLEAN">
+            <summary>
+            清空
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.DataOpType.CHANGE_STATUS">
+            <summary>
+            修改状态
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.ErrorCode">
+            <summary>
+            系统错误码
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1000">
+            <summary>
+            用户名或密码不正确
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1001">
+            <summary>
+            非法操作！禁止删除自己
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1002">
+            <summary>
+            记录不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1003">
+            <summary>
+            账号已存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1004">
+            <summary>
+            旧密码不匹配
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1005">
+            <summary>
+            测试数据禁止更改admin密码
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1006">
+            <summary>
+            数据已存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1007">
+            <summary>
+            数据不存在或含有关联引用，禁止删除
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1008">
+            <summary>
+            禁止为管理员分配角色
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1009">
+            <summary>
+            重复数据或记录含有不存在数据
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1010">
+            <summary>
+            禁止为超级管理员角色分配权限
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1011">
+            <summary>
+            非法数据
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1012">
+            <summary>
+            Id不能为空
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1013">
+            <summary>
+            所属机构不在自己的数据范围内
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1014">
+            <summary>
+            禁止删除超级管理员
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1015">
+            <summary>
+            禁止修改超级管理员状态
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1016">
+            <summary>
+            没有权限
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1017">
+            <summary>
+            账号已冻结
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D2000">
+            <summary>
+            父机构不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D2001">
+            <summary>
+            当前机构Id不能与父机构Id相同
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D2002">
+            <summary>
+            已有相同组织机构,编码或名称相同
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D2003">
+            <summary>
+            没有权限操作机构
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D2004">
+            <summary>
+            该机构下有员工禁止删除
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D2005">
+            <summary>
+            附属机构下有员工禁止删除
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D2006">
+            <summary>
+            只能增加下级机构
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D3000">
+            <summary>
+            字典类型不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D3001">
+            <summary>
+            字典类型已存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D3002">
+            <summary>
+            字典类型下面有字典值禁止删除
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D3003">
+            <summary>
+            字典值已存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D3004">
+            <summary>
+            字典值不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D3005">
+            <summary>
+            字典状态错误
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D4000">
+            <summary>
+            菜单已存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D4001">
+            <summary>
+            路由地址为空
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D4002">
+            <summary>
+            打开方式为空
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D4003">
+            <summary>
+            权限标识格式为空
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D4004">
+            <summary>
+            权限标识格式错误
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D4005">
+            <summary>
+            权限不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D4006">
+            <summary>
+            父级菜单不能为当前节点，请重新选择父级菜单
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D4007">
+            <summary>
+            不能移动根节点
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D5000">
+            <summary>
+            已存在同名或同编码应用
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D5001">
+            <summary>
+            默认激活系统只能有一个
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D5002">
+            <summary>
+            该应用下有菜单禁止删除
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D5003">
+            <summary>
+            已存在同名或同编码应用
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D6000">
+            <summary>
+            已存在同名或同编码职位
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D6001">
+            <summary>
+            该职位下有员工禁止删除
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D7000">
+            <summary>
+            通知公告状态错误
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D7001">
+            <summary>
+            通知公告删除失败
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D7002">
+            <summary>
+            通知公告编辑失败
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D8000">
+            <summary>
+            文件不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D9000">
+            <summary>
+            已存在同名或同编码参数配置
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D9001">
+            <summary>
+            禁止删除系统参数
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1100">
+            <summary>
+            已存在同名任务调度
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1101">
+            <summary>
+            任务调度不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1200">
+            <summary>
+            演示环境禁止修改数据
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1300">
+            <summary>
+            已存在同名或同主机租户
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1400">
+            <summary>
+            该表代码模板已经生成过
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1501">
+            <summary>
+            该类型不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1502">
+            <summary>
+            该字段不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1503">
+            <summary>
+            该类型不是枚举类型
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1504">
+            <summary>
+            该实体不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.D1505">
+            <summary>
+            父菜单不存在
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.xg1000">
+            <summary>
+            已存在同名或同编码项目
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.xg1001">
+            <summary>
+            已存在相同证件号码人员
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.ErrorCode.xg1002">
+            <summary>
+            检测数据不存在
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.LoginType">
+            <summary>
+            登陆类型
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.LoginType.LOGIN">
+            <summary>
+            登陆
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.LoginType.LOGOUT">
+            <summary>
+            登出
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.LoginType.REGISTER">
+            <summary>
+            注册
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.LoginType.CHANGEPASSWORD">
+            <summary>
+            改密
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.LoginType.AUTHORIZEDLOGIN">
+            <summary>
+            三方授权登陆
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.YesOrNot">
+            <summary>
+            菜单激活类型
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.YesOrNot.Y">
+            <summary>
+            是
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.YesOrNot.N">
+            <summary>
+            否
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.RestResultProvider">
+            <summary>
+            规范化RESTful风格返回值
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.RestResult`1">
+            <summary>
+            RESTful风格---XIAONUO返回格式
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Vboot.Core.Common.RestResult`1.Success">
+            <summary>
+            执行成功
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.RestResult`1.code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.RestResult`1.message">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.RestResult`1.result">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.RestResult`1.Extras">
+            <summary>
+            附加数据
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.RestResult`1.Timestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.BaseMainEntity.id">
+            <summary>
+            主键Id
+            </summary>
+            <example></example>
+        </member>
+        <member name="P:Vboot.Core.Common.BaseMainEntity.name">
+            <summary>
+            名称
+            </summary>
+            <example>API测试</example>
+        </member>
+        <member name="P:Vboot.Core.Common.BaseMainEntity.crtim">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.BaseMainEntity.uptim">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.BaseMainEntity.crman">
+            <summary>
+            创建者Id
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.BaseMainEntity.upman">
+            <summary>
+            修改者Id
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.BaseMainEntity.avtag">
+            <summary>
+            是否可用，1可用，0不可用
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.PrimaryKeyEntity">
+            <summary>
+            主键实体基类
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.PrimaryKeyEntity.id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.DisableOpLogAttribute">
+            <summary>
+            禁用操作日志
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.LogExceptionHandler">
+            <summary>
+            全局异常处理
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.RequestActionFilter">
+            <summary>
+            请求日志拦截
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.UserManager">
+            <summary>
+            用户管理
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Common.UserManager.CheckUserAsync(System.String,System.Boolean)">
+            <summary>
+            获取用户信息
+            </summary>
+            <param name="userId"></param>
+            <param name="tracking"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.UserManager.GetUserEmpInfo(System.String)">
+            <summary>
+            获取用户员工信息
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Vboot.Core.Common.Util.HttpNewUtil">
+            <summary>
+            HTTP网络工具
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.HttpNewUtil.Ip">
+            <summary>
+            客户端IP地址
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.HttpNewUtil.GetWebClientIp">
+            <summary>
+            得到客户端IP地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.HttpNewUtil.GetLanIp">
+            <summary>
+            得到局域网IP地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.HttpNewUtil.GetWebRemoteIp">
+            <summary>
+            得到远程Ip地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.HttpNewUtil.UserAgent">
+            <summary>
+            请求UserAgent信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.HttpNewUtil.Url">
+            <summary>
+            请求Url
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.HttpNewUtil.GetOSVersion">
+            <summary>
+            得到操作系统版本
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.HttpNewUtil.WanInfo">
+            <summary>
+            公网信息
+            慎用，如果不是直接请求接口，而是通过代理转发，拿到的是服务器的公网信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.HttpNewUtil.WanInfo(System.String)">
+            <summary>
+            根据IP地址获取公网信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.HttpNewUtil.UserAgentInfo">
+            <summary>
+            UserAgent信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.HttpNewUtil.EncodeRemotePath(System.String)">
+            <summary>
+            远程路径Encode处理,会保证开头是/，结尾也是/
+            </summary>
+            <param name="remotePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.HttpNewUtil.StandardizationRemotePath(System.String)">
+            <summary>
+            标准化远程目录路径,会保证开头是/，结尾也是/ ,如果命名不规范，存在保留字符，会返回空字符
+            </summary>
+            <param name="remotePath">要标准化的远程路径</param>
+            <returns></returns>
+        </member>
+        <member name="T:Vboot.Core.Common.Util.WhoisIPInfoModel">
+            <summary>
+            万网Ip信息Model类
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WhoisIPInfoModel.Ip">
+            <summary>
+            Ip地址
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WhoisIPInfoModel.Pro">
+            <summary>
+            省份
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WhoisIPInfoModel.ProCode">
+            <summary>
+            省份邮政编码
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WhoisIPInfoModel.City">
+            <summary>
+            城市
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WhoisIPInfoModel.CityCode">
+            <summary>
+            城市邮政编码
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WhoisIPInfoModel.Address">
+            <summary>
+            地理信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WhoisIPInfoModel.Operator">
+            <summary>
+            运营商
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.Util.UserAgentInfoModel">
+            <summary>
+            UserAgent 信息Model类
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.UserAgentInfoModel.PhoneModel">
+            <summary>
+            手机型号
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.UserAgentInfoModel.OS">
+            <summary>
+            操作系统（版本）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.UserAgentInfoModel.Browser">
+            <summary>
+            浏览器（版本）
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.Util.JsonUtil">
+            <summary>
+            Json序列化工具类
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.JsonUtil.ToObject``1(System.String)">
+            <summary>
+            JSON 字符串转 Object
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.JsonUtil.ToJsonString(System.Object)">
+            <summary>
+            Object 转 JSON字符串
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.JsonUtil.ToJObject(System.String)">
+            <summary>
+            JSON 字符串转 JObject
+            </summary>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.JsonUtil.ToObject``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Dictionary 字符串转 Object
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dictionary"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Vboot.Core.Common.Util.WeatherUtil">
+            <summary>
+            天气预报工具类
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.Util.WeatherInfo">
+            <summary>
+            天气信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfo.Date">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfo.High">
+            <summary>
+            最高温度
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfo.Fengli">
+            <summary>
+            风力
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfo.Low">
+            <summary>
+            最低温度
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfo.Fengxiang">
+            <summary>
+            分向
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfo.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfoOutPut.Yesterday">
+            <summary>
+            昨日天气
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfoOutPut.City">
+            <summary>
+            城市
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfoOutPut.Forecast">
+            <summary>
+            未来五天天气
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfoOutPut.Ganmao">
+            <summary>
+            感冒
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfoOutPut.Wendu">
+            <summary>
+            温度
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfoOutPut.Success">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherInfoOutPut.Desc">
+            <summary>
+            失败描述
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherOutPut.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherOutPut.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.Util.WeatherOutPut.Desc">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginInput.username">
+            <example>vben</example>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginInput.password">
+            <example>123456</example>
+        </member>
+        <member name="T:Vboot.Core.Module.Pub.LoginOutput">
+            <summary>
+            用户登录输出参数
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.usnam">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.ninam">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.avatar">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.monum">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.AdminType">
+            <summary>
+            管理员类型（0超级管理员 1非管理员）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.laloi">
+            <summary>
+            最后登陆IP
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.lalot">
+            <summary>
+            最后登陆时间
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.LastLoginAddress">
+            <summary>
+            最后登陆地址
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.LastLoginBrowser">
+            <summary>
+            最后登陆所用浏览器
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.LastLoginOs">
+            <summary>
+            最后登陆所用系统
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.Permissions">
+            <summary>
+            权限信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.DataScopes">
+            <summary>
+            数据范围（机构）信息
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Sys.SysLogAudit">
+            <summary>
+            系统操作/审计日志表
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogAudit.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogAudit.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogAudit.ColumnName">
+            <summary>
+            列名
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogAudit.NewValue">
+            <summary>
+            新值
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogAudit.OldValue">
+            <summary>
+            旧值
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogAudit.CreatedTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogAudit.UserId">
+            <summary>
+            操作人Id
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogAudit.UserName">
+            <summary>
+            操作人名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogAudit.Operate">
+            <summary>
+            操作方式：新增、更新、删除
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Sys.SysLogEx">
+            <summary>
+            异常日志
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.Account">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.ClassName">
+            <summary>
+            类名
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.MethodName">
+            <summary>
+            方法名
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.ExceptionName">
+            <summary>
+            异常名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.ExceptionMsg">
+            <summary>
+            异常信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.ExceptionSource">
+            <summary>
+            异常源
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.StackTrace">
+            <summary>
+            堆栈信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.ParamsObj">
+            <summary>
+            参数对象
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogEx.ExceptionTime">
+            <summary>
+            异常时间
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Sys.SysLogOp">
+            <summary>
+            操作日志表
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Success">
+            <summary>
+            是否执行成功（Y-是，N-否）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Message">
+            <summary>
+            具体消息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Ip">
+            <summary>
+            IP
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Location">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Browser">
+            <summary>
+            浏览器
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Os">
+            <summary>
+            操作系统
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Url">
+            <summary>
+            请求地址
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.ClassName">
+            <summary>
+            类名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.MethodName">
+            <summary>
+            方法名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.ReqMethod">
+            <summary>
+            请求方式（GET POST PUT DELETE)
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Param">
+            <summary>
+            请求参数
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.ElapsedTime">
+            <summary>
+            耗时（毫秒）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.OpTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogOp.Account">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Sys.SysLogVisit">
+            <summary>
+            访问日志表
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Success">
+            <summary>
+            是否执行成功（Y-是，N-否）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Message">
+            <summary>
+            具体消息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Ip">
+            <summary>
+            IP
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Location">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Browser">
+            <summary>
+            浏览器
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Os">
+            <summary>
+            操作系统
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.VisType">
+            <summary>
+            访问类型
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.VisTime">
+            <summary>
+            访问时间
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Account">
+            <summary>
+            访问人
+            </summary>
+        </member>
+    </members>
+</doc>
