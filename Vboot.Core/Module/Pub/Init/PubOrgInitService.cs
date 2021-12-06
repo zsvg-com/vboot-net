@@ -183,7 +183,7 @@ namespace Vboot.Core.Module.Pub
             deptList.Add(dept9);
             orgList.Add(new SysOrg(id + "-9", name + "九信息部"));
 
-            for (int i = 1; i <= 50; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 var rsid8 = YitIdHelper.NextId() + "";
                 var xdept = new SysOrgDept();

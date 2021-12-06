@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CSRedisCore" Version="3.6.6" />
     <PackageReference Include="Furion.Extras.Authentication.JwtBearer" Version="3.0.5" />
     <PackageReference Include="Furion.Extras.DatabaseAccessor.SqlSugar" Version="3.0.5" />
     <PackageReference Include="Furion.Extras.Logging.Serilog" Version="3.0.5" />

@@ -12,7 +12,7 @@ namespace Vboot.Core.Module.Gen
             
         }
         
-        public List<dynamic> GetList()
+        public List<dynamic> Get()
         {
             return new List<dynamic>();
         }
