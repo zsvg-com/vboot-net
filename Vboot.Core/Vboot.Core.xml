@@ -4,78 +4,78 @@
         <name>Vboot.Core</name>
     </assembly>
     <members>
-        <member name="T:Magic.Core.CacheOptions">
+        <member name="T:Vboot.Core.Common.CacheOptions">
             <summary>
             缓存配置
             </summary>
         </member>
-        <member name="P:Magic.Core.CacheOptions.CacheType">
+        <member name="P:Vboot.Core.Common.CacheOptions.CacheType">
             <summary>
             缓存类型
             </summary>
         </member>
-        <member name="P:Magic.Core.CacheOptions.RedisConnectionString">
+        <member name="P:Vboot.Core.Common.CacheOptions.RedisConnectionString">
             <summary>
             Redis配置
             </summary>
         </member>
-        <member name="F:Magic.Core.CacheType.MemoryCache">
+        <member name="F:Vboot.Core.Common.CacheType.MemoryCache">
             <summary>
             内存缓存
             </summary>
         </member>
-        <member name="F:Magic.Core.CacheType.RedisCache">
+        <member name="F:Vboot.Core.Common.CacheType.RedisCache">
             <summary>
             Redis缓存
             </summary>
         </member>
-        <member name="T:Magic.Core.ICache">
+        <member name="T:Vboot.Core.Common.ICache">
             <summary>
             缓存接口
             </summary>
         </member>
-        <member name="M:Magic.Core.ICache.Del(System.String[])">
+        <member name="M:Vboot.Core.Common.ICache.Del(System.String[])">
             <summary>
             用于在 key 存在时删除 key
             </summary>
             <param name="key">键</param>
         </member>
-        <member name="M:Magic.Core.ICache.DelAsync(System.String[])">
+        <member name="M:Vboot.Core.Common.ICache.DelAsync(System.String[])">
             <summary>
             用于在 key 存在时删除 key
             </summary>
             <param name="key">键</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.DelByPatternAsync(System.String)">
+        <member name="M:Vboot.Core.Common.ICache.DelByPatternAsync(System.String)">
             <summary>
             用于在 key 模板存在时删除
             </summary>
             <param name="pattern">key模板</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.Exists(System.String)">
+        <member name="M:Vboot.Core.Common.ICache.Exists(System.String)">
             <summary>
             检查给定 key 是否存在
             </summary>
             <param name="key">键</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.ExistsAsync(System.String)">
+        <member name="M:Vboot.Core.Common.ICache.ExistsAsync(System.String)">
             <summary>
             检查给定 key 是否存在
             </summary>
             <param name="key">键</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.Get(System.String)">
+        <member name="M:Vboot.Core.Common.ICache.Get(System.String)">
             <summary>
             获取指定 key 的值
             </summary>
             <param name="key">键</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.Get``1(System.String)">
+        <member name="M:Vboot.Core.Common.ICache.Get``1(System.String)">
             <summary>
             获取指定 key 的值
             </summary>
@@ -83,14 +83,14 @@
             <param name="key">键</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.GetAsync(System.String)">
+        <member name="M:Vboot.Core.Common.ICache.GetAsync(System.String)">
             <summary>
             获取指定 key 的值
             </summary>
             <param name="key">键</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.GetAsync``1(System.String)">
+        <member name="M:Vboot.Core.Common.ICache.GetAsync``1(System.String)">
             <summary>
             获取指定 key 的值
             </summary>
@@ -98,14 +98,14 @@
             <param name="key">键</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.Set(System.String,System.Object)">
+        <member name="M:Vboot.Core.Common.ICache.Set(System.String,System.Object)">
             <summary>
             设置指定 key 的值，所有写入参数object都支持string | byte[] | 数值 | 对象
             </summary>
             <param name="key">键</param>
             <param name="value">值</param>
         </member>
-        <member name="M:Magic.Core.ICache.Set(System.String,System.Object,System.TimeSpan)">
+        <member name="M:Vboot.Core.Common.ICache.Set(System.String,System.Object,System.TimeSpan)">
             <summary>
             设置指定 key 的值，所有写入参数object都支持string | byte[] | 数值 | 对象
             </summary>
@@ -113,7 +113,7 @@
             <param name="value">值</param>
             <param name="expire">有效期</param>
         </member>
-        <member name="M:Magic.Core.ICache.SetAsync(System.String,System.Object)">
+        <member name="M:Vboot.Core.Common.ICache.SetAsync(System.String,System.Object)">
             <summary>
             设置指定 key 的值，所有写入参数object都支持string | byte[] | 数值 | 对象
             </summary>
@@ -121,7 +121,7 @@
             <param name="value">值</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.SetAsync(System.String,System.Object,System.TimeSpan)">
+        <member name="M:Vboot.Core.Common.ICache.SetAsync(System.String,System.Object,System.TimeSpan)">
             <summary>
             设置指定 key 的值，所有写入参数object都支持string | byte[] | 数值 | 对象
             </summary>
@@ -130,446 +130,21 @@
             <param name="expire">有效期</param>
             <returns></returns>
         </member>
-        <member name="M:Magic.Core.ICache.GetAllKeys">
+        <member name="M:Vboot.Core.Common.ICache.GetAllKeys">
             <summary>
             获取所有缓存
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Magic.Core.MemoryCache">
+        <member name="T:Vboot.Core.Common.MemoryCache">
             <summary>
             内存缓存
             </summary>
         </member>
-        <member name="T:Magic.Core.RedisCache">
+        <member name="T:Vboot.Core.Common.RedisCache">
             <summary>
             Redis缓存
             </summary>
-        </member>
-        <member name="F:Magic.Core.CommonConst.CACHE_KEY_USER">
-            <summary>
-            用户缓存
-            </summary>
-        </member>
-        <member name="F:Magic.Core.CommonConst.CACHE_KEY_MENU">
-            <summary>
-            菜单缓存
-            </summary>
-        </member>
-        <member name="F:Magic.Core.CommonConst.CACHE_KEY_PERMISSION">
-            <summary>
-            权限缓存
-            </summary>
-        </member>
-        <member name="F:Magic.Core.CommonConst.CACHE_KEY_DATASCOPE">
-            <summary>
-            数据范围缓存
-            </summary>
-        </member>
-        <member name="F:Magic.Core.CommonConst.CACHE_KEY_CODE">
-            <summary>
-            验证码缓存
-            </summary>
-        </member>
-        <member name="F:Magic.Core.CommonConst.CACHE_KEY_ENTITYINFO">
-            <summary>
-            库表实体信息缓存
-            </summary>
-        </member>
-        <member name="F:Magic.Core.CommonConst.CACHE_KEY_ALLPERMISSION">
-            <summary>
-            所有权限缓存
-            </summary>
-        </member>
-        <member name="T:Magic.Core.RequestTypeEnum">
-            <summary>
-            http请求类型
-            </summary>
-        </member>
-        <member name="F:Magic.Core.RequestTypeEnum.Run">
-            <summary>
-            执行内部方法
-            </summary>
-        </member>
-        <member name="F:Magic.Core.RequestTypeEnum.Get">
-            <summary>
-            GET请求
-            </summary>
-        </member>
-        <member name="F:Magic.Core.RequestTypeEnum.Post">
-            <summary>
-            POST请求
-            </summary>
-        </member>
-        <member name="F:Magic.Core.RequestTypeEnum.Put">
-            <summary>
-            PUT请求
-            </summary>
-        </member>
-        <member name="F:Magic.Core.RequestTypeEnum.Delete">
-            <summary>
-            DELETE请求
-            </summary>
-        </member>
-        <member name="T:Magic.Core.Service.JobInput">
-            <summary>
-            任务调度参数
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.code">
-            <summary>
-            任务名称
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.name">
-            <summary>
-            任务名称
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.cron">
-            <summary>
-            Cron表达式
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.reurl">
-            <summary>
-            请求url
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.repar">
-            <summary>
-            请求参数（Post，Put请求用）
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.retyp">
-            <summary>
-            请求类型
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.rehea">
-            <summary>
-            Headers(可以包含如：Authorization授权认证)
-            格式：{"Authorization":"userpassword.."}
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.notes">
-            <summary>
-            备注
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.extyp">
-            <summary>
-            执行类型(并行、列队)
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.DoOnce">
-            <summary>
-            只执行一次
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobInput.StartNow">
-            <summary>
-            立即执行（默认等待启动）
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.DeleteJobInput.id">
-            <summary>
-            任务Id
-            </summary>
-        </member>
-        <member name="T:Magic.Core.Service.JobOutput">
-            <summary>
-            任务信息---任务详情
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobOutput.Id">
-            <summary>
-            Id
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobOutput.RunNumber">
-            <summary>
-            已执行次数
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobOutput.TimerStatus">
-            <summary>
-            定时器状态
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.JobOutput.Exception">
-            <summary>
-            异常信息
-            </summary>
-        </member>
-        <member name="T:Magic.Core.Service.LocalJobOutput">
-            <summary>
-            本地任务信息
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.JobName">
-            <summary>
-            任务名称
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.DoOnce">
-            <summary>
-            只执行一次
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.StartNow">
-            <summary>
-            立即执行（默认等待启动）
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.ExecuteType">
-            <summary>
-            执行类型(并行、列队)
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.Interval">
-            <summary>
-            执行间隔时间（单位秒）
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.Cron">
-            <summary>
-            Cron表达式
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.TimerType">
-            <summary>
-            定时器类型
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.RequestUrl">
-            <summary>
-            请求url
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.RequestType">
-            <summary>
-            请求类型
-            </summary>
-            <example>2</example>
-        </member>
-        <member name="P:Magic.Core.Service.LocalJobOutput.Remark">
-            <summary>
-            备注
-            </summary>
-        </member>
-        <member name="T:Magic.Core.Service.TaskMethodInfo">
-            <summary>
-            任务方法信息
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.TaskMethodInfo.MethodName">
-            <summary>
-            方法名
-            </summary>
-        </member>
-        <member name="P:Magic.Core.Service.TaskMethodInfo.DeclaringType">
-            <summary>
-            方法所属类的Type对象
-            </summary>
-        </member>
-        <member name="T:Magic.Core.Service.SysCacheService">
-            <summary>
-            系统缓存服务
-            </summary>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.GetDataScope(System.Int64)">
-            <summary>
-            获取数据范围缓存（机构Id集合）
-            </summary>
-            <param name="userId"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.SetDataScope(System.Int64,System.Collections.Generic.List{System.Int64})">
-            <summary>
-            缓存数据范围（机构Id集合）
-            </summary>
-            <param name="userId"></param>
-            <param name="dataScopes"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.GetPermission(System.Int64)">
-            <summary>
-            获取权限缓存（按钮）
-            </summary>
-            <param name="userId"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.SetPermission(System.Int64,System.Collections.Generic.List{System.String})">
-            <summary>
-            缓存权限
-            </summary>
-            <param name="userId"></param>
-            <param name="permissions"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.GetAllCacheKeys">
-            <summary>
-            获取所有缓存关键字
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.GetAllPermission">
-            <summary>
-            获取所有按钮权限
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.SetAllPermission(System.Collections.Generic.List{System.String})">
-            <summary>
-            设置所有按钮权限
-            </summary>
-            <param name="permissions"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.Del(System.String)">
-            <summary>
-            删除指定关键字缓存
-            </summary>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.DelAsync(System.String)">
-            <summary>
-            删除指定关键字缓存
-            </summary>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.DelByPatternAsync(System.String)">
-            <summary>
-            删除某特征关键字缓存
-            </summary>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.Set(System.String,System.Object)">
-            <summary>
-            设置缓存
-            </summary>
-            <param name="key"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.SetAsync(System.String,System.Object)">
-            <summary>
-            设置缓存
-            </summary>
-            <param name="key"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.Get(System.String)">
-            <summary>
-            获取缓存
-            </summary>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.GetAsync(System.String)">
-            <summary>
-            获取缓存
-            </summary>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.Get``1(System.String)">
-            <summary>
-            获取缓存
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.GetAsync``1(System.String)">
-            <summary>
-            获取缓存
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.Exists(System.String)">
-            <summary>
-            检查给定 key 是否存在
-            </summary>
-            <param name="key">键</param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysCacheService.ExistsAsync(System.String)">
-            <summary>
-            检查给定 key 是否存在
-            </summary>
-            <param name="key">键</param>
-            <returns></returns>
-        </member>
-        <member name="T:Magic.Core.Service.SysJobMainApi">
-            <summary>
-            任务调度服务
-            </summary>
-        </member>
-        <member name="M:Magic.Core.Service.SysJobMainApi.GetLocalJobList">
-            <summary>
-            获取所有本地任务
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysJobMainApi.Post(Magic.Core.Service.JobInput)">
-            <summary>
-            增加任务
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysJobMainApi.DeleteOne(System.String)">
-            <summary>
-            删除任务
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysJobMainApi.GetOne(System.String)">
-            <summary>
-            查看任务
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysJobMainApi.StopTimerJob(Magic.Core.Service.JobInput)">
-            <summary>
-            停止任务
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysJobMainApi.StartTimerJob(Magic.Core.Service.JobInput)">
-            <summary>
-            启动任务
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Magic.Core.Service.SysJobMainApi.AddTimerJob(Magic.Core.Service.JobInput)">
-            <summary>
-            新增定时任务
-            </summary>
-            <param name="input"></param>
-        </member>
-        <member name="M:Magic.Core.Service.SysJobMainApi.StartTimerJob">
-            <summary>
-            启动自启动任务
-            </summary>
-        </member>
-        <member name="M:Magic.Core.Service.SysJobMainApi.GetTaskMethods">
-            <summary>
-            获取所有本地任务
-            </summary>
-            <returns></returns>
         </member>
         <member name="F:Vboot.Core.Common.ClaimConst.CLAINM_USERID">
             <summary>
@@ -594,6 +169,41 @@
         <member name="F:Vboot.Core.Common.ClaimConst.TENANT_ID">
             <summary>
             是否超级管理
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.CommonConst.CACHE_KEY_USER">
+            <summary>
+            用户缓存
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.CommonConst.CACHE_KEY_MENU">
+            <summary>
+            菜单缓存
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.CommonConst.CACHE_KEY_PERMISSION">
+            <summary>
+            权限缓存
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.CommonConst.CACHE_KEY_DATASCOPE">
+            <summary>
+            数据范围缓存
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.CommonConst.CACHE_KEY_CODE">
+            <summary>
+            验证码缓存
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.CommonConst.CACHE_KEY_ENTITYINFO">
+            <summary>
+            库表实体信息缓存
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.CommonConst.CACHE_KEY_ALLPERMISSION">
+            <summary>
+            所有权限缓存
             </summary>
         </member>
         <member name="T:Vboot.Core.Common.AdminType">
@@ -1044,6 +654,36 @@
         <member name="F:Vboot.Core.Common.LoginType.AUTHORIZEDLOGIN">
             <summary>
             三方授权登陆
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Common.RequestTypeEnum">
+            <summary>
+            http请求类型
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.RequestTypeEnum.Run">
+            <summary>
+            执行内部方法
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.RequestTypeEnum.Get">
+            <summary>
+            GET请求
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.RequestTypeEnum.Post">
+            <summary>
+            POST请求
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.RequestTypeEnum.Put">
+            <summary>
+            PUT请求
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.RequestTypeEnum.Delete">
+            <summary>
+            DELETE请求
             </summary>
         </member>
         <member name="T:Vboot.Core.Common.YesOrNot">
@@ -1532,10 +1172,307 @@
             数据范围（机构）信息
             </summary>
         </member>
+        <member name="T:Vboot.Core.Module.Sys.JobInput">
+            <summary>
+            任务调度参数
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.code">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.name">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.cron">
+            <summary>
+            Cron表达式
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.reurl">
+            <summary>
+            请求url
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.repar">
+            <summary>
+            请求参数（Post，Put请求用）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.retyp">
+            <summary>
+            请求类型
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.rehea">
+            <summary>
+            Headers(可以包含如：Authorization授权认证)
+            格式：{"Authorization":"userpassword.."}
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.notes">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.extyp">
+            <summary>
+            执行类型(并行、列队)
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.DoOnce">
+            <summary>
+            只执行一次
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobInput.StartNow">
+            <summary>
+            立即执行（默认等待启动）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.DeleteJobInput.id">
+            <summary>
+            任务Id
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Sys.JobOutput">
+            <summary>
+            任务信息---任务详情
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobOutput.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobOutput.RunNumber">
+            <summary>
+            已执行次数
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobOutput.TimerStatus">
+            <summary>
+            定时器状态
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.JobOutput.Exception">
+            <summary>
+            异常信息
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Sys.LocalJobOutput">
+            <summary>
+            本地任务信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.JobName">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.DoOnce">
+            <summary>
+            只执行一次
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.StartNow">
+            <summary>
+            立即执行（默认等待启动）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.ExecuteType">
+            <summary>
+            执行类型(并行、列队)
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.Interval">
+            <summary>
+            执行间隔时间（单位秒）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.Cron">
+            <summary>
+            Cron表达式
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.TimerType">
+            <summary>
+            定时器类型
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.RequestUrl">
+            <summary>
+            请求url
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.RequestType">
+            <summary>
+            请求类型
+            </summary>
+            <example>2</example>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.LocalJobOutput.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Sys.TaskMethodInfo">
+            <summary>
+            任务方法信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.TaskMethodInfo.MethodName">
+            <summary>
+            方法名
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.TaskMethodInfo.DeclaringType">
+            <summary>
+            方法所属类的Type对象
+            </summary>
+        </member>
         <member name="T:Vboot.Core.Module.Sys.LogJobWorker">
             <summary>
             日志定时任务类
             </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Sys.SysCacheService">
+            <summary>
+            系统缓存服务
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.GetDataScope(System.Int64)">
+            <summary>
+            获取数据范围缓存（机构Id集合）
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.SetDataScope(System.Int64,System.Collections.Generic.List{System.Int64})">
+            <summary>
+            缓存数据范围（机构Id集合）
+            </summary>
+            <param name="userId"></param>
+            <param name="dataScopes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.GetPermission(System.Int64)">
+            <summary>
+            获取权限缓存（按钮）
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.SetPermission(System.Int64,System.Collections.Generic.List{System.String})">
+            <summary>
+            缓存权限
+            </summary>
+            <param name="userId"></param>
+            <param name="permissions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.GetAllCacheKeys">
+            <summary>
+            获取所有缓存关键字
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.GetAllPermission">
+            <summary>
+            获取所有按钮权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.SetAllPermission(System.Collections.Generic.List{System.String})">
+            <summary>
+            设置所有按钮权限
+            </summary>
+            <param name="permissions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.Del(System.String)">
+            <summary>
+            删除指定关键字缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.DelAsync(System.String)">
+            <summary>
+            删除指定关键字缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.DelByPatternAsync(System.String)">
+            <summary>
+            删除某特征关键字缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.Set(System.String,System.Object)">
+            <summary>
+            设置缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.SetAsync(System.String,System.Object)">
+            <summary>
+            设置缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.Get(System.String)">
+            <summary>
+            获取缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.GetAsync(System.String)">
+            <summary>
+            获取缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.Get``1(System.String)">
+            <summary>
+            获取缓存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.GetAsync``1(System.String)">
+            <summary>
+            获取缓存
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.Exists(System.String)">
+            <summary>
+            检查给定 key 是否存在
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysCacheService.ExistsAsync(System.String)">
+            <summary>
+            检查给定 key 是否存在
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
         </member>
         <member name="T:Vboot.Core.Module.Sys.SysJobMain">
             <summary>
@@ -1589,6 +1526,69 @@
             <summary>
             立即执行（默认等待启动）
             </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Sys.SysJobMainApi">
+            <summary>
+            任务调度服务
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.GetLocalJobs">
+            <summary>
+            获取所有本地任务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Post(Vboot.Core.Module.Sys.JobInput)">
+            <summary>
+            增加任务
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.DeleteOne(System.String)">
+            <summary>
+            删除任务
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.GetOne(System.String)">
+            <summary>
+            查看任务
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Stop(Vboot.Core.Module.Sys.JobInput)">
+            <summary>
+            停止任务
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Start(Vboot.Core.Module.Sys.JobInput)">
+            <summary>
+            启动任务
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainService.AddTimerJob(Vboot.Core.Module.Sys.JobInput)">
+            <summary>
+            新增定时任务
+            </summary>
+            <param name="input"></param>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainService.StartTimerJob">
+            <summary>
+            启动自启动任务
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainService.GetTaskMethods">
+            <summary>
+            获取所有本地任务
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Vboot.Core.Module.Sys.SysLogAudit">
             <summary>

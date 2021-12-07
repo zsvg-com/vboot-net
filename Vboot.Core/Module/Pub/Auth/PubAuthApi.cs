@@ -20,7 +20,7 @@ using Yitter.IdGenerator;
 namespace Vboot.Core.Module.Pub
 {
     // [ApiDescriptionSettings("Auth", Tag = "登录与注销")]
-    [ApiDescriptionSettings("Auth",Tag = "登录与注销")]
+    //[ApiDescriptionSettings("Auth",Tag = "登录与注销")]
     public class PubAuthApi : IDynamicApiController, ITransient
     {
         private readonly LoginService _loginService;
