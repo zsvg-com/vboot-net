@@ -19,7 +19,7 @@
 
 ### 🥞 更新日志
 
-更新日志 [点击查看](https://gitee.com/zsvg/vboot-net/CHANGELOG.md)
+更新日志 [点击查看](https://gitee.com/zsvg/vboot-net/blob/master/CHANGELOG.md)
           
 ### 🍄 快速启动
 * 配置数据库：新建一个名为vboot-net的mysql数据库，默认账号root,密码123456（可改）
