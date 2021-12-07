@@ -45,7 +45,7 @@ namespace Vboot.Core
               
             });
             
-            
+         
             
             // 注册EventBus服务
             services.AddEventBus(builder =>

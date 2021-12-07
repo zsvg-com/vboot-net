@@ -50,7 +50,7 @@ namespace Vboot.Core.Common
         /// 是否可用，1可用，0不可用
         /// </summary>
         [SugarColumn(ColumnDescription = "可用标记：1可用，0禁用",IsNullable = true)]
-        public virtual bool? avtag { get; set; }
+        public virtual bool avtag { get; set; }
 
 
         // public virtual void Create()

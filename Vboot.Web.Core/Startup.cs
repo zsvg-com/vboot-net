@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Vboot.Core.Common;
+using Vboot.Core.Module.Sys;
 using Vboot.Web.Core.Init;
 
 namespace Vboot.Web.Core
@@ -60,6 +61,7 @@ namespace Vboot.Web.Core
             });
             
             App.GetService<DbSeedService>().Init();
+            App.GetService<SysJobMainService>().StartAllJob();
         }
     }
 }

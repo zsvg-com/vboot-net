@@ -64,24 +64,9 @@ namespace Vboot.Core.Module.Sys
         [SugarColumn(ColumnDescription = "执行类型", IsNullable = true)]
         public SpareTimeExecuteTypes extyp { get; set; } = SpareTimeExecuteTypes.Parallel;
         
-        
-        /// <summary>
-        /// 只执行一次
-        /// </summary>
-        [SugarColumn(ColumnDescription = "只执行一次", IsNullable = true)]
-        public bool DoOnce { get; set; } = false;
+        [SugarColumn(ColumnDescription = "备注", IsNullable = true)]
+        public string notes { get; set; }
 
-        /// <summary>
-        /// 立即执行（默认等待启动）
-        /// </summary>
-        [SugarColumn(ColumnDescription = "立即执行", IsNullable = true)]
-        public bool StartNow { get; set; } = false;
-
-        
-
-
-    
-       
       
     }
 }

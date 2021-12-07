@@ -1172,72 +1172,6 @@
             数据范围（机构）信息
             </summary>
         </member>
-        <member name="T:Vboot.Core.Module.Sys.JobInput">
-            <summary>
-            任务调度参数
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.code">
-            <summary>
-            任务名称
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.name">
-            <summary>
-            任务名称
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.cron">
-            <summary>
-            Cron表达式
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.reurl">
-            <summary>
-            请求url
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.repar">
-            <summary>
-            请求参数（Post，Put请求用）
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.retyp">
-            <summary>
-            请求类型
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.rehea">
-            <summary>
-            Headers(可以包含如：Authorization授权认证)
-            格式：{"Authorization":"userpassword.."}
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.notes">
-            <summary>
-            备注
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.extyp">
-            <summary>
-            执行类型(并行、列队)
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.DoOnce">
-            <summary>
-            只执行一次
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.JobInput.StartNow">
-            <summary>
-            立即执行（默认等待启动）
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.DeleteJobInput.id">
-            <summary>
-            任务Id
-            </summary>
-        </member>
         <member name="T:Vboot.Core.Module.Sys.JobOutput">
             <summary>
             任务信息---任务详情
@@ -1332,11 +1266,6 @@
         <member name="P:Vboot.Core.Module.Sys.TaskMethodInfo.DeclaringType">
             <summary>
             方法所属类的Type对象
-            </summary>
-        </member>
-        <member name="T:Vboot.Core.Module.Sys.LogJobWorker">
-            <summary>
-            日志定时任务类
             </summary>
         </member>
         <member name="T:Vboot.Core.Module.Sys.SysCacheService">
@@ -1474,6 +1403,11 @@
             <param name="key">键</param>
             <returns></returns>
         </member>
+        <member name="T:Vboot.Core.Module.Sys.SysJobDemo">
+            <summary>
+            定时任务测试类
+            </summary>
+        </member>
         <member name="T:Vboot.Core.Module.Sys.SysJobMain">
             <summary>
             定时任务
@@ -1517,78 +1451,45 @@
             执行类型(并行、列队)
             </summary>
         </member>
-        <member name="P:Vboot.Core.Module.Sys.SysJobMain.DoOnce">
-            <summary>
-            只执行一次
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysJobMain.StartNow">
-            <summary>
-            立即执行（默认等待启动）
-            </summary>
-        </member>
         <member name="T:Vboot.Core.Module.Sys.SysJobMainApi">
             <summary>
             任务调度服务
             </summary>
         </member>
-        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.GetLocalJobs">
-            <summary>
-            获取所有本地任务
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Post(Vboot.Core.Module.Sys.JobInput)">
-            <summary>
-            增加任务
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.DeleteOne(System.String)">
-            <summary>
-            删除任务
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
         <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.GetOne(System.String)">
             <summary>
             查看任务
             </summary>
-            <param name="input"></param>
-            <returns></returns>
         </member>
-        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Stop(Vboot.Core.Module.Sys.JobInput)">
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Post(Vboot.Core.Module.Sys.SysJobMain)">
             <summary>
-            停止任务
+            增加任务
             </summary>
-            <param name="input"></param>
-            <returns></returns>
         </member>
-        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Start(Vboot.Core.Module.Sys.JobInput)">
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Put(Vboot.Core.Module.Sys.SysJobMain)">
+            <summary>
+            修改任务
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Delete(System.String)">
+            <summary>
+            删除任务
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Start(System.String)">
             <summary>
             启动任务
             </summary>
-            <param name="input"></param>
-            <returns></returns>
         </member>
-        <member name="M:Vboot.Core.Module.Sys.SysJobMainService.AddTimerJob(Vboot.Core.Module.Sys.JobInput)">
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Stop(System.String)">
             <summary>
-            新增定时任务
-            </summary>
-            <param name="input"></param>
-        </member>
-        <member name="M:Vboot.Core.Module.Sys.SysJobMainService.StartTimerJob">
-            <summary>
-            启动自启动任务
+            停止任务
             </summary>
         </member>
-        <member name="M:Vboot.Core.Module.Sys.SysJobMainService.GetTaskMethods">
+        <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.Once(System.String)">
             <summary>
-            获取所有本地任务
+            立即执行一次
             </summary>
-            <returns></returns>
         </member>
         <member name="T:Vboot.Core.Module.Sys.SysLogAudit">
             <summary>
