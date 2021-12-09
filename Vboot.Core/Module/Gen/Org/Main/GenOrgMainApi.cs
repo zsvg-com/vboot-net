@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Furion.DynamicApiController;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,7 @@ namespace Vboot.Core.Module.Gen
                 }else{
                     deptSqler.addEqual("t.pid", deptid);
                 }
+                Console.WriteLine(deptSqler.getSql());
                 List<ZidName> deptList = await 
                     repo.Ado.SqlQueryAsync<ZidName>(deptSqler.getSql(),deptSqler.getParams());
                 list.AddRange(deptList);

@@ -19,7 +19,7 @@ namespace Vboot.Core.Module.Pub
         
         public async Task<DbUser> getDbUser(string username)
         {
-            const string sql = "select id,name,pacod,retag from sys_org_user where usnam=? and avtag=1";
+            const string sql = "select id,name,pacod,retag from sys_org_user where usnam=@username and avtag=1";
             var dbUser = await _repo.Ado.SqlQuerySingleAsync<DbUser>(sql, new{username});
             // if (dbUser == null)
             // {

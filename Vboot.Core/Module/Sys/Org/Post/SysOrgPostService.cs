@@ -15,7 +15,7 @@ namespace Vboot.Core.Module.Sys
 
         
         
-        public async Task InsertAsync(SysOrgPost post, List<SysOrgPostUser> pumaps)
+        public async Task InsertAsync(SysOrgPost post, List<SysOrgPostOrg> pumaps)
         {
             if (post.dept != null)
             {
@@ -33,7 +33,7 @@ namespace Vboot.Core.Module.Sys
         }
 
 
-        public async Task UpdateAsync(SysOrgPost post, List<SysOrgPostUser> pumaps)
+        public async Task UpdateAsync(SysOrgPost post, List<SysOrgPostOrg> pumaps)
         {
             if (post.dept != null)
             {
@@ -46,7 +46,7 @@ namespace Vboot.Core.Module.Sys
             await base.UpdateAsync(post);
             await repo.Context.Updateable(new SysOrg {id = post.id, name = post.name})
                 .UpdateColumns(it => new {it.name}).ExecuteCommandAsync();
-            await repo.Context.Deleteable<SysOrgPostUser>().Where(it => it.pid == post.id).ExecuteCommandAsync();
+            await repo.Context.Deleteable<SysOrgPostOrg>().Where(it => it.pid == post.id).ExecuteCommandAsync();
             await repo.Context.Insertable(pumaps).ExecuteCommandAsync();
             tran.CommitTran();
         }

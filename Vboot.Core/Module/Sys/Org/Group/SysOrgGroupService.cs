@@ -27,7 +27,7 @@ namespace Vboot.Core.Module.Sys
         {
             using var tran = repo.Context.UseTran();
             await base.UpdateAsync(@group);
-            await repo.Context.Deleteable<SysOrgPostUser>().Where(it => it.pid == @group.id).ExecuteCommandAsync();
+            await repo.Context.Deleteable<SysOrgGroupOrg>().Where(it => it.gid == @group.id).ExecuteCommandAsync();
             await repo.Context.Insertable(gmmaps).ExecuteCommandAsync();
             await repo.Context.Updateable(new SysOrg {id = group.id, name = group.name})
                 .UpdateColumns(it => new {it.name}).ExecuteCommandAsync();

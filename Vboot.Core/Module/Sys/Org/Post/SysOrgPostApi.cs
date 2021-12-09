@@ -36,8 +36,8 @@ namespace Vboot.Core.Module.Sys
         public async Task<SysOrgPost> GetOne(string id)
         {
             var post = await _postService.repo.Context.Queryable<SysOrgPost>()
-                .Mapper<SysOrgPost, SysOrg, SysOrgPostUser>(it =>
-                    ManyToMany.Config(it.pid, it.uid))
+                .Mapper<SysOrgPost, SysOrg, SysOrgPostOrg>(it =>
+                    ManyToMany.Config(it.pid, it.oid))
                 .Where(it => it.id == id).FirstAsync();
             if (post.deptid != null)
             {
@@ -54,10 +54,10 @@ namespace Vboot.Core.Module.Sys
             }
 
             post.id = YitIdHelper.NextId() + "";
-            var postUsers = new List<SysOrgPostUser>();
+            var postUsers = new List<SysOrgPostOrg>();
             foreach (var user in post.users)
             {
-                postUsers.Add(new SysOrgPostUser {pid = post.id, uid = user.id});
+                postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
             }
 
             await _postService.InsertAsync(post, postUsers);
@@ -70,10 +70,10 @@ namespace Vboot.Core.Module.Sys
                 post.deptid = post.dept.id;
             }
 
-            var postUsers = new List<SysOrgPostUser>();
+            var postUsers = new List<SysOrgPostOrg>();
             foreach (var user in post.users)
             {
-                postUsers.Add(new SysOrgPostUser {pid = post.id, uid = user.id});
+                postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
             }
 
             await _postService.UpdateAsync(post, postUsers);

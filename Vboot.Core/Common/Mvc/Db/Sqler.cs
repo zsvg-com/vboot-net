@@ -116,18 +116,19 @@ namespace Vboot.Core.Common
 
         public Sqler addEqual(string name, object value)
         {
+            string pname = name.Substring(name.LastIndexOf(".") + 1);
             if (!string.IsNullOrEmpty(value + ""))
             {
                 if (whereClause.Length == 0)
                 {
-                    whereClause = " WHERE " + name + " = ?";
+                    whereClause = " WHERE " + name + " = @"+pname;
                 }
                 else
                 {
-                    whereClause += " AND " + name + " = ?";
+                    whereClause += " AND " + name + " = @"+pname;
                 }
 
-                parameters.Add(name,value);
+                parameters.Add(pname,value);
             }
 
             return this;
@@ -135,18 +136,18 @@ namespace Vboot.Core.Common
 
         public Sqler addLike(string name, object value)
         {
+            string pname = name.Substring(name.LastIndexOf(".") + 1);
             if (!string.IsNullOrEmpty(value + ""))
             {
                 if (whereClause.Length == 0)
                 {
-                    whereClause = " WHERE " + name + " like ?";
+                    whereClause = " WHERE " + name + " like @"+pname;
                 }
                 else
                 {
-                    whereClause += " AND " + name + " like ?";
+                    whereClause += " AND " + name + " like @"+pname;
                 }
-
-                parameters.Add(name,"%" + ("" + value).Trim() + "%");
+                parameters.Add(pname,"%" + ("" + value).Trim() + "%");
             }
 
             return this;
@@ -154,18 +155,19 @@ namespace Vboot.Core.Common
 
         public Sqler addGtStringDate(string name, object value)
         {
+            string pname = name.Substring(name.LastIndexOf(".") + 1);
             if (!string.IsNullOrEmpty(value + ""))
             {
                 if (whereClause.Length == 0)
                 {
-                    whereClause = " WHERE " + name + ">=?";
+                    whereClause = " WHERE " + name + ">=@"+pname;
                 }
                 else
                 {
-                    whereClause += " AND " + name + ">=?";
+                    whereClause += " AND " + name + ">=@"+pname;
                 }
 
-                parameters.Add(name,value);
+                parameters.Add(pname,value);
             }
 
             return this;
@@ -173,20 +175,21 @@ namespace Vboot.Core.Common
 
         public Sqler addGtDate(string name, object value, string dbType)
         {
+            string pname = name.Substring(name.LastIndexOf(".") + 1);
             if ("ORACLE" == dbType)
             {
                 if (!string.IsNullOrEmpty(value + ""))
                 {
                     if (whereClause.Length == 0)
                     {
-                        whereClause = " WHERE " + name + ">=to_date(?,'yyyy-MM-dd')";
+                        whereClause = " WHERE " + name + ">=to_date(@"+pname+",'yyyy-MM-dd')";
                     }
                     else
                     {
-                        whereClause += " AND " + name + ">=to_date(?,'yyyy-MM-dd')";
+                        whereClause += " AND " + name + ">=to_date(@"+pname+",'yyyy-MM-dd')";
                     }
 
-                    parameters.Add(name,value);
+                    parameters.Add(pname,value);
                 }
             }
             else if ("MYSQL" == dbType)
@@ -195,14 +198,14 @@ namespace Vboot.Core.Common
                 {
                     if (whereClause.Length == 0)
                     {
-                        whereClause = " WHERE unix_timestamp(" + name + ") >=unix_timestamp(?)";
+                        whereClause = " WHERE unix_timestamp(" + name + ") >=unix_timestamp(@"+pname+")";
                     }
                     else
                     {
-                        whereClause += " AND unix_timestamp(" + name + ")  >=unix_timestamp(?)";
+                        whereClause += " AND unix_timestamp(" + name + ")  >=unix_timestamp(@"+pname+")";
                     }
 
-                    parameters.Add(name,value);
+                    parameters.Add(pname,value);
                 }
             }
 
@@ -211,20 +214,21 @@ namespace Vboot.Core.Common
 
         public Sqler addLtDate(string name, object value, string dbType)
         {
+            string pname = name.Substring(name.LastIndexOf(".") + 1);
             if ("ORACLE" == dbType)
             {
                 if (!string.IsNullOrEmpty(value + ""))
                 {
                     if (whereClause.Length == 0)
                     {
-                        whereClause = " WHERE " + name + "<to_date(?,'yyyy-MM-dd')+1";
+                        whereClause = " WHERE " + name + "<to_date(@"+pname+",'yyyy-MM-dd')+1";
                     }
                     else
                     {
-                        whereClause += " AND " + name + "<to_date(?,'yyyy-MM-dd')+1";
+                        whereClause += " AND " + name + "<to_date(@"+pname+",'yyyy-MM-dd')+1";
                     }
 
-                    parameters.Add(name,value);
+                    parameters.Add(pname,value);
                 }
             }
             else
@@ -233,14 +237,14 @@ namespace Vboot.Core.Common
                 {
                     if (whereClause.Length == 0)
                     {
-                        whereClause = " WHERE unix_timestamp(" + name + ") <=unix_timestamp(?)";
+                        whereClause = " WHERE unix_timestamp(" + name + ") <=unix_timestamp(@"+pname+")";
                     }
                     else
                     {
-                        whereClause += " AND unix_timestamp(" + name + ") <=unix_timestamp(?)";
+                        whereClause += " AND unix_timestamp(" + name + ") <=unix_timestamp(@"+pname+")";
                     }
 
-                    parameters.Add(name,value + " 23:59:59");
+                    parameters.Add(pname,value + " 23:59:59");
                 }
             }
 
@@ -249,15 +253,16 @@ namespace Vboot.Core.Common
 
         public Sqler addLtStringDate(string name, object value)
         {
+            string pname = name.Substring(name.LastIndexOf(".") + 1);
             if (!string.IsNullOrEmpty(value + ""))
             {
                 if (whereClause.Length == 0)
                 {
-                    whereClause = " WHERE " + name + "<=?";
+                    whereClause = " WHERE " + name + "<=@"+pname;
                 }
                 else
                 {
-                    whereClause += " AND " + name + "<=?";
+                    whereClause += " AND " + name + "<=@"+pname;
                 }
 
                 parameters.Add(name,value);

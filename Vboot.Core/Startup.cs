@@ -18,6 +18,8 @@ namespace Vboot.Core
             {
                 ConnectionString = "Data Source=localhost;Database=vboot-net;User ID=root;Password=123456;pooling=true;port=3306;sslmode=none;CharSet=utf8;",//连接符字串
                 DbType = DbType.MySql,
+                //ConnectionString = "Data Source=localhost/orcl;User ID=vboot;Password=123456;",//连接符字串
+                //DbType = DbType.Oracle,
                 IsAutoCloseConnection = true
             },db =>
             {
@@ -45,7 +47,7 @@ namespace Vboot.Core
               
             });
             
-         
+            
             
             // 注册EventBus服务
             services.AddEventBus(builder =>
