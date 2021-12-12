@@ -1601,6 +1601,46 @@
             异常时间
             </summary>
         </member>
+        <member name="T:Vboot.Core.Module.Sys.SysLogLogin">
+            <summary>
+            登录日志表
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogLogin.usnam">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogLogin.ip">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogLogin.addre">
+            <summary>
+            登录地点
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogLogin.ageos">
+            <summary>
+            操作系统
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogLogin.agbro">
+            <summary>
+            浏览器
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogLogin.agdet">
+            <summary>
+            客户端详情
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysLogLogin.crtim">
+            <summary>
+            登录时间
+            </summary>
+        </member>
         <member name="T:Vboot.Core.Module.Sys.SysLogOp">
             <summary>
             操作日志表
@@ -1689,66 +1729,6 @@
         <member name="P:Vboot.Core.Module.Sys.SysLogOp.Account">
             <summary>
             操作人
-            </summary>
-        </member>
-        <member name="T:Vboot.Core.Module.Sys.SysLogVisit">
-            <summary>
-            访问日志表
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Id">
-            <summary>
-            主键Id
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Name">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Success">
-            <summary>
-            是否执行成功（Y-是，N-否）
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Message">
-            <summary>
-            具体消息
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Ip">
-            <summary>
-            IP
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Location">
-            <summary>
-            地址
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Browser">
-            <summary>
-            浏览器
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Os">
-            <summary>
-            操作系统
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.VisType">
-            <summary>
-            访问类型
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.VisTime">
-            <summary>
-            访问时间
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Sys.SysLogVisit.Account">
-            <summary>
-            访问人
             </summary>
         </member>
     </members>

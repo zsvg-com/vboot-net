@@ -21,7 +21,7 @@ namespace Vboot.Core.Module.Gen
         
         //根据部门ID，查询下级所有的部门,岗位,用户
         [QueryParameters]
-        public async Task<List<ZidName>> GetList(string deptid, int type,string name)
+        public async Task<List<ZidName>> Get(string deptid, int type,string name)
         {
             List<ZidName> list = new List<ZidName>();
             if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(deptid))

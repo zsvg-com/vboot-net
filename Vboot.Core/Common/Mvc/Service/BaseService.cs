@@ -14,8 +14,6 @@ namespace Vboot.Core.Common
             {
                 entity.id = YitIdHelper.NextId() + "";
             }
-
-            entity.avtag = true;
             await repo.InsertAsync(entity);
         }
 

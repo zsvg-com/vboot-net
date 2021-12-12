@@ -3,7 +3,8 @@
 
 ### 🍿 传送门
 
-vboot在线体验传送门 [http://zsvg.gitee.io/vboot](http://zsvg.gitee.io/vboot)
+* 在线体验传送门：[http://zsvg.gitee.io/vboot](http://zsvg.gitee.io/vboot)
+* QQ交流群传送门：[795417789](https://jq.qq.com/?_wv=1027&k=yoKKIlIG) 暂时就几个人哦，哈哈
 
 ### 🍟 概述
 
@@ -11,8 +12,8 @@ vboot在线体验传送门 [http://zsvg.gitee.io/vboot](http://zsvg.gitee.io/vbo
 * 后台基于Furion框架，数据库访问使用Sqlsugar，codeFirst方式。
 * 前端基于Vben-Admin vxe-table框架。
 * 核心模块包括：部门、用户、岗位、群组、角色、菜单、字典、日志、文件管理、定时任务等功能。
-* QQ交流群：[795417789] 暂时就几个人哦，哈哈
-* JAVA实现的同功能项目地址[https://gitee.com/zsvg/vboot-java](https://gitee.com/zsvg/vboot-java) 两个项目会同步开发
+* JAVA实现的同功能项目地址：[https://gitee.com/zsvg/vboot-java](https://gitee.com/zsvg/vboot-java) 两个项目会同步开发
+* 前端代码项目地址：[https://gitee.com/zsvg/vboot-vben](https://gitee.com/zsvg/vboot-vben) 
 ```
 如果对您有帮助，点击右上角⭐Star⭐关注 ，感谢支持开源！
 ```
@@ -82,4 +83,6 @@ vboot在线体验传送门 [http://zsvg.gitee.io/vboot](http://zsvg.gitee.io/vbo
 - 👉 Magic.NET：[https://gitee.com/zhengguojing/admin-net-sqlsugar](https://gitee.com/zhengguojing/admin-net-sqlsugar)
 - 👉 Vben-Admin：[https://vvbin.cn/doc-next/](https://vvbin.cn/doc-next/)
 - 👉 vxe-table：[https://gitee.com/xuliangzhan_admin/vxe-table](https://gitee.com/xuliangzhan_admin/vxe-table)
+```
 如果对您有帮助，您可以点右上角 💘Star💘支持一下，这样我们才有持续下去的动力，谢谢！！！
+```

@@ -9,11 +9,5 @@ namespace Vboot.Core.Common
 
         [SugarColumn(ColumnDescription = "名称", IsNullable = true, Length = 255)]
         public virtual string name { get; set; }
-
-        [SugarColumn(ColumnDescription = "可用标记：1可用，0禁用", IsNullable = true)]
-        public virtual bool? avtag { get; set; }
-        
-        [SugarColumn(ColumnDescription = "排序号", IsNullable = true)]
-        public int ornum { get; set; }
     }
 }

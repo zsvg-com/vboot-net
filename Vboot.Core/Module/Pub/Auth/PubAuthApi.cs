@@ -78,6 +78,13 @@ namespace Vboot.Core.Module.Pub
             };
             return output;
         }
+        
+        [HttpPost("/logout")]
+        public void LogoutAsync()
+        {
+            
+        }
+
 
         // [HttpGet("/getUserInfo")]
         // [AllowAnonymous]
@@ -92,19 +99,17 @@ namespace Vboot.Core.Module.Pub
         {
             
             var user = _userManager.User;
-            var userId = user.id;
 
             var httpContext = App.GetService<IHttpContextAccessor>().HttpContext;
             var loginOutput = user.Adapt<LoginOutput>();
 
-            loginOutput.lalot = user.lalot = DateTime.Now;
+            var crtim=user.lalot = DateTime.Now;
             var ip = HttpNewUtil.Ip;
-            loginOutput.laloi = user.laloi =
-                string.IsNullOrEmpty(user.laloi) ? httpContext.GetRemoteIpAddressToIPv4() : ip;
+            ip = user.laloi = string.IsNullOrEmpty(user.laloi) ? httpContext.GetRemoteIpAddressToIPv4() : ip;
 
             var clent = Parser.GetDefault().Parse(httpContext.Request.Headers["User-Agent"]);
-            loginOutput.LastLoginBrowser = clent.UA.Family + clent.UA.Major;
-            loginOutput.LastLoginOs = clent.OS.Family + clent.OS.Major;
+            var agbro= clent.UA.Family + clent.UA.Major;
+            var ageos= clent.OS.Family + clent.OS.Major;
 
             // 员工信息
             // loginOutput.LoginEmpInfo = await _sysEmpService.GetEmpInfo(userId);
@@ -130,20 +135,18 @@ namespace Vboot.Core.Module.Pub
             // }
             
             
+            
             // 增加登录日志
-            await _eventPublisher.PublishAsync(new ChannelEventSource("Create:VisLog",
-                new SysLogVisit
+            await _eventPublisher.PublishAsync(new ChannelEventSource("Create:LoginLog",
+                new SysLogLogin
                 {
-                    Id = YitIdHelper.NextId()+"",
-                    Name = user.name,
-                    Success = YesOrNot.Y,
-                    Message = "登录成功",
-                    Ip = loginOutput.laloi,
-                    Browser = loginOutput.LastLoginBrowser,
-                    Os = loginOutput.LastLoginOs,
-                    VisType = LoginType.LOGIN,
-                    VisTime = loginOutput.lalot,
-                    Account = user.name
+                    id = YitIdHelper.NextId()+"",
+                    name = user.name,
+                    ip = ip,
+                    agbro = agbro,
+                    ageos = ageos,
+                    crtim = crtim,
+                    usnam = user.usnam
                 }));
             
 

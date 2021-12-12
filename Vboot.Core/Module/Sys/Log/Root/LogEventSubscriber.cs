@@ -33,16 +33,12 @@ namespace Vboot.Core.Module.Sys
             await repository.InsertAsync(log);
         }
 
-        [EventSubscribe("Create:VisLog")]
+        [EventSubscribe("Create:LoginLog")]
         public async Task CreateVisLog(EventHandlerExecutingContext context)
         {
-            Console.WriteLine("测试vislog");
             using var scope = Services.CreateScope();
-            var repository = scope.ServiceProvider.GetRequiredService<ISqlSugarRepository<SysLogVisit>>();
-            var log = (SysLogVisit)context.Source.Payload;
-            await repository.InsertAsync(log);
-            // var log = new SysLogVisit();
-            // log.Id = "333";
+            var repository = scope.ServiceProvider.GetRequiredService<ISqlSugarRepository<SysLogLogin>>();
+            var log = (SysLogLogin)context.Source.Payload;
             await repository.InsertAsync(log);
         }
 

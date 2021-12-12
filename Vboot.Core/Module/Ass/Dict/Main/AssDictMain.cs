@@ -8,6 +8,12 @@ namespace Vboot.Core.Module.Ass
     [Description("字典信息表")]
     public class AssDictMain : BaseEntity
     {
+        [SugarColumn(ColumnDescription = "可用标记：1可用，0禁用", IsNullable = true)]
+        public bool? avtag { get; set; }
+        
+        [SugarColumn(ColumnDescription = "排序号", IsNullable = true)]
+        public int ornum { get; set; }
+        
         [SugarColumn(ColumnDescription = "类型", IsNullable = true, Length = 32)]
         public string cateid { get; set; }
 
