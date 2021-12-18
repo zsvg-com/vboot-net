@@ -1172,6 +1172,26 @@
             数据范围（机构）信息
             </summary>
         </member>
+        <member name="T:Vboot.Core.Module.Pub.AuthApi">
+            <summary>
+            登录注销
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Pub.AuthApi.LoginAsync(Vboot.Core.Module.Pub.LoginInput)">
+            <summary>
+            登录
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Pub.AuthApi.LogoutAsync">
+            <summary>
+            注销
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Pub.AuthApi.getUserInfo">
+            <summary>
+            获取用户信息
+            </summary>
+        </member>
         <member name="T:Vboot.Core.Module.Sys.JobOutput">
             <summary>
             任务信息---任务详情
@@ -1266,11 +1286,6 @@
         <member name="P:Vboot.Core.Module.Sys.TaskMethodInfo.DeclaringType">
             <summary>
             方法所属类的Type对象
-            </summary>
-        </member>
-        <member name="T:Vboot.Core.Module.Sys.SysCacheService">
-            <summary>
-            系统缓存服务
             </summary>
         </member>
         <member name="M:Vboot.Core.Module.Sys.SysCacheService.GetDataScope(System.Int64)">
@@ -1449,11 +1464,6 @@
         <member name="P:Vboot.Core.Module.Sys.SysJobMain.extyp">
             <summary>
             执行类型(并行、列队)
-            </summary>
-        </member>
-        <member name="T:Vboot.Core.Module.Sys.SysJobMainApi">
-            <summary>
-            任务调度服务
             </summary>
         </member>
         <member name="M:Vboot.Core.Module.Sys.SysJobMainApi.GetOne(System.String)">

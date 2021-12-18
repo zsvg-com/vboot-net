@@ -10,10 +10,7 @@ using Vboot.Core.Common;
 
 namespace Vboot.Core.Module.Sys
 {
-    /// <summary>
-    /// 系统缓存服务
-    /// </summary>
-    [ApiDescriptionSettings(Name = "Cache", Order = 100)]
+    [ApiDescriptionSettings("Sys",Name = "Cache",Tag ="系统缓存服务" )]
     public class SysCacheService : IDynamicApiController, ISingleton
     {
         private readonly ICache _cache;

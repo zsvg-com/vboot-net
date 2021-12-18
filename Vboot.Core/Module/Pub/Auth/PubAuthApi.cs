@@ -19,16 +19,18 @@ using Yitter.IdGenerator;
 
 namespace Vboot.Core.Module.Pub
 {
-    // [ApiDescriptionSettings("Auth", Tag = "登录与注销")]
     //[ApiDescriptionSettings("Auth",Tag = "登录与注销")]
-    public class PubAuthApi : IDynamicApiController, ITransient
+    /// <summary>
+    /// 登录注销
+    /// </summary>
+    public class AuthApi : IDynamicApiController, ITransient
     {
         private readonly LoginService _loginService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IEventPublisher _eventPublisher;
         private readonly IUserManager _userManager; // 用户管理
 
-        public PubAuthApi(LoginService loginService,
+        public AuthApi(LoginService loginService,
             IHttpContextAccessor httpContextAccessor,
             IEventPublisher eventPublisher,
             IUserManager userManager)
@@ -39,6 +41,9 @@ namespace Vboot.Core.Module.Pub
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// 登录
+        /// </summary>
         [HttpPost("/login")]
         [AllowAnonymous]
         public async Task<LoginOutput2> LoginAsync(LoginInput input)
@@ -79,6 +84,9 @@ namespace Vboot.Core.Module.Pub
             return output;
         }
         
+        /// <summary>
+        /// 注销
+        /// </summary>
         [HttpPost("/logout")]
         public void LogoutAsync()
         {
@@ -93,6 +101,9 @@ namespace Vboot.Core.Module.Pub
         //     return "userinfo";
         // }
 
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
         [HttpGet("/getUserInfo")]
         [AllowAnonymous]
         public async Task<LoginOutput> getUserInfo()

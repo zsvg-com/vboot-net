@@ -16,7 +16,7 @@
         </member>
         <member name="T:Vboot.Application.Sd.Proj.Main.SdProjMainApi">
             <summary>
-            项目信息接口
+            增删改查DEMO接口
             </summary>
         </member>
         <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.Get(System.Int32,System.Int32)">

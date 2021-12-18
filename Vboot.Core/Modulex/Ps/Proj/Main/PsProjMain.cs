@@ -2,11 +2,11 @@
 using SqlSugar;
 using Vboot.Core.Common;
 
-namespace Vboot.Core.Module.Ass
+namespace Vboot.Core.Modulex.Ps
 {
-    [SugarTable("ass_dict_main", TableDescription = "项目信息表")]
-    [Description("项目信息表")]
-    public class AssDictMain : BaseEntity
+    [SugarTable("ps_proj_main", TableDescription = "字典信息表")]
+    [Description("字典信息表")]
+    public class PsProjMain : BaseEntity
     {
         [SugarColumn(ColumnDescription = "可用标记：1可用，0禁用", IsNullable = true)]
         public bool? avtag { get; set; }
@@ -16,11 +16,13 @@ namespace Vboot.Core.Module.Ass
         
         [SugarColumn(ColumnDescription = "类型", IsNullable = true, Length = 32)]
         public string cateid { get; set; }
+        
+        [SqlSugar.SugarColumn(IsIgnore = true)]
+        public string catename { get; set; }
 
         [SugarColumn(ColumnDescription = "备注", IsNullable = true, Length = 64)]
         public string notes { get; set; }
         
-        [SugarColumn(ColumnDescription = "代码", Length = 32)]
-        public string code { get; set; }
+        
     }
 }

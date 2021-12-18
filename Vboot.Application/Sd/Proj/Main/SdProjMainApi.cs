@@ -6,7 +6,7 @@ using Vboot.Core.Common;
 namespace Vboot.Application.Sd.Proj.Main
 {
     /// <summary>
-    /// 项目信息接口
+    /// 增删改查DEMO接口
     /// </summary>
     public class SdProjMainApi : IDynamicApiController
     {

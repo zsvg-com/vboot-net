@@ -16,5 +16,8 @@ namespace Vboot.Core.Module.Ass
         
         [SugarColumn(ColumnDescription = "备注", IsNullable = true, Length = 64)]
         public string notes { get; set; }
+        
+        [SugarColumn(ColumnDescription = "代码", Length = 32)]
+        public string code { get; set; }
     }
 }

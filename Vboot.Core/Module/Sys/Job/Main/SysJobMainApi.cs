@@ -12,9 +12,7 @@ using Yitter.IdGenerator;
 
 namespace Vboot.Core.Module.Sys
 {
-    /// <summary>
-    /// 任务调度服务
-    /// </summary>
+    [ApiDescriptionSettings("Sys",Tag ="定时任务-清单" )]
     public class SysJobMainApi : IDynamicApiController
     {
         private readonly SysJobMainService _service;

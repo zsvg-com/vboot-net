@@ -1,10 +1,13 @@
 ﻿using System.Threading.Tasks;
 using Furion.DynamicApiController;
+using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
 using Vboot.Core.Common;
 
 namespace Vboot.Core.Module.Sys.Job.Log
 {
+    
+    [ApiDescriptionSettings("Sys",Tag ="定时任务-日志" )]
     public class SysJobLogApi: IDynamicApiController
     {
         
