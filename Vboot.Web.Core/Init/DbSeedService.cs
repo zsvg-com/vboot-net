@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Reflection;
 using Furion.DependencyInjection;
+using Microsoft.CodeAnalysis.Text;
+using Serilog;
 using SqlSugar;
 using Vboot.Core.Module.Pub;
 using Vboot.Core.Module.Sys;
@@ -27,7 +29,7 @@ namespace Vboot.Web.Core.Init
         }
 
 
-        public void Init()
+        public async void Init()
         {
             
             var path = AppDomain.CurrentDomain.RelativeSearchPath ?? AppDomain.CurrentDomain.BaseDirectory;
@@ -74,11 +76,11 @@ namespace Vboot.Web.Core.Init
             var sysOrg= repo.Single(it => it.id == "sa");
             if (sysOrg == null)
             {
-                pubOrgInitService.InitAllDept();
-                pubOrgInitService.InitAllUser();
-                pubOrgInitService.InitZsf();
-                pubOrgInitService.InitSa();
-                pubAuthInitService.InitAllMenu();
+                await pubOrgInitService.InitAllDept();
+                await pubOrgInitService.InitAllUser();
+                await pubOrgInitService.InitZsf();
+                await pubOrgInitService.InitSa();
+                await pubAuthInitService.InitAllMenu();
             }
             
 

@@ -326,6 +326,7 @@ namespace Vboot.Core.Module.Pub
 
         public async Task InitSa()
         {
+            Console.WriteLine("开始初始化数据");
             SysOrgUser user = new SysOrgUser();
             user.id= "sa";
             user.usnam= "sa";
