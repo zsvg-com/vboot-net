@@ -16,7 +16,7 @@ namespace Vboot.Core
         {
             services.AddSqlSugar(new ConnectionConfig
             {
-                ConnectionString = "Data Source=localhost;Database=vboot22;User ID=root;Password=123456;pooling=true;port=3306;sslmode=none;CharSet=utf8;",//连接符字串
+                ConnectionString = "Data Source=localhost;Database=vboot-net;User ID=root;Password=123456;pooling=true;port=3306;sslmode=none;CharSet=utf8;",//连接符字串
                 DbType = DbType.MySql,
                 //ConnectionString = "Data Source=localhost/orcl;User ID=vboot;Password=123456;",//连接符字串
                 //DbType = DbType.Oracle,
