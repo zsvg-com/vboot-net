@@ -5,12 +5,10 @@ using Vboot.Core.Common;
 
 namespace Vboot.Core.Modulex.Wf
 {
-    [SugarTable("wf_temp_cate", TableDescription = "流程分类表")]
+    [SugarTable("wf_tem_cate", TableDescription = "流程分类表")]
     [Description("流程分类表")]
-    public class WfTempCate : BaseMainEntity
+    public class WfTemCate : BaseMainEntity
     {
-        // [SugarColumn(ColumnDescription = "Id主键", IsPrimaryKey = true,Length = 36)]
-        // public string id { get; set; }
         
         [SugarColumn(ColumnDescription = "备注", IsNullable = true, Length = 64)]
         public string notes { get; set; }
@@ -25,9 +23,8 @@ namespace Vboot.Core.Modulex.Wf
         public string pname { get; set; }
 
         [SqlSugar.SugarColumn(IsIgnore = true)]
-        public List<WfTempCate> children { get; set; }
+        public List<WfTemCate> children { get; set; }
 
-        
 
     }
 }

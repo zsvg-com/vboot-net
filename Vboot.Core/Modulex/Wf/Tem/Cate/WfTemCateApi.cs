@@ -7,11 +7,11 @@ using Yitter.IdGenerator;
 namespace Vboot.Core.Modulex.Wf
 {
     [ApiDescriptionSettings("Ext",Tag ="流程管理-流程分类" )]
-    public class WfTempCateApi : IDynamicApiController
+    public class WfTemCateApi : IDynamicApiController
     {
-        private readonly WfTempCateService _service;
+        private readonly WfTemCateService _service;
 
-        public WfTempCateApi(WfTempCateService service)
+        public WfTemCateApi(WfTemCateService service)
         {
             _service = service;
         }
@@ -20,8 +20,8 @@ namespace Vboot.Core.Modulex.Wf
         public async Task<dynamic> GetTree()
         {
             var treeList = await _service.repo.Context
-                .SqlQueryable<WfTempCate>(
-                    "select id,pid,name,crtim,uptim,notes from wf_temp_cate order by ornum")
+                .SqlQueryable<WfTemCate>(
+                    "select id,pid,name,crtim,uptim,notes from wf_tem_cate order by ornum")
                 .ToTreeAsync(it => it.children, it => it.pid, null);
             return treeList;
         }
@@ -30,32 +30,32 @@ namespace Vboot.Core.Modulex.Wf
         public async Task<dynamic> Get()
         {
             var treeList = await _service.repo.Context
-                .SqlQueryable<WfTempCate>(
-                    "select id,pid,name,crtim,uptim,notes from wf_temp_cate order by ornum")
+                .SqlQueryable<WfTemCate>(
+                    "select id,pid,name,crtim,uptim,notes from wf_tem_cate order by ornum")
                 .ToTreeAsync(it => it.children, it => it.pid, null);
             return treeList;
         }
 
-        public async Task<WfTempCate> GetOne(string id)
+        public async Task<WfTemCate> GetOne(string id)
         {
-            var menu = await _service.repo.Context.Queryable<WfTempCate>()
+            var menu = await _service.repo.Context.Queryable<WfTemCate>()
                 .Where(it => it.id == id).FirstAsync();
             if (menu.pid != null)
             {
-                menu.pname = await _service.repo.Context.Queryable<WfTempCate>()
+                menu.pname = await _service.repo.Context.Queryable<WfTemCate>()
                     .Where(it => it.id == menu.pid).Select(it => it.name).SingleAsync();
             }
 
             return menu;
         }
 
-        public async Task Post(WfTempCate cate)
+        public async Task Post(WfTemCate cate)
         {
             cate.id = YitIdHelper.NextId() + "";
             await _service.InsertAsync(cate);
         }
 
-        public async Task Put(WfTempCate cate)
+        public async Task Put(WfTemCate cate)
         {
             await _service.UpdateAsync(cate);
         }
@@ -66,7 +66,7 @@ namespace Vboot.Core.Modulex.Wf
             foreach (var id in idArr)
             {
                 var count = await
-                    _service.repo.Context.Queryable<WfTempCate>().Where(it => it.pid == id).CountAsync();
+                    _service.repo.Context.Queryable<WfTemCate>().Where(it => it.pid == id).CountAsync();
                 if (count > 0)
                 {
                     throw new Exception("有子分类无法删除");

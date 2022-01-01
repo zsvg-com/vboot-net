@@ -6,12 +6,12 @@ using Vboot.Core.Common;
 
 namespace Vboot.Core.Modulex.Wf
 {
-    [ApiDescriptionSettings("Ext",Tag ="流程管理-流程模板" )]
-    public class WfTempMainApi : IDynamicApiController
+    [ApiDescriptionSettings("Ext",Tag ="流程管理-流程实例" )]
+    public class WfInsMainApi : IDynamicApiController
     {
-        private readonly WfTempMainService _service;
+        private readonly WfInsMainService _service;
 
-        public WfTempMainApi(WfTempMainService service)
+        public WfInsMainApi(WfInsMainService service)
         {
             _service = service;
         }
@@ -20,33 +20,32 @@ namespace Vboot.Core.Modulex.Wf
         public async Task<dynamic> Get(int page, int pageSize)
         {
             RefAsync<int> total = 0;
-            var items = await _service.repo.Context.Queryable<WfTempMain>()
-                .OrderBy(u => u.ornum)
+            var items = await _service.repo.Context.Queryable<WfInsMain>()
                 .Select((t) => new {t.id, t.name, t.notes})
                 .ToPageListAsync(page, pageSize, total);
             return RestPageResult.Build(total.Value, items);
         }
 
-        public async Task<WfTempMain> GetOne(string id)
+        public async Task<WfInsMain> GetOne(string id)
         {
-            var main = await _service.repo.Context.Queryable<WfTempMain>()
+            var main = await _service.repo.Context.Queryable<WfInsMain>()
                 .Where(it => it.id == id).FirstAsync();
             
-            if (main.cateid != null)
+            if (main.temid != null)
             {
-                main.catename = await _service.repo.Context.Queryable<WfTempCate>()
-                    .Where(it => it.id == main.cateid).Select(it => it.name).SingleAsync();
+                main.temname = await _service.repo.Context.Queryable<WfTemMain>()
+                    .Where(it => it.id == main.temid).Select(it => it.name).SingleAsync();
             }
             
             return main;
         }
 
-        public async Task Post(WfTempMain main)
+        public async Task Post(WfInsMain main)
         {
-            await _service.InsertAsync(main);
+            await _service.InsertAsyncWithFlow(main);
         }
 
-        public async Task Put(WfTempMain main)
+        public async Task Put(WfInsMain main)
         {
             await _service.UpdateAsync(main);
         }

@@ -5,9 +5,9 @@ using Vboot.Core.Common;
 namespace Vboot.Core.Modulex.Wf
 {
     
-    public class WfTempCateService : BaseMainService<WfTempCate>, ITransient
+    public class WfTemCateService : BaseMainService<WfTemCate>, ITransient
     {
-        public WfTempCateService(ISqlSugarRepository<WfTempCate> repo)
+        public WfTemCateService(ISqlSugarRepository<WfTemCate> repo)
         {
             this.repo = repo;
         }

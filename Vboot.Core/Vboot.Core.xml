@@ -1086,6 +1086,17 @@
             描述
             </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Vboot.Core.Modulex.Wf.XSerializer.ObjectToXml``1(``0)" -->
+        <member name="M:Vboot.Core.Modulex.Wf.XSerializer.ObjectToXml``1(``0,System.Text.Encoding)">
+            <summary>
+            序列化成XML 清空格式
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Modulex.Wf.XSerializer.XmlToObject``1(System.String)">
+            <summary>
+            字符串转换为对象
+            </summary>
+        </member>
         <member name="P:Vboot.Core.Module.Pub.LoginInput.username">
             <example>vben</example>
         </member>

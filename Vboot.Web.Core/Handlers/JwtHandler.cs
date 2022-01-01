@@ -1,4 +1,5 @@
-﻿using Furion.Authorization;
+﻿using System;
+using Furion.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
@@ -48,10 +49,12 @@ namespace Vboot.Web.Core
             // 管理员跳过判断
             var userManager = App.GetService<IUserManager>();
             if (userManager.SuperAdmin) return true;
+            
 
             // 路由名称
             var routeName = httpContext.Request.Path.Value.Substring(1).Replace("/", ":");
 
+            Console.WriteLine(routeName);
             // var allPermission = await App.GetService<ISysMenuService>().GetAllPermission();
             //
             // if (!allPermission.Contains(routeName))
