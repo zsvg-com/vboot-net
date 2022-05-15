@@ -3,10 +3,10 @@
 
 # 🍿 相关地址
 
-* 体验地址1：[http://zsvg.gitee.io/vue](http://zsvg.gitee.io/vue)  基于Element-Plus
-* 体验地址2：[http://zsvg.gitee.io/vben](http://zsvg.gitee.io/vben)  基于Ant-Design-Vue
+* 体验地址1：[http://zsvg.gitee.io/vue](http://zsvg.gitee.io/vue) （基于Element-Plus）
+* 体验地址2：[http://zsvg.gitee.io/vben](http://zsvg.gitee.io/vben) （基于Ant-Design-Vue）
 * 文档地址 ：[http://zsvg.gitee.io/vnds](http://zsvg.gitee.io/vnds)
-* QQ交流群：[795417789](https://jq.qq.com/?_wv=1027&k=yoKKIlIG)  欢迎大家一起交流
+* QQ交流群：[795417789](https://jq.qq.com/?_wv=1027&k=yoKKIlIG) （欢迎大家一起交流）
 
 # 🍟 概述
 
