@@ -5,5 +5,3 @@
 
 * 在线体验传送门：[http://zsvg.gitee.io/vboot](http://zsvg.gitee.io/vboot)
 * 在线文档传送门：[http://zsvg.gitee.io/vboot-net-doc](http://zsvg.gitee.io/vboot-net-doc)
-* QQ交流群传送门：[795417789](https://jq.qq.com/?_wv=1027&k=yoKKIlIG) 欢迎大家一起交流
-
