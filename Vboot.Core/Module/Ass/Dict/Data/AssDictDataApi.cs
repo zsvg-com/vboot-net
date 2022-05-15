@@ -3,6 +3,7 @@ using Furion.DynamicApiController;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
 using Vboot.Core.Common;
+using Vboot.Core.Common.Util;
 
 namespace Vboot.Core.Module.Ass
 {
@@ -17,16 +18,16 @@ namespace Vboot.Core.Module.Ass
         }
 
         [QueryParameters]
-        public async Task<dynamic> Get(int page, int pageSize,string cateid,string name)
+        public async Task<dynamic> Get(string cateid,string name)
         {
-            RefAsync<int> total = 0;
+            var pp= XreqUtil.GetPp();
             var items = await _service.repo.Context.Queryable<AssDictData>()
                 .WhereIF(!string.IsNullOrWhiteSpace(name), t => t.name.Contains(name.Trim()))
                 .Where((t) => t.cateid==cateid)
                 .OrderBy(u => u.ornum)
                 .Select((t) => new {t.id, t.name,t.code, t.notes})
-                .ToPageListAsync(page, pageSize, total);
-            return RestPageResult.Build(total.Value, items);
+                .ToPageListAsync(pp.page, pp.pageSize, pp.total);
+            return RestPageResult.Build(pp.total.Value, items);
         }
 
         public async Task<AssDictData> GetOne(string id)

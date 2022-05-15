@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Vboot.Core;
 using Vboot.Core.Common;
 using Vboot.Core.Module.Sys;
 using Vboot.Web.Core.Init;
@@ -22,7 +23,9 @@ namespace Vboot.Web.Core
 
             services.AddCorsAccessor();
 
-            services.AddControllers().AddMvcFilter<RequestActionFilter>()
+            services.AddControllers()
+                    .AddMvcFilter<RequestActionFilter>()
+                    .AddMvcFilter<MyUnitOfWorkFilter>()
                     .AddInjectWithUnifyResult<RestResultProvider>()
                     .AddJsonOptions(options =>
                     {
@@ -61,6 +64,7 @@ namespace Vboot.Web.Core
             });
             
             App.GetService<DbSeedService>().Init();
+            App.GetService<ApiGatherService>().Init();
             App.GetService<SysJobMainService>().StartAllJob();
         }
     }

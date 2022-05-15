@@ -33,9 +33,10 @@ namespace Vboot.Web.Core.Init
         {
             
             var path = AppDomain.CurrentDomain.RelativeSearchPath ?? AppDomain.CurrentDomain.BaseDirectory;
+            //core表自动生成
             var coreAssemblies = System.IO.Directory.GetFiles(path, "Vboot.Core.dll").Select(Assembly.LoadFrom)
                 .ToArray();
-
+            
             var coreModelTypes = coreAssemblies
                 .SelectMany(a => a.DefinedTypes)
                 .Select(type => type.AsType())

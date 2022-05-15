@@ -4,49 +4,57 @@
         <name>Vboot.Application</name>
     </assembly>
     <members>
-        <member name="P:Vboot.Application.Sd.Proj.Main.SdProjMain.addre">
+        <member name="P:Vboot.Application.Sa.SaCustMain.addre">
             <summary>
-            项目地址
+            客户地址
             </summary>
         </member>
-        <member name="P:Vboot.Application.Sd.Proj.Main.SdProjMain.notes">
+        <member name="P:Vboot.Application.Sa.SaCustMain.opmid">
             <summary>
-            项目地址
+            经办人ID
             </summary>
         </member>
-        <member name="T:Vboot.Application.Sd.Proj.Main.SdProjMainApi">
+        <member name="P:Vboot.Application.Sa.SaCustMain.opman">
             <summary>
-            增删改查DEMO接口
+            经办人
             </summary>
         </member>
-        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.Get(System.Int32,System.Int32)">
+        <member name="P:Vboot.Application.Sa.SaCustMain.viewers">
             <summary>
-            获取项目信息的分页数据
+            可查看者
             </summary>
-            <param name="page">第几页</param>
-            <param name="pageSize">每页数量</param>
+        </member>
+        <member name="T:Vboot.Application.Sa.SaCustMainApi">
+            <summary>
+            客户主信息接口
+            </summary>
+        </member>
+        <member name="M:Vboot.Application.Sa.SaCustMainApi.Get">
+            <summary>
+            获取客户主信息的分页数据
+            </summary>
             <returns></returns>
         </member>
-        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.GetOne(System.String)">
+        <member name="M:Vboot.Application.Sa.SaCustMainApi.GetOne(System.String)">
             <summary>
-            获取单个项目的详细信息
+            获取单个客户的详细信息
             </summary>
-            <param name="id">项目ID</param>
+            <param name="id">客户ID</param>
             <returns></returns>
         </member>
-        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.Post(Vboot.Application.Sd.Proj.Main.SdProjMain)">
+        <member name="M:Vboot.Application.Sa.SaCustMainApi.Post(Vboot.Application.Sa.SaCustMain)">
             <summary>
-            新增项目
+            新增客户
             </summary>
         </member>
-        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.Put(Vboot.Application.Sd.Proj.Main.SdProjMain)">
+        <member name="M:Vboot.Application.Sa.SaCustMainApi.Put(Vboot.Application.Sa.SaCustMain)">
             <summary>
-            修改项目
+            修改客户
             </summary>
         </member>
-        <member name="M:Vboot.Application.Sd.Proj.Main.SdProjMainApi.Delete(System.String)">
+        <member name="M:Vboot.Application.Sa.SaCustMainApi.Delete(System.String)">
             <summary>
-            删除项目
+            删除客户
             </summary>
         </member>
     </members>

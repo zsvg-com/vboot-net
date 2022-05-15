@@ -24,9 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Mvc" />
-    <Folder Include="Modulex\Ps\Task\Cate" />
-    <Folder Include="Modulex\Ps\Task\List" />
-    <Folder Include="Modulex\Ps\Task\Main" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using SqlSugar;
+using Vboot.Core.Module.Sys;
 
 namespace Vboot.Core.Common
 {
@@ -19,14 +20,13 @@ namespace Vboot.Core.Common
         /// <example>API测试</example>
         [SugarColumn(ColumnDescription = "名称",IsNullable = true,Length = 255)]
         public virtual string name { get; set; }
-        
-        
+
+
         /// <summary>
         /// 创建时间
         /// </summary>
-        [SugarColumn(ColumnDescription = "创建时间",IsNullable = true,IsOnlyIgnoreUpdate=true)]
-        public virtual DateTime? crtim { get; set; }
-        
+        [SugarColumn(ColumnDescription = "创建时间", IsNullable = true, IsOnlyIgnoreUpdate = true)]
+        public virtual DateTime? crtim { get; set; } =  DateTime.Now;
 
         /// <summary>
         /// 更新时间
@@ -35,22 +35,34 @@ namespace Vboot.Core.Common
         public virtual DateTime? uptim { get; set; }
 
         /// <summary>
+        /// 创建者
+        /// </summary>
+        [SugarColumn(IsIgnore = true)]
+        public virtual SysOrg crman { get; set; }
+        
+        /// <summary>
         /// 创建者Id
         /// </summary>
-        [SugarColumn(ColumnDescription = "创建者Id",IsNullable = true,IsOnlyIgnoreUpdate=true,Length = 36)]
-        public virtual string crman { get; set; }
+        [SugarColumn(ColumnName = "crman",ColumnDescription = "创建者Id",IsNullable = true,IsOnlyIgnoreUpdate=true,Length = 36)]
+        public virtual string crmid { get; set; }
 
+        /// <summary>
+        /// 创建者
+        /// </summary>
+        [SugarColumn(IsIgnore = true)]
+        public virtual SysOrg upman { get; set; }
+        
         /// <summary>
         /// 修改者Id
         /// </summary>
-        [SugarColumn(ColumnDescription = "修改者Id",IsNullable = true,Length = 36)]
-        public virtual string upman { get; set; }
-        
+        [SugarColumn(ColumnName = "upman",ColumnDescription = "修改者Id",IsNullable = true,Length = 36)]
+        public virtual string upmid { get; set; }
+
         /// <summary>
         /// 是否可用，1可用，0不可用
         /// </summary>
-        [SugarColumn(ColumnDescription = "可用标记：1可用，0禁用",IsNullable = true)]
-        public virtual bool avtag { get; set; }
+        [SugarColumn(ColumnDescription = "可用标记：1可用，0禁用", IsNullable = true)]
+        public virtual bool avtag { get; set; } = true;
 
 
         // public virtual void Create()

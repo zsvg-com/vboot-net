@@ -4,6 +4,7 @@ using Furion.DynamicApiController;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
 using Vboot.Core.Common;
+using Vboot.Core.Common.Util;
 using Yitter.IdGenerator;
 
 namespace Vboot.Core.Module.Sys
@@ -23,14 +24,15 @@ namespace Vboot.Core.Module.Sys
         }
 
         [QueryParameters]
-        public async Task<dynamic> Get(int page, int pageSize)
+        public async Task<dynamic> Get()
         {
-            RefAsync<int> total = 0;
+            var pp = XreqUtil.GetPp();
             var items = await _postService.repo.Context.Queryable<SysOrgPost>()
                 .OrderBy(u => u.ornum)
                 .Select((t) => new {t.id, t.name, t.notes, t.crtim, t.uptim})
-                .ToPageListAsync(page, pageSize, total);
-            return RestPageResult.Build(total.Value, items);
+                .ToPageListAsync(pp.page, pp.pageSize, pp.total);
+            return RestPageResult.Build(pp.total.Value, items);
+            
         }
 
         public async Task<SysOrgPost> GetOne(string id)
@@ -81,8 +83,7 @@ namespace Vboot.Core.Module.Sys
 
         public async Task Delete(string ids)
         {
-            var idArr = ids.Split(",");
-            await _postService.DeleteAsync(idArr);
+            await _postService.DeleteAsync(ids);
         }
     }
 }

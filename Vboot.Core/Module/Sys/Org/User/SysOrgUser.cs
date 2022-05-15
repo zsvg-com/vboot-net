@@ -33,10 +33,10 @@ namespace Vboot.Core.Module.Sys
         [SugarColumn(ColumnDescription = "邮箱",IsNullable = true,Length = 64)]
         public string email { get; set; }
    
-        [SugarColumn(ColumnDescription = "手机号",IsNullable = true,Length = 64)]
+        [SugarColumn(ColumnDescription = "手机号",IsNullable = true,Length = 32)]
         public string monum { get; set; }
         
-        [SugarColumn(ColumnDescription = "备注",IsNullable = true,Length = 64)]
+        [SugarColumn(ColumnDescription = "备注",IsNullable = true,Length = 255)]
         public string notes { get; set; }
         
         [SugarColumn(ColumnDescription = "排序号",IsNullable = true)]

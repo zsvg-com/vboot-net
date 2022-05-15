@@ -10,6 +10,7 @@ namespace Vboot.Core.Common
         bool SuperAdmin { get; }
         SysOrgUser User { get; }
         string UserId { get; }
+        string CacheKey { get; }
 
         Task<SysOrgUser> CheckUserAsync(string userId, bool tracking = true);
         Task<SysOrgUser> GetUserEmpInfo(string userId);

@@ -29,7 +29,7 @@
         public const string CACHE_KEY_CODE = "vercode_";
 
 
-        public static string[] ENTITY_ASSEMBLY_NAME = new string[] { "Magic.Core", "Magic.Application" };
+        public static string[] ENTITY_ASSEMBLY_NAME = new string[] { "Vboot.Core", "Vboot.Application" };
 
         /// <summary>
         /// 库表实体信息缓存

@@ -3,6 +3,7 @@ using Furion.DynamicApiController;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
 using Vboot.Core.Common;
+using Vboot.Core.Common.Util;
 
 namespace Vboot.Core.Module.Sys
 {
@@ -17,16 +18,16 @@ namespace Vboot.Core.Module.Sys
         }
 
         [QueryParameters]
-        public async Task<dynamic> Get(int page, int pageSize)
+        public async Task<dynamic> Get()
         {
             // int i = 0;
             // int j = 0 / i;
-            RefAsync<int> total = 0;
+            var pp=XreqUtil.GetPp();
             var items = await _service.repo.Context.Queryable<SysOrgDept>()
                 .OrderBy(u => u.id,OrderByType.Desc)
                 .Select((t) => new {t.id, t.name, t.notes, t.crtim, t.uptim})
-                .ToPageListAsync(page, pageSize, total);
-            return RestPageResult.Build(total.Value,items);
+                .ToPageListAsync(pp.page, pp.pageSize, pp.total);
+            return RestPageResult.Build(pp.total.Value, items);
         }
         
         public async Task<SysOrgDept> GetOne(string id)

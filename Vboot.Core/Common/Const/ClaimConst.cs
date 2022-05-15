@@ -26,6 +26,8 @@
         /// 是否超级管理
         /// </summary>
         public const string TENANT_ID = "TenantId";
+        
+        public const string CACHE_KEY = "CacheKey";
 
     }
 }

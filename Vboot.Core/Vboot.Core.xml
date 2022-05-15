@@ -766,10 +766,20 @@
         </member>
         <member name="P:Vboot.Core.Common.BaseMainEntity.crman">
             <summary>
+            创建者
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.BaseMainEntity.crmid">
+            <summary>
             创建者Id
             </summary>
         </member>
         <member name="P:Vboot.Core.Common.BaseMainEntity.upman">
+            <summary>
+            创建者
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.BaseMainEntity.upmid">
             <summary>
             修改者Id
             </summary>
@@ -1086,22 +1096,79 @@
             描述
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Vboot.Core.Modulex.Wf.XSerializer.ObjectToXml``1(``0)" -->
-        <member name="M:Vboot.Core.Modulex.Wf.XSerializer.ObjectToXml``1(``0,System.Text.Encoding)">
+        <member name="M:Vboot.Core.Common.Util.XstrUtil.RenameSnakeCase(System.String)">
+            <summary>将大驼峰命名转为蛇形命名</summary>
+        </member>
+        <member name="M:Vboot.Core.Common.Util.XstrUtil.RenameUrlCase(System.String)">
+            <summary>将大驼峰命名转为蛇形命名</summary>
+        </member>
+        <member name="T:Vboot.Core.MyUnitOfWorkAttribute">
             <summary>
-            序列化成XML 清空格式
+            SqlSugar 工作单元配置特性
             </summary>
         </member>
-        <member name="M:Vboot.Core.Modulex.Wf.XSerializer.XmlToObject``1(System.String)">
+        <member name="M:Vboot.Core.MyUnitOfWorkAttribute.#ctor">
             <summary>
-            字符串转换为对象
+            构造函数
             </summary>
+        </member>
+        <member name="M:Vboot.Core.MyUnitOfWorkAttribute.#ctor(System.Data.IsolationLevel)">
+            <summary>
+            构造函数
+            </summary>
+            <remarks>
+            <para>支持传入事务隔离级别 <see cref="P:Vboot.Core.MyUnitOfWorkAttribute.IsolationLevel"/> 参数值</para>
+            </remarks>
+            <param name="isolationLevel">事务隔离级别</param>
+        </member>
+        <member name="P:Vboot.Core.MyUnitOfWorkAttribute.IsolationLevel">
+            <summary>
+            事务隔离级别
+            </summary>
+            <remarks>
+            <para>默认：<see cref="F:System.Data.IsolationLevel.ReadCommitted"/>，参见：<see cref="P:Vboot.Core.MyUnitOfWorkAttribute.IsolationLevel"/></para>
+            <para>说明：当事务A更新某条数据的时候，不容许其他事务来更新该数据，但可以进行读取操作</para>
+            </remarks>
+        </member>
+        <member name="T:Vboot.Core.MyUnitOfWorkFilter">
+            <summary>
+            SqlSugar 工作单元拦截器
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.MyUnitOfWorkFilter.FilterOrder">
+            <summary>
+            过滤器排序
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.MyUnitOfWorkFilter.Order">
+            <summary>
+            排序属性
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.MyUnitOfWorkFilter._sqlSugarClient">
+            <summary>
+            SqlSugar 对象
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.MyUnitOfWorkFilter.#ctor(SqlSugar.ISqlSugarClient)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sqlSugarClient"></param>
+        </member>
+        <member name="M:Vboot.Core.MyUnitOfWorkFilter.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+             <summary>
+            
+             </summary>
+             <param name="context"></param>
+             <param name="next"></param>
+             <returns></returns>
         </member>
         <member name="P:Vboot.Core.Module.Pub.LoginInput.username">
-            <example>vben</example>
+            <example>sa</example>
         </member>
         <member name="P:Vboot.Core.Module.Pub.LoginInput.password">
-            <example>123456</example>
+            <example>1</example>
         </member>
         <member name="T:Vboot.Core.Module.Pub.LoginOutput">
             <summary>
@@ -1751,6 +1818,36 @@
             <summary>
             操作人
             </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysOrgUserCache.id">
+            <summary>
+            主键Id
+            </summary>
+            <example></example>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysOrgUserCache.conds">
+            <summary>
+            组织架构集
+            </summary>
+            <example></example>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysOrgUserCache.perms">
+            <summary>
+            后台所有权限集
+            </summary>
+            <example></example>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysOrgUserCache.menus">
+            <summary>
+            前台菜单缓存
+            </summary>
+            <example></example>
+        </member>
+        <member name="P:Vboot.Core.Module.Sys.SysOrgUserCache.btns">
+            <summary>
+            前台按钮缓存
+            </summary>
+            <example></example>
         </member>
     </members>
 </doc>

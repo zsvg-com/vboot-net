@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Vboot.Core.Common;
+using Vboot.Core.Common.Util;
 using Yitter.IdGenerator;
 
 namespace Vboot.Core.Module.Sys
@@ -24,14 +25,14 @@ namespace Vboot.Core.Module.Sys
 
 
         [QueryParameters]
-        public async Task<dynamic> Get(int page, int pageSize, string name)
+        public async Task<dynamic> Get(string name)
         {
-            RefAsync<int> total = 0;
+            var pp= XreqUtil.GetPp(); 
             var items = await _service.repo.Context.Queryable<SysJobMain>()
                 .Select((t) => new {t.id, t.name, t.crtim, t.uptim, t.code, t.reurl, t.avtag, t.cron})
                 .WhereIF(!string.IsNullOrWhiteSpace(name), t => t.name.Contains(name.Trim()))
-                .ToPageListAsync(page, pageSize, total);
-            return RestPageResult.Build(total.Value, items);
+                .ToPageListAsync(pp.page, pp.pageSize, pp.total);
+            return RestPageResult.Build(pp.total.Value, items);
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace Vboot.Core.Module.Sys
             foreach (var id in idArr)
             {
                 SysJobMain job = await _service.SingleAsync(id);
-                await _service.DeleteAsync(new[] {id});
+                await _service.DeleteAsync(id);
                 SpareTime.Cancel(job.code);
             }
         }

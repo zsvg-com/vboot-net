@@ -20,6 +20,11 @@ namespace Vboot.Core.Common
         {
             get => _httpContextAccessor.HttpContext.User.FindFirst(ClaimConst.CLAINM_USERID)?.Value;
         }
+        
+        public string CacheKey
+        {
+            get => _httpContextAccessor.HttpContext.User.FindFirst(ClaimConst.CACHE_KEY)?.Value;
+        }
 
         public string Account
         {

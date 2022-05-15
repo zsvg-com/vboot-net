@@ -2,10 +2,10 @@
 {
     public class LoginInput
     {
-        /// <example>vben</example>
+        /// <example>sa</example>
         public string username{ get; set; }
 
-        /// <example>123456</example>
+        /// <example>1</example>
         public string password{ get; set; }
     }
 }

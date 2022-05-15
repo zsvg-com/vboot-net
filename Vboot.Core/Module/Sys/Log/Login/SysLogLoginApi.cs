@@ -3,6 +3,7 @@ using Furion.DynamicApiController;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
 using Vboot.Core.Common;
+using Vboot.Core.Common.Util;
 
 namespace Vboot.Core.Module.Sys.Job.Log
 {
@@ -18,13 +19,13 @@ namespace Vboot.Core.Module.Sys.Job.Log
         }
         
         [QueryParameters]
-        public async Task<dynamic> Get(int page, int pageSize, string name)
+        public async Task<dynamic> Get(string name)
         {
-            RefAsync<int> total = 0;
+            var pp=XreqUtil.GetPp();
             var items = await _service.repo.Context.Queryable<SysLogLogin>()
                 .WhereIF(!string.IsNullOrWhiteSpace(name), t => t.name.Contains(name.Trim()))
-                .ToPageListAsync(page, pageSize, total);
-            return RestPageResult.Build(total.Value, items);
+                .ToPageListAsync(pp.page, pp.pageSize, pp.total);
+            return RestPageResult.Build(pp.total.Value, items);
         }
         
         public async Task<SysLogLogin> GetOne(string id)

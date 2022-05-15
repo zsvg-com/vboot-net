@@ -63,7 +63,7 @@ namespace Vboot.Core.Module.Sys
                     throw new Exception("有子菜单或按钮无法删除");
                 }
             }
-            await _service.DeleteAsync(idArr);
+            await _service.DeleteAsync(ids);
         }
     }
 }
