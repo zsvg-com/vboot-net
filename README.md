@@ -5,7 +5,7 @@
 
 * 在线体验传送门：[http://zsvg.gitee.io/vboot](http://zsvg.gitee.io/vboot)
 * 在线文档传送门：[http://zsvg.gitee.io/vboot-net-doc](http://zsvg.gitee.io/vboot-net-doc)
-* QQ交流群传送门：[795417789](https://jq.qq.com/?_wv=1027&k=yoKKIlIG) 很多人了，欢迎大家一起交流
+* QQ交流群传送门：[795417789](https://jq.qq.com/?_wv=1027&k=yoKKIlIG) 欢迎大家一起交流
 
 ### 🍟 概述
 
@@ -16,9 +16,6 @@
 * JAVA实现的同功能项目地址：[https://gitee.com/zsvg/vboot-java](https://gitee.com/zsvg/vboot-java) 两个项目会同步开发
 * 默认前端（element-plus）项目地址：[https://gitee.com/zsvg/vboot-ui](https://gitee.com/zsvg/vboot-ui) 
 * Vben前端（antdv）项目地址：[https://gitee.com/zsvg/vboot-vben](https://gitee.com/zsvg/vboot-vben) 
-```
-如果对您有帮助，点击右上角⭐Star⭐关注 ，感谢支持开源！
-```
 
 ### 🏀 分层说明
 ```
