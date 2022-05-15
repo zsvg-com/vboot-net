@@ -3,5 +3,3 @@
 
 ### 🍿 传送门
 
-* 在线体验传送门：[http://zsvg.gitee.io/vboot](http://zsvg.gitee.io/vboot)
-* 在线文档传送门：[http://zsvg.gitee.io/vboot-net-doc](http://zsvg.gitee.io/vboot-net-doc)
