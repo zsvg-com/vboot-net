@@ -3,8 +3,8 @@
 
 # 🍿 相关地址
 
-* 体验地址：[http://zsvg.gitee.io/vboot](http://zsvg.gitee.io/vboot)
-* 文档地址：[http://zsvg.gitee.io/vboot-net-doc](http://zsvg.gitee.io/vboot-net-doc)
+* 体验地址：[http://zsvg.gitee.io/vue](http://zsvg.gitee.io/vue)
+* 文档地址：[http://zsvg.gitee.io/vnds](http://zsvg.gitee.io/vnds)
 * QQ交流群：[795417789](https://jq.qq.com/?_wv=1027&k=yoKKIlIG) 欢迎大家一起交流
 
 # 🍟 概述
@@ -13,7 +13,7 @@
 * 后端基于Furion框架，数据库访问使用Sqlsugar，codeFirst方式。
 * 前端基于vue-next-admin/vben框架，引入了bpmn.js工作流、VForm可视化表单。
 * JAVA实现的同功能项目地址：[https://gitee.com/zsvg/vboot-java](https://gitee.com/zsvg/vboot-java) 两个项目会同步开发
-* 默认前端（Element-Plus）项目地址：[https://gitee.com/zsvg/vboot-ui](https://gitee.com/zsvg/vboot-ui)
+* 默认前端（Element-Plus）项目地址：[https://gitee.com/zsvg/vboot-ui](https://gitee.com/zsvg/vboot-vue)
 * Vben前端（Ant-Design-Vue）项目地址：[https://gitee.com/zsvg/vboot-vben](https://gitee.com/zsvg/vboot-vben)
 
 # 🏀 分层说明
