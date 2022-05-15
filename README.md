@@ -1,7 +1,7 @@
 <div align="center"><h1 align="center">vboot-net</h1></div>
 <div align="center"><h3 align="center">一个开箱即用的快速开发平台.NET版</h3></div>
 
-### 🍿 相关地址
+### 🍿 看这里
 
 * 体验地址：[http://zsvg.gitee.io/vboot](http://zsvg.gitee.io/vboot)
 * 文档地址：[http://zsvg.gitee.io/vboot-net-doc](http://zsvg.gitee.io/vboot-net-doc)
@@ -11,8 +11,7 @@
 
 * 基于.NET6实现的快速开发平台。模块化插件式开发，前后端分离，开箱即用。
 * 后端基于Furion框架，数据库访问使用Sqlsugar，codeFirst方式。
-* 前端基于vue-next-admin/vben框架，引入了bpmn.js工作流、VForm低代码可视化表单。
-* 核心模块包括：部门、用户、岗位、群组、角色、菜单、字典、日志、文件管理、定时任务等功能。
+* 前端基于vue-next-admin/vben框架，引入了bpmn.js工作流、VForm可视化表单。
 * JAVA实现的同功能项目地址：[https://gitee.com/zsvg/vboot-java](https://gitee.com/zsvg/vboot-java) 两个项目会同步开发
 * 默认前端（element-plus）项目地址：[https://gitee.com/zsvg/vboot-ui](https://gitee.com/zsvg/vboot-ui)
 * Vben前端（antdv）项目地址：[https://gitee.com/zsvg/vboot-vben](https://gitee.com/zsvg/vboot-vben)
@@ -23,7 +22,7 @@
 ├─Vboot.Core                    ->框架核心层
 ├─Vboot.Web.Core                ->Web核心层，主要是服务注册及鉴权
 ├─Vboot.Web.Entry               ->Web入口层/启动层，可任意更换
-注：源码直接开发建议自己的业务代码直接写在【Vboot.Application】层里面，可随框架升级减少冲突。
+注：建议将自己的业务代码写在【Vboot.Application】层里面，可随框架升级减少冲突。
 ```
 
 ### 🍖 详细功能
@@ -39,7 +38,7 @@
 9. 访问日志：用户的登录和退出日志的查看和管理。
 10. 操作日志：用户的操作业务的日志的查看和管理。
 11. 定时任务：定时任务的维护，通过cron表达式控制任务的执行频率。
-12. 流程引擎：前端流程图展示，后端自解析bpmn.js，支持驳回、转办、废弃，跳转等功能
+12. 流程引擎：流程图展示，自解析bpmn.js，支持驳回、转办、废弃，跳转等功能
 13. 消息机制：待办待阅功能，联通钉钉与企业微信接口
 
 ### ⚡ 近期计划
