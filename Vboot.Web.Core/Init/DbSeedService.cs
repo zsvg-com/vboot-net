@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Reflection;
 using Furion.DependencyInjection;
-using Microsoft.CodeAnalysis.Text;
-using Serilog;
 using SqlSugar;
 using Vboot.Core.Module.Pub;
 using Vboot.Core.Module.Sys;
@@ -33,26 +31,26 @@ namespace Vboot.Web.Core.Init
         {
             
             var path = AppDomain.CurrentDomain.RelativeSearchPath ?? AppDomain.CurrentDomain.BaseDirectory;
-            //core表自动生成
-            var coreAssemblies = System.IO.Directory.GetFiles(path, "Vboot.Core.dll").Select(Assembly.LoadFrom)
-                .ToArray();
-            
-            var coreModelTypes = coreAssemblies
-                .SelectMany(a => a.DefinedTypes)
-                .Select(type => type.AsType())
-                .Where(x => x.IsClass && x.Namespace != null && x.Namespace.StartsWith("Vboot")).ToList();
-            coreModelTypes.ForEach(t =>
-            {
-                var customAttributeDatas = t.CustomAttributes;
-                foreach (var attribute in customAttributeDatas)
-                {
-                    if (attribute.ToString().Contains("SugarTable"))
-                    {
-                        repo.Context.CodeFirst.InitTables(t);
-                        Console.WriteLine(attribute);
-                    }
-                }
-            });
+            // core表自动生成
+             var coreAssemblies = System.IO.Directory.GetFiles(path, "Vboot.Core.dll").Select(Assembly.LoadFrom)
+                 .ToArray();
+             
+             var coreModelTypes = coreAssemblies
+                 .SelectMany(a => a.DefinedTypes)
+                 .Select(type => type.AsType())
+                 .Where(x => x.IsClass && x.Namespace != null && x.Namespace.StartsWith("Vboot")).ToList();
+             coreModelTypes.ForEach(t =>
+             {
+                 var customAttributeDatas = t.CustomAttributes;
+                 foreach (var attribute in customAttributeDatas)
+                 {
+                     if (attribute.ToString().Contains("SugarTable"))
+                     {
+                         repo.Context.CodeFirst.InitTables(t);
+                         Console.WriteLine(attribute);
+                     }
+                 }
+             });
             
             var appAssemblies = System.IO.Directory.GetFiles(path, "Vboot.Application.dll").Select(Assembly.LoadFrom)
                 .ToArray();

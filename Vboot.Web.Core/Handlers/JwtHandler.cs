@@ -86,11 +86,5 @@ public class JwtHandler : AppAuthorizeHandler
         return true;
     }
 
-    public static Yperm[] GET_URLS = Array.Empty<Yperm>();
-
-    public static Yperm[] POST_URLS = Array.Empty<Yperm>();
-
-    public static Yperm[] PUT_URLS = Array.Empty<Yperm>();
-
-    public static Yperm[] DELETE_URLS = Array.Empty<Yperm>();
+   
 }
