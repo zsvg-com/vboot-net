@@ -72,8 +72,8 @@ namespace Vboot.Core.Module.Pub
                 {ClaimConst.TENANT_ID, "1"},
                 {ClaimConst.CLAINM_ACCOUNT, input.username},
                 {ClaimConst.CLAINM_NAME, duser.name},
-                {ClaimConst.CLAINM_SUPERADMIN, false},
-                {ClaimConst.CACHE_KEY, zuser.permArr},
+                {ClaimConst.CLAINM_SUPERADMIN, zuser.id=="sa"},
+                {ClaimConst.CLAINM_PERMS, zuser.perms},
             });
 
 

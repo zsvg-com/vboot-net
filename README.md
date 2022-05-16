@@ -13,9 +13,9 @@
 * 基于.NET6实现的快速开发平台。模块化插件式开发，前后端分离，开箱即用。
 * 后端基于Furion框架，数据库访问使用Sqlsugar，codeFirst方式。
 * 前端基于vue-next-admin/vben框架，引入了bpmn.js工作流、VForm可视化表单。
-* JAVA实现的同功能项目地址：[https://gitee.com/zsvg/vboot-java](https://gitee.com/zsvg/vboot-java) 两个项目会同步开发
 * 默认前端（Element-Plus）项目地址：[https://gitee.com/zsvg/vboot-vue](https://gitee.com/zsvg/vboot-vue)
 * Vben前端（Ant-Design-Vue）项目地址：[https://gitee.com/zsvg/vboot-vben](https://gitee.com/zsvg/vboot-vben)
+* JAVA实现的同功能项目地址：[https://gitee.com/zsvg/vboot-java](https://gitee.com/zsvg/vboot-java) 两个项目会同步开发
 
 # 🏀 分层说明
 ```

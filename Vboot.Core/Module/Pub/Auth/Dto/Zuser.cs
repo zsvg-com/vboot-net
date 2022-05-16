@@ -6,15 +6,17 @@ namespace Vboot.Core.Module.Pub
     {
         public string id { get; set; }
 
-        public string name{ get; set; }
+        public string name { get; set; }
 
-        public string usnam{ get; set; }
-        
-        public long[] permArr{ get; set; }//权限集,用于验证URL权限 比较下哪个方式快1
+        public string usnam { get; set; }
 
-        public List<string> permList{ get; set; }//权限集,用于验证URL权限 比较下哪个方式快2
+        public string perms { get; set; } //权限集,用于验证URL权限 比较下哪个方式快0
         
-        public string conds{ get; set; }//组织架构集，用户ID，所有上级部门ID,岗位ID,群组ID
+        // public long[] permArr{ get; set; }//权限集,用于验证URL权限 比较下哪个方式快1
+
+        // public List<string> permList{ get; set; }//权限集,用于验证URL权限 比较下哪个方式快2
+
+        public string conds { get; set; } //组织架构集，用户ID，所有上级部门ID,岗位ID,群组ID
 
         public Zuser()
         {

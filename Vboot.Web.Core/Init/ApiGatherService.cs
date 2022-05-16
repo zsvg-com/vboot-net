@@ -36,6 +36,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
         long code = 0;
         if (maxList != null && maxList.Count > 0 && maxList[0].pos != null)
         {
+            SysAuthPermCache.AUTHPOS = maxList[0].pos;
             pos = maxList[0].pos;
             code = maxList[0].code;
         }
@@ -61,7 +62,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
                 {
                     var perm = new SysAuthPerm();
                     perm.id = codeUrl.id;
-                    perm.name = codeUrl.name;
+                    perm.url = codeUrl.url;
                     perm.pos = 0;
                     perm.code = 0;
                     perm.avtag = true;
@@ -72,6 +73,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
                     if (code >= (1L << 62))
                     {
                         pos += 1;
+                        SysAuthPermCache.AUTHPOS++;
                         code = 1;
                     }
                     else
@@ -88,7 +90,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
 
                     var perm = new SysAuthPerm();
                     perm.id = codeUrl.id;
-                    perm.name = codeUrl.name;
+                    perm.url = codeUrl.url;
                     perm.pid = codeUrl.pid;
                     perm.type = codeUrl.type;
                     perm.pos = pos;
@@ -101,7 +103,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
             {
                 var perm = new SysAuthPerm();
                 perm.id = codeUrl.id;
-                perm.name = codeUrl.name;
+                perm.url = codeUrl.url;
                 perm.pid = codeUrl.pid;
                 perm.type = codeUrl.type;
                 perm.avtag = true;
@@ -121,22 +123,25 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
             repo.InsertAsync(insertList);
         }
 
-        string getsSql = "SELECT id as url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='get'";
+        string getsSql = "SELECT url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='get'";
         List<Yperm> cacheGets = repo.Ado.SqlQuery<Yperm>(getsSql);
 
-        string postsSql = "SELECT id as url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='post'";
+        string postsSql = "SELECT url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='post'";
         List<Yperm> cachePosts = repo.Ado.SqlQuery<Yperm>(postsSql);
 
-        string putsSql = "SELECT id as url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='put'";
+        string putsSql = "SELECT url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='put'";
         List<Yperm> cachePuts = repo.Ado.SqlQuery<Yperm>(putsSql);
 
-        string deletesSql = "SELECT id as url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='delete'";
+        string deletesSql = "SELECT url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='delete'";
         List<Yperm> cacheDeletes = repo.Ado.SqlQuery<Yperm>(deletesSql);
 
         SysAuthPermCache.GET_URLS = cacheGets.ToArray();
         SysAuthPermCache.POST_URLS = cachePosts.ToArray();
         SysAuthPermCache.PUT_URLS = cachePuts.ToArray();
         SysAuthPermCache.DELETE_URLS = cacheDeletes.ToArray();
+
+        repo.Context.Updateable<SysOrgUser>().SetColumns(it => it.retag == false).Where(it => it.retag == true)
+            .ExecuteCommand();
     }
 
 
@@ -158,7 +163,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
             var rootUrl = new Yurl
             {
                 id = preUrl,
-                name = preUrl,
+                url = preUrl,
                 pid = null
             };
             list.Add(rootUrl);
@@ -175,9 +180,9 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
                         {
                             id = "~GET:" + (nextUrl == "" ? preUrl : preUrl + "/" + nextUrl),
                             pid = preUrl,
-                            type = "get"
+                            type = "get",
+                            url = (nextUrl == "" ? preUrl : preUrl + "/" + nextUrl)
                         };
-                        yurl.name = yurl.id;
                         list.Add(yurl);
                     }
                     else if (mInfo.Name.StartsWith("Post"))
@@ -187,9 +192,9 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
                         {
                             id = "~POST:" + (nextUrl == "" ? preUrl : preUrl + "/" + nextUrl),
                             pid = preUrl,
-                            type = "post"
+                            type = "post",
+                            url = nextUrl == "" ? preUrl : preUrl + "/" + nextUrl
                         };
-                        yurl.name = yurl.id;
                         list.Add(yurl);
                     }
                     else if (mInfo.Name.StartsWith("Put"))
@@ -199,9 +204,9 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
                         {
                             id = "~PUT:" + (nextUrl == "" ? preUrl : preUrl + "/" + nextUrl),
                             pid = preUrl,
-                            type = "put"
+                            type = "put",
+                            url = nextUrl == "" ? preUrl : preUrl + "/" + nextUrl
                         };
-                        yurl.name = yurl.id;
                         list.Add(yurl);
                     }
                     else if (mInfo.Name.StartsWith("Delete"))
@@ -211,9 +216,9 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
                         {
                             id = "~DEL:" + (nextUrl == "" ? preUrl : preUrl + "/" + nextUrl),
                             pid = preUrl,
-                            type = "delete"
+                            type = "delete",
+                            url = nextUrl == "" ? preUrl : preUrl + "/" + nextUrl
                         };
-                        yurl.name = yurl.id;
                         list.Add(yurl);
                     }
                 }

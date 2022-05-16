@@ -57,6 +57,12 @@ namespace Vboot.Core.Module.Sys
             }
             await _service.InsertAsync(role, romaps,rmmaps);
         }
+        
+        public async Task PostReperm()
+        {
+           await _service.repo.Context.Updateable<SysOrgUser>().SetColumns(it => it.retag == false).Where(it => it.retag == true)
+                .ExecuteCommandAsync();
+        }
 
         public async Task Put(SysAuthRole role)
         {

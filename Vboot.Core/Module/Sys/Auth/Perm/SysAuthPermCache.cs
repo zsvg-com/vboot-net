@@ -13,4 +13,7 @@ public class SysAuthPermCache
     public static Yperm[] PUT_URLS = Array.Empty<Yperm>();
 
     public static Yperm[] DELETE_URLS = Array.Empty<Yperm>();
+
+
+    public static int AUTHPOS = 0;
 }

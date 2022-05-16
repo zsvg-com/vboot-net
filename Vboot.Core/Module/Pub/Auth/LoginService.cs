@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Furion.DependencyInjection;
@@ -10,6 +9,7 @@ using SqlSugar;
 using Vboot.Core.Common;
 using Vboot.Core.Module.Pub.Auth;
 using Vboot.Core.Module.Sys;
+using Vboot.Web.Core;
 
 namespace Vboot.Core.Module.Pub;
 
@@ -29,10 +29,6 @@ public class LoginService : ITransient
     {
         const string sql = "select id,name,pacod,retag,tier from sys_org_user where usnam=@username and avtag=1";
         var dbUser = await _repo.Ado.SqlQuerySingleAsync<Duser>(sql, new {username});
-        // if (dbUser == null)
-        // {
-        //     throw new Exception("账号不存在或密码错误");
-        // }
         if (dbUser == null)
         {
             throw Oops.Oh(ErrorCode.D1000);
@@ -46,37 +42,34 @@ public class LoginService : ITransient
         if (!duser.retag)
         {
             //1.获取用户所有的组织架构集:conds
-            string conds = FindConds(duser);
-            Console.WriteLine(conds);
-            zuser.conds = conds;
+            zuser.conds = FindConds(duser);
 
-            //
             //2.根据组织架构集conds查询前台菜单集:menus
             List<Zmenu> menuList = FindMenuList(zuser.conds);
-            //
-            //3.根据组织架构集conds查询前台按钮集:btns
-            List<String> btnList = FindBtnList(zuser.conds);
-            //
-            //4.计算后台缓存的url权限集
-            List<string> permList = new List<string>();
-            foreach (var menu in menuList)
-            {
-                if (!string.IsNullOrEmpty(menu.perm))
-                {
-                    permList.Add(menu.perm);
-                }
-            }
 
-            permList.AddRange(btnList);
-            zuser.permList = permList;
-            //
-            // //5.设置前台返回数据
+            //3.A 设置zuser的权限集（位与代码方式的权限集）
+            List<String> btnList = getBtnList(zuser);
+
+            //3.B 设置zuser的权限集（传统字符串方式）
+            // List<String> btnList = FindBtnList(zuser.conds);
+            // List<string> permList = new List<string>();
+            // foreach (var menu in menuList)
+            // {
+            //     if (!string.IsNullOrEmpty(menu.perm))
+            //     {
+            //         permList.Add(menu.perm);
+            //     }
+            // }
+            // permList.AddRange(btnList);
+            // zuser.permList = permList;
+
+            //4.设置前台返回数据
             menuList = BuildByRecursive(menuList);
             backDict.Add("menus", menuList);
             backDict.Add("btns", btnList);
             backDict.Add("zuser", zuser);
-            //
-            //6.更新用户，序列化保存数据，使下次这些数据可直接从数据库取
+
+            //5.更新用户，序列化保存数据，使下次这些数据可直接从数据库取
             updateUserCache(zuser, menuList, btnList);
             Console.WriteLine("通过数据库");
         }
@@ -92,20 +85,31 @@ public class LoginService : ITransient
                 btnArr = btns.Split(";");
             }
 
-            string[] permArr = null;
-            string perms = cache.perms;
-            if (perms != null)
-            {
-                permArr = perms.Split(";");
-            }
+            // 设置zuser的权限集（位与代码方式的权限集）
+            zuser.perms = cache.perms;
+            // String[] permStrArr = cache.perms.Split(";");
+            // long[] permArr = new long[permStrArr.Length];
+            // for (int i = 0; i < permStrArr.Length; i++)
+            // {
+            //     permArr[i] = long.Parse(permStrArr[i]);
+            // }
+            //
+            // zuser.permArr = permArr;
 
-            List<string> permList = new List<string>();
-            if (permArr != null)
-            {
-                permList = permArr.ToList();
-            }
+            // 设置zuser的权限集（传统字符串方式）
+            // string[] permArr = null;
+            // string perms = cache.perms;
+            // if (perms != null)
+            // {
+            //     permArr = perms.Split(";");
+            // }
+            // List<string> permList = new List<string>();
+            // if (permArr != null)
+            // {
+            //     permList = permArr.ToList();
+            // }
+            // zuser.permList = permList;
 
-            zuser.permList = permList;
             backDict.Add("menus", menuList);
             backDict.Add("btns", btnArr);
             backDict.Add("zuser", zuser);
@@ -212,6 +216,52 @@ inner join sys_auth_role_menu rm on rm.mid=m.id
         return _repo.Context.Ado.SqlQuery<string>(sql);
     }
 
+    private List<Yperm> FindYpermList(string conds)
+    {
+        string sql = @"select distinct m.perm url,p.pos,p.code from sys_auth_menu m 
+inner join sys_auth_role_menu rm on rm.mid=m.id 
+    inner join sys_auth_role_org ru on ru.rid=rm.rid 
+                          left join sys_auth_perm p on p.id=m.perm 
+                          where m.type = 'B' and m.avtag=1 and ru.oid in (" + conds + ") order by m.ornum";
+        // if (conds.Contains("'sa'") || conds.Contains("'vben'"))
+        // {
+        //     sql = "select m.perm id from sys_auth_menu m where m.type = 'B' and m.avtag=1 order by m.ornum";
+        // }
+
+        return _repo.Context.Ado.SqlQuery<Yperm>(sql);
+    }
+
+
+    //查找按钮集的时候，设置zuser的权限集（位与代码方式）
+    private List<String> getBtnList(Zuser zuser)
+    {
+        List<String> btnList = new List<string>();
+        List<Yperm> ypermList = FindYpermList(zuser.conds);
+        int posSum = SysAuthPermCache.AUTHPOS + 1; //取出最大权限位
+        long[] permArr = new long[posSum];
+        foreach (var yperm in ypermList)
+        {
+            for (int i = 0; i < posSum; i++)
+            {
+                if (i == yperm.pos)
+                {
+                    permArr[i] += yperm.code;
+                }
+            }
+
+            btnList.Add(yperm.url);
+        }
+
+        string perms = "";
+        for (int i = 0; i < permArr.Length; i++)
+        {
+            perms += permArr[i] + ";";
+        }
+
+        zuser.perms = perms != "" ? perms.Substring(0, perms.Length - 1) : "0";
+        return btnList;
+    }
+
 
     //使用递归方法建树
     private List<Zmenu> BuildByRecursive(List<Zmenu> nodes)
@@ -274,17 +324,19 @@ inner join sys_auth_role_menu rm on rm.mid=m.id
             btns.Append(str).Append(";");
         }
 
-        StringBuilder perms = new StringBuilder();
-        foreach (var str in zuser.permList)
-        {
-            perms.Append(str).Append(";");
-        }
+        // StringBuilder perms = new StringBuilder();
+        // foreach (var str in zuser.permList)
+        // {
+        //     perms.Append(str).Append(";");
+        // }
+
 
         SysOrgUserCache cache = new SysOrgUserCache();
         cache.id = zuser.id;
         cache.conds = zuser.conds;
         cache.menus = menus;
         cache.btns = btns.ToString();
+        cache.perms = zuser.perms;
 
         var isExists = _repo.Context.Queryable<SysOrgUserCache>().Any(it => it.id == zuser.id);
         if (isExists)

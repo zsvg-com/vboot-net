@@ -21,9 +21,9 @@ namespace Vboot.Core.Common
             get => _httpContextAccessor.HttpContext.User.FindFirst(ClaimConst.CLAINM_USERID)?.Value;
         }
         
-        public string CacheKey
+        public string Perms
         {
-            get => _httpContextAccessor.HttpContext.User.FindFirst(ClaimConst.CACHE_KEY)?.Value;
+            get => _httpContextAccessor.HttpContext.User.FindFirst(ClaimConst.CLAINM_PERMS)?.Value;
         }
 
         public string Account

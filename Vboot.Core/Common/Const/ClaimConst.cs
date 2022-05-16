@@ -27,7 +27,7 @@
         /// </summary>
         public const string TENANT_ID = "TenantId";
         
-        public const string CACHE_KEY = "CacheKey";
+        public const string CLAINM_PERMS = "Perms";
 
     }
 }

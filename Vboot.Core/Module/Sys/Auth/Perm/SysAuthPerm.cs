@@ -13,8 +13,8 @@ namespace Vboot.Core.Module.Sys
         [SugarColumn(ColumnDescription = "上级权限", IsNullable = true, Length = 64)]
         public string pid { get; set; }
 
-        [SugarColumn(ColumnDescription = "权限名称", IsNullable = true, Length = 128)]
-        public string name { get; set; }
+        [SugarColumn(ColumnDescription = "权限url", IsNullable = true, Length = 128)]
+        public string url { get; set; }
 
         [SugarColumn(ColumnDescription = "权限代码", IsNullable = true, IsOnlyIgnoreUpdate = true)]
         public long code { get; set; }
