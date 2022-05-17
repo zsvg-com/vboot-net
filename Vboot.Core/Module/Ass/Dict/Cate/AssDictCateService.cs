@@ -2,14 +2,12 @@
 using SqlSugar;
 using Vboot.Core.Common;
 
-namespace Vboot.Core.Module.Ass
+namespace Vboot.Core.Module.Ass;
+
+public class AssDictCateService : BaseService<AssDictCate>, ITransient
 {
-    
-    public class AssDictCateService : BaseService<AssDictCate>, ITransient
+    public AssDictCateService(ISqlSugarRepository<AssDictCate> repo)
     {
-        public AssDictCateService(ISqlSugarRepository<AssDictCate> repo)
-        {
-            base.repo = repo;
-        }
+        base.repo = repo;
     }
 }

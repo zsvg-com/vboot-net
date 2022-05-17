@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace Vboot.Core;
+namespace Vboot.Core.Common;
 
 /// <summary>
 /// SqlSugar 工作单元配置特性

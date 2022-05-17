@@ -1,21 +1,19 @@
-﻿
-namespace Vboot.Core.Common
-{
-    public class PageResult
-    {
-        public int total { get; set; }
-        public object items { get; set; }
-    }
+﻿namespace Vboot.Core.Common;
 
-    public static class RestPageResult
+public class PageResult
+{
+    public int total { get; set; }
+    public object items { get; set; }
+}
+
+public static class RestPageResult
+{
+    public static PageResult Build(int Total, object Items)
     {
-        public static PageResult Build(int Total, object Items)
+        return new()
         {
-            return new ()
-            {
-                total = Total,
-                items = Items
-            };
-        }
+            total = Total,
+            items = Items
+        };
     }
 }

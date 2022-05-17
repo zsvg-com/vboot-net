@@ -7,83 +7,82 @@ using Vboot.Core.Common;
 using Vboot.Core.Common.Util;
 using Yitter.IdGenerator;
 
-namespace Vboot.Core.Module.Sys
+namespace Vboot.Core.Module.Sys;
+
+[ApiDescriptionSettings("Sys", Tag = "组织架构-岗位")]
+public class SysOrgPostApi : IDynamicApiController
 {
-    [ApiDescriptionSettings("Sys",Tag ="组织架构-岗位" )]
-    public class SysOrgPostApi : IDynamicApiController
+    private readonly SysOrgPostService _postService;
+    private readonly SysOrgDeptService _deptService;
+
+    public SysOrgPostApi(
+        SysOrgPostService postService,
+        SysOrgDeptService deptService)
     {
-        private readonly SysOrgPostService _postService;
-        private readonly SysOrgDeptService _deptService;
+        _postService = postService;
+        _deptService = deptService;
+    }
 
-        public SysOrgPostApi(
-            SysOrgPostService postService,
-            SysOrgDeptService deptService)
+    [QueryParameters]
+    public async Task<dynamic> Get()
+    {
+        var pp = XreqUtil.GetPp();
+        var items = await _postService.repo.Context.Queryable<SysOrgPost>()
+            .OrderBy(u => u.ornum)
+            .Select((t) => new {t.id, t.name, t.notes, t.crtim, t.uptim})
+            .ToPageListAsync(pp.page, pp.pageSize, pp.total);
+        return RestPageResult.Build(pp.total.Value, items);
+    }
+
+    public async Task<SysOrgPost> GetOne(string id)
+    {
+        var post = await _postService.repo.Context.Queryable<SysOrgPost>()
+            .Mapper<SysOrgPost, SysOrg, SysOrgPostOrg>(it =>
+                ManyToMany.Config(it.pid, it.oid))
+            .Where(it => it.id == id).FirstAsync();
+        if (post.deptid != null)
         {
-            _postService = postService;
-            _deptService = deptService;
+            post.dept = await _deptService.SingleAsync(post.deptid);
         }
 
-        [QueryParameters]
-        public async Task<dynamic> Get()
+        return post;
+    }
+
+    public async Task Post(SysOrgPost post)
+    {
+        if (post.dept != null)
         {
-            var pp = XreqUtil.GetPp();
-            var items = await _postService.repo.Context.Queryable<SysOrgPost>()
-                .OrderBy(u => u.ornum)
-                .Select((t) => new {t.id, t.name, t.notes, t.crtim, t.uptim})
-                .ToPageListAsync(pp.page, pp.pageSize, pp.total);
-            return RestPageResult.Build(pp.total.Value, items);
-            
+            post.deptid = post.dept.id;
         }
 
-        public async Task<SysOrgPost> GetOne(string id)
+        post.id = YitIdHelper.NextId() + "";
+        var postUsers = new List<SysOrgPostOrg>();
+        foreach (var user in post.users)
         {
-            var post = await _postService.repo.Context.Queryable<SysOrgPost>()
-                .Mapper<SysOrgPost, SysOrg, SysOrgPostOrg>(it =>
-                    ManyToMany.Config(it.pid, it.oid))
-                .Where(it => it.id == id).FirstAsync();
-            if (post.deptid != null)
-            {
-                post.dept = await _deptService.SingleAsync(post.deptid);
-            }
-            return post;
+            postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
         }
 
-        public async Task Post(SysOrgPost post)
+        await _postService.InsertAsync(post, postUsers);
+    }
+
+    public async Task Put(SysOrgPost post)
+    {
+        if (post.dept != null)
         {
-            if (post.dept != null)
-            {
-                post.deptid = post.dept.id;
-            }
-
-            post.id = YitIdHelper.NextId() + "";
-            var postUsers = new List<SysOrgPostOrg>();
-            foreach (var user in post.users)
-            {
-                postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
-            }
-
-            await _postService.InsertAsync(post, postUsers);
+            post.deptid = post.dept.id;
         }
 
-        public async Task Put(SysOrgPost post)
+        var postUsers = new List<SysOrgPostOrg>();
+        foreach (var user in post.users)
         {
-            if (post.dept != null)
-            {
-                post.deptid = post.dept.id;
-            }
-
-            var postUsers = new List<SysOrgPostOrg>();
-            foreach (var user in post.users)
-            {
-                postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
-            }
-
-            await _postService.UpdateAsync(post, postUsers);
+            postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
         }
 
-        public async Task Delete(string ids)
-        {
-            await _postService.DeleteAsync(ids);
-        }
+        await _postService.UpdateAsync(post, postUsers);
+    }
+
+    public async Task Delete(string ids)
+    {
+        await _postService.DeleteAsync(ids);
     }
 }

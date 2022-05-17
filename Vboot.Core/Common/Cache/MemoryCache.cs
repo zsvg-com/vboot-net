@@ -6,119 +6,120 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Vboot.Core.Common
+namespace Vboot.Core.Common;
+
+/// <summary>
+/// 内存缓存
+/// </summary>
+public class MemoryCache : ICache, ISingleton
 {
-    /// <summary>
-    /// 内存缓存
-    /// </summary>
-    public class MemoryCache : ICache, ISingleton
+    private readonly IMemoryCache _memoryCache;
+
+    public MemoryCache(IMemoryCache memoryCache)
     {
-        private readonly IMemoryCache _memoryCache;
+        _memoryCache = memoryCache;
+    }
 
-        public MemoryCache(IMemoryCache memoryCache)
+    public long Del(params string[] key)
+    {
+        foreach (var k in key)
         {
-            _memoryCache = memoryCache;
+            _memoryCache.Remove(k);
         }
 
-        public long Del(params string[] key)
+        return key.Length;
+    }
+
+    public Task<long> DelAsync(params string[] key)
+    {
+        foreach (var k in key)
         {
-            foreach (var k in key)
-            {
-                _memoryCache.Remove(k);
-            }
-            return key.Length;
+            _memoryCache.Remove(k);
         }
 
-        public Task<long> DelAsync(params string[] key)
-        {
-            foreach (var k in key)
-            {
-                _memoryCache.Remove(k);
-            }
+        return Task.FromResult((long) key.Length);
+    }
 
-            return Task.FromResult((long)key.Length);
-        }
-
-        public async Task<long> DelByPatternAsync(string pattern)
-        {
-            if (string.IsNullOrEmpty(pattern))
-                return default;
-
-            //pattern = Regex.Replace(pattern, @"\{*.\}", "(.*)");
-            var keys = GetAllKeys().Where(k => k.StartsWith(pattern));
-            if (keys != null && keys.Any())
-                return await DelAsync(keys.ToArray());
-
+    public async Task<long> DelByPatternAsync(string pattern)
+    {
+        if (string.IsNullOrEmpty(pattern))
             return default;
-        }
 
-        public bool Exists(string key)
-        {
-            return _memoryCache.TryGetValue(key, out _);
-        }
+        //pattern = Regex.Replace(pattern, @"\{*.\}", "(.*)");
+        var keys = GetAllKeys().Where(k => k.StartsWith(pattern));
+        if (keys != null && keys.Any())
+            return await DelAsync(keys.ToArray());
 
-        public Task<bool> ExistsAsync(string key)
-        {
-            return Task.FromResult(_memoryCache.TryGetValue(key, out _));
-        }
+        return default;
+    }
 
-        public string Get(string key)
-        {
-            return _memoryCache.Get(key)?.ToString();
-        }
+    public bool Exists(string key)
+    {
+        return _memoryCache.TryGetValue(key, out _);
+    }
 
-        public T Get<T>(string key)
-        {
-            return _memoryCache.Get<T>(key);
-        }
+    public Task<bool> ExistsAsync(string key)
+    {
+        return Task.FromResult(_memoryCache.TryGetValue(key, out _));
+    }
 
-        public Task<string> GetAsync(string key)
-        {
-            return Task.FromResult(Get(key));
-        }
+    public string Get(string key)
+    {
+        return _memoryCache.Get(key)?.ToString();
+    }
 
-        public Task<T> GetAsync<T>(string key)
-        {
-            return Task.FromResult(Get<T>(key));
-        }
+    public T Get<T>(string key)
+    {
+        return _memoryCache.Get<T>(key);
+    }
 
-        public bool Set(string key, object value)
-        {
-            _memoryCache.Set(key, value);
-            return true;
-        }
+    public Task<string> GetAsync(string key)
+    {
+        return Task.FromResult(Get(key));
+    }
 
-        public bool Set(string key, object value, TimeSpan expire)
-        {
-            _memoryCache.Set(key, value, expire);
-            return true;
-        }
+    public Task<T> GetAsync<T>(string key)
+    {
+        return Task.FromResult(Get<T>(key));
+    }
 
-        public Task<bool> SetAsync(string key, object value)
-        {
-            Set(key, value);
-            return Task.FromResult(true);
-        }
+    public bool Set(string key, object value)
+    {
+        _memoryCache.Set(key, value);
+        return true;
+    }
 
-        public Task<bool> SetAsync(string key, object value, TimeSpan expire)
-        {
-            Set(key, value, expire);
-            return Task.FromResult(true);
-        }
+    public bool Set(string key, object value, TimeSpan expire)
+    {
+        _memoryCache.Set(key, value, expire);
+        return true;
+    }
 
-        public List<string> GetAllKeys()
-        {
-            const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic;
-            var entries = _memoryCache.GetType().GetField("_entries", flags).GetValue(_memoryCache);
-            var cacheItems = entries.GetType().GetProperty("Keys").GetValue(entries) as ICollection<object>; //entries as IDictionary;
-            var keys = new List<string>();
-            if (cacheItems == null) return keys;
-            return cacheItems.Select(u => u.ToString()).ToList();
-            //foreach (DictionaryEntry cacheItem in cacheItems)
-            //{
-            //    keys.Add(cacheItem.Key.ToString());
-            //}
-            //return keys;
-        }
+    public Task<bool> SetAsync(string key, object value)
+    {
+        Set(key, value);
+        return Task.FromResult(true);
+    }
+
+    public Task<bool> SetAsync(string key, object value, TimeSpan expire)
+    {
+        Set(key, value, expire);
+        return Task.FromResult(true);
+    }
+
+    public List<string> GetAllKeys()
+    {
+        const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic;
+        var entries = _memoryCache.GetType().GetField("_entries", flags).GetValue(_memoryCache);
+        var cacheItems =
+            entries.GetType().GetProperty("Keys").GetValue(entries) as ICollection<object>; //entries as IDictionary;
+        var keys = new List<string>();
+        if (cacheItems == null) return keys;
+        return cacheItems.Select(u => u.ToString()).ToList();
+        //foreach (DictionaryEntry cacheItem in cacheItems)
+        //{
+        //    keys.Add(cacheItem.Key.ToString());
+        //}
+        //return keys;
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SqlSugar;
 
-namespace Vboot.Core;
+namespace Vboot.Core.Common;
 
 /// <summary>
 /// SqlSugar 工作单元拦截器

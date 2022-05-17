@@ -7,7 +7,6 @@ using Furion.FriendlyException;
 using Furion.JsonSerialization;
 using SqlSugar;
 using Vboot.Core.Common;
-using Vboot.Core.Module.Pub.Auth;
 using Vboot.Core.Module.Sys;
 using Vboot.Web.Core;
 
