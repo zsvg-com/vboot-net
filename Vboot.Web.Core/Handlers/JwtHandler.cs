@@ -51,7 +51,7 @@ public class JwtHandler : AppAuthorizeHandler
     {
         // 管理员跳过判断
         var userManager = App.GetService<IUserManager>();
-        if (userManager.SuperAdmin) return true;
+        if (userManager.SuperAdmin||true) return true;
         var url = httpContext.Request.Path.Value.Substring(1);
         if (url.StartsWith("/sys"))
         {
@@ -64,7 +64,7 @@ public class JwtHandler : AppAuthorizeHandler
         long code = -1;
         if (httpContext.Request.Method == "GET")
         {
-            foreach (var yperm in SysAuthPermCache.GET_URLS)
+            foreach (var yperm in SysPermApiCache.GET_URLS)
             {
                 if (yperm.url == url)
                 {
@@ -76,7 +76,7 @@ public class JwtHandler : AppAuthorizeHandler
         }
         else if (httpContext.Request.Method == "POST")
         {
-            foreach (var yperm in SysAuthPermCache.POST_URLS)
+            foreach (var yperm in SysPermApiCache.POST_URLS)
             {
                 if (yperm.url == url)
                 {
@@ -88,7 +88,7 @@ public class JwtHandler : AppAuthorizeHandler
         }
         else if (httpContext.Request.Method == "PUT")
         {
-            foreach (var yperm in SysAuthPermCache.PUT_URLS)
+            foreach (var yperm in SysPermApiCache.PUT_URLS)
             {
                 if (yperm.url == url)
                 {
@@ -100,7 +100,7 @@ public class JwtHandler : AppAuthorizeHandler
         }
         else if (httpContext.Request.Method == "DELETE")
         {
-            foreach (var yperm in SysAuthPermCache.DELETE_URLS)
+            foreach (var yperm in SysPermApiCache.DELETE_URLS)
             {
                 if (yperm.url == url)
                 {

@@ -8,17 +8,17 @@ namespace Vboot.Core.Module.Pub;
 
 public class PubAuthInitService : ITransient
 {
-    private readonly ISqlSugarRepository<SysAuthMenu> _menuRepo;
+    private readonly ISqlSugarRepository<SysPermMenu> _menuRepo;
 
-    public PubAuthInitService(ISqlSugarRepository<SysAuthMenu> menuRepo)
+    public PubAuthInitService(ISqlSugarRepository<SysPermMenu> menuRepo)
     {
         _menuRepo = menuRepo;
     }
 
     public async Task InitAllMenu()
     {
-        List<SysAuthMenu> list = new List<SysAuthMenu>();
-        SysAuthMenu menu1 = new SysAuthMenu();
+        List<SysPermMenu> list = new List<SysPermMenu>();
+        SysPermMenu menu1 = new SysPermMenu();
         menu1.id = "Sys";
         menu1.name = "系统管理";
         menu1.code = "Sys";
@@ -32,7 +32,7 @@ public class PubAuthInitService : ITransient
         menu1.type = "D";
         list.Add(menu1);
 
-        SysAuthMenu menu11 = new SysAuthMenu();
+        SysPermMenu menu11 = new SysPermMenu();
         menu11.id = "SysOrg";
         menu11.name = "组织架构";
         menu11.code = "SysOrg";
@@ -47,7 +47,7 @@ public class PubAuthInitService : ITransient
         menu11.type = "D";
         list.Add(menu11);
 
-        SysAuthMenu menu111 = new SysAuthMenu();
+        SysPermMenu menu111 = new SysPermMenu();
         menu111.id = "SysOrgDept";
         menu111.name = "部门管理";
         menu111.code = "SysOrgDept";
@@ -61,7 +61,7 @@ public class PubAuthInitService : ITransient
         menu111.type = "M";
         list.Add(menu111);
 
-        SysAuthMenu menu112 = new SysAuthMenu();
+        SysPermMenu menu112 = new SysPermMenu();
         menu112.id = "SysOrgUser";
         menu112.name = "用户管理";
         menu112.code = "SysOrgUser";
@@ -75,7 +75,7 @@ public class PubAuthInitService : ITransient
         menu112.type = "M";
         list.Add(menu112);
 
-        SysAuthMenu menu113 = new SysAuthMenu();
+        SysPermMenu menu113 = new SysPermMenu();
         menu113.id = "SysOrgPost";
         menu113.name = "岗位管理";
         menu113.code = "SysOrgPost";
@@ -89,7 +89,7 @@ public class PubAuthInitService : ITransient
         menu113.type = "M";
         list.Add(menu113);
 
-        SysAuthMenu menu114 = new SysAuthMenu();
+        SysPermMenu menu114 = new SysPermMenu();
         menu114.id = "SysOrgGroup";
         menu114.name = "群组管理";
         menu114.code = "SysOrgGroup";
@@ -103,13 +103,13 @@ public class PubAuthInitService : ITransient
         menu114.type = "M";
         list.Add(menu114);
 
-        SysAuthMenu menu12 = new SysAuthMenu();
-        menu12.id = "SysAuth";
+        SysPermMenu menu12 = new SysPermMenu();
+        menu12.id = "SysPerm";
         menu12.name = "权限管理";
-        menu12.code = "SysAuth";
+        menu12.code = "SysPerm";
         menu12.comp = "LAYOUT";
-        menu12.path = "/sys/auth";
-        menu12.redirect = "/sys/auth/menu";
+        menu12.path = "/sys/perm";
+        menu12.redirect = "/sys/perm/menu";
         menu12.ornum = 2;
         menu12.icon = "ant-design:safety-certificate-outlined";
         menu12.pid = "Sys";
@@ -118,28 +118,28 @@ public class PubAuthInitService : ITransient
         menu12.type = "D";
         list.Add(menu12);
 
-        SysAuthMenu menu121 = new SysAuthMenu();
-        menu121.id = "SysAuthMenu";
+        SysPermMenu menu121 = new SysPermMenu();
+        menu121.id = "SysPermMenu";
         menu121.name = "菜单管理";
-        menu121.code = "SysAuthMenu";
-        menu121.path = "/sys/auth/menu";
-        menu121.comp = "/sys/auth/menu/index.vue";
+        menu121.code = "SysPermMenu";
+        menu121.path = "/sys/perm/menu";
+        menu121.comp = "/sys/perm/menu/index.vue";
         menu121.ornum = 1;
-        menu121.pid = "SysAuth";
+        menu121.pid = "SysPerm";
         menu121.catag = false;
         menu121.avtag = true;
         menu121.shtag = true;
         menu121.type = "M";
         list.Add(menu121);
 
-        SysAuthMenu menu122 = new SysAuthMenu();
-        menu122.id = "SysAuthRole";
+        SysPermMenu menu122 = new SysPermMenu();
+        menu122.id = "SysPermRole";
         menu122.name = "角色管理";
-        menu122.code = "SysAuthRole";
-        menu122.path = "/sys/auth/role";
-        menu122.comp = "/sys/auth/role/index.vue";
+        menu122.code = "SysPermRole";
+        menu122.path = "/sys/perm/role";
+        menu122.comp = "/sys/perm/role/index.vue";
         menu122.ornum = 1;
-        menu122.pid = "SysAuth";
+        menu122.pid = "SysPerm";
         menu122.catag = false;
         menu122.avtag = true;
         menu122.shtag = true;

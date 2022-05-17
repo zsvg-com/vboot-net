@@ -809,6 +809,68 @@
             全局异常处理
             </summary>
         </member>
+        <member name="T:Vboot.Core.Common.MyUnitOfWorkAttribute">
+            <summary>
+            SqlSugar 工作单元配置特性
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Common.MyUnitOfWorkAttribute.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Common.MyUnitOfWorkAttribute.#ctor(System.Data.IsolationLevel)">
+            <summary>
+            构造函数
+            </summary>
+            <remarks>
+            <para>支持传入事务隔离级别 <see cref="P:Vboot.Core.Common.MyUnitOfWorkAttribute.IsolationLevel"/> 参数值</para>
+            </remarks>
+            <param name="isolationLevel">事务隔离级别</param>
+        </member>
+        <member name="P:Vboot.Core.Common.MyUnitOfWorkAttribute.IsolationLevel">
+            <summary>
+            事务隔离级别
+            </summary>
+            <remarks>
+            <para>默认：<see cref="F:System.Data.IsolationLevel.ReadCommitted"/>，参见：<see cref="P:Vboot.Core.Common.MyUnitOfWorkAttribute.IsolationLevel"/></para>
+            <para>说明：当事务A更新某条数据的时候，不容许其他事务来更新该数据，但可以进行读取操作</para>
+            </remarks>
+        </member>
+        <member name="T:Vboot.Core.Common.MyUnitOfWorkFilter">
+            <summary>
+            SqlSugar 工作单元拦截器
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.MyUnitOfWorkFilter.FilterOrder">
+            <summary>
+            过滤器排序
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Common.MyUnitOfWorkFilter.Order">
+            <summary>
+            排序属性
+            </summary>
+        </member>
+        <member name="F:Vboot.Core.Common.MyUnitOfWorkFilter._sqlSugarClient">
+            <summary>
+            SqlSugar 对象
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Common.MyUnitOfWorkFilter.#ctor(SqlSugar.ISqlSugarClient)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sqlSugarClient"></param>
+        </member>
+        <member name="M:Vboot.Core.Common.MyUnitOfWorkFilter.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+             <summary>
+            
+             </summary>
+             <param name="context"></param>
+             <param name="next"></param>
+             <returns></returns>
+        </member>
         <member name="T:Vboot.Core.Common.RequestActionFilter">
             <summary>
             请求日志拦截
@@ -1101,68 +1163,6 @@
         </member>
         <member name="M:Vboot.Core.Common.Util.XstrUtil.RenameUrlCase(System.String)">
             <summary>将大驼峰命名转为蛇形命名</summary>
-        </member>
-        <member name="T:Vboot.Core.MyUnitOfWorkAttribute">
-            <summary>
-            SqlSugar 工作单元配置特性
-            </summary>
-        </member>
-        <member name="M:Vboot.Core.MyUnitOfWorkAttribute.#ctor">
-            <summary>
-            构造函数
-            </summary>
-        </member>
-        <member name="M:Vboot.Core.MyUnitOfWorkAttribute.#ctor(System.Data.IsolationLevel)">
-            <summary>
-            构造函数
-            </summary>
-            <remarks>
-            <para>支持传入事务隔离级别 <see cref="P:Vboot.Core.MyUnitOfWorkAttribute.IsolationLevel"/> 参数值</para>
-            </remarks>
-            <param name="isolationLevel">事务隔离级别</param>
-        </member>
-        <member name="P:Vboot.Core.MyUnitOfWorkAttribute.IsolationLevel">
-            <summary>
-            事务隔离级别
-            </summary>
-            <remarks>
-            <para>默认：<see cref="F:System.Data.IsolationLevel.ReadCommitted"/>，参见：<see cref="P:Vboot.Core.MyUnitOfWorkAttribute.IsolationLevel"/></para>
-            <para>说明：当事务A更新某条数据的时候，不容许其他事务来更新该数据，但可以进行读取操作</para>
-            </remarks>
-        </member>
-        <member name="T:Vboot.Core.MyUnitOfWorkFilter">
-            <summary>
-            SqlSugar 工作单元拦截器
-            </summary>
-        </member>
-        <member name="F:Vboot.Core.MyUnitOfWorkFilter.FilterOrder">
-            <summary>
-            过滤器排序
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.MyUnitOfWorkFilter.Order">
-            <summary>
-            排序属性
-            </summary>
-        </member>
-        <member name="F:Vboot.Core.MyUnitOfWorkFilter._sqlSugarClient">
-            <summary>
-            SqlSugar 对象
-            </summary>
-        </member>
-        <member name="M:Vboot.Core.MyUnitOfWorkFilter.#ctor(SqlSugar.ISqlSugarClient)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="sqlSugarClient"></param>
-        </member>
-        <member name="M:Vboot.Core.MyUnitOfWorkFilter.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
-             <summary>
-            
-             </summary>
-             <param name="context"></param>
-             <param name="next"></param>
-             <returns></returns>
         </member>
         <member name="P:Vboot.Core.Module.Pub.LoginInput.username">
             <example>sa</example>

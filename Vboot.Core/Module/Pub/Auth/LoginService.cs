@@ -169,13 +169,13 @@ public class LoginService : ITransient
     private List<Zmenu> FindMenuList(string conds)
     {
         String sql = @"select distinct m.name,m.code,m.path,m.icon,m.comp,m.ornum,m.id,m.pid,m.perm
-from sys_auth_menu m inner join sys_auth_role_menu rm on rm.mid=m.id 
-    inner join sys_auth_role_org ru on ru.rid=rm.rid 
+from sys_perm_menu m inner join sys_perm_role_menu rm on rm.mid=m.id 
+    inner join sys_perm_role_org ru on ru.rid=rm.rid 
 where m.type in ('D','M') and m.avtag=1 and ru.oid in (" + conds + ") order by m.ornum";
         if (conds.Contains("'sa'") || conds.Contains("'vben'"))
         {
             sql = @"select m.name,m.code,m.path,m.icon,m.comp,m.ornum,m.id,m.pid,m.perm
- from sys_auth_menu m where m.type in ('D','M') and m.avtag=1 order by m.ornum";
+ from sys_perm_menu m where m.type in ('D','M') and m.avtag=1 order by m.ornum";
         }
 
         List<dynamic> dictList = _repo.Context.Ado.SqlQuery<dynamic>(sql);
@@ -203,13 +203,13 @@ where m.type in ('D','M') and m.avtag=1 and ru.oid in (" + conds + ") order by m
 
     private List<string> FindBtnList(string conds)
     {
-        string sql = @"select distinct m.perm id from sys_auth_menu m 
-inner join sys_auth_role_menu rm on rm.mid=m.id 
-    inner join sys_auth_role_org ru on ru.rid=rm.rid 
+        string sql = @"select distinct m.perm id from sys_perm_menu m 
+inner join sys_perm_role_menu rm on rm.mid=m.id 
+    inner join sys_perm_role_org ru on ru.rid=rm.rid 
                           where m.type = 'B' and m.avtag=1 and ru.oid in (" + conds + ") order by m.ornum";
         if (conds.Contains("'sa'") || conds.Contains("'vben'"))
         {
-            sql = "select m.perm id from sys_auth_menu m where m.type = 'B' and m.avtag=1 order by m.ornum";
+            sql = "select m.perm id from sys_perm_menu m where m.type = 'B' and m.avtag=1 order by m.ornum";
         }
 
         return _repo.Context.Ado.SqlQuery<string>(sql);
@@ -217,14 +217,14 @@ inner join sys_auth_role_menu rm on rm.mid=m.id
 
     private List<Yperm> FindYpermList(string conds)
     {
-        string sql = @"select distinct m.perm url,p.pos,p.code from sys_auth_menu m 
-inner join sys_auth_role_menu rm on rm.mid=m.id 
-    inner join sys_auth_role_org ru on ru.rid=rm.rid 
-                          left join sys_auth_perm p on p.id=m.perm 
+        string sql = @"select distinct m.perm url,p.pos,p.code from sys_perm_menu m 
+inner join sys_perm_role_menu rm on rm.mid=m.id 
+    inner join sys_perm_role_org ru on ru.rid=rm.rid 
+                          left join sys_perm_api p on p.id=m.perm 
                           where m.type = 'B' and m.avtag=1 and ru.oid in (" + conds + ") order by m.ornum";
         // if (conds.Contains("'sa'") || conds.Contains("'vben'"))
         // {
-        //     sql = "select m.perm id from sys_auth_menu m where m.type = 'B' and m.avtag=1 order by m.ornum";
+        //     sql = "select m.perm id from sys_perm_menu m where m.type = 'B' and m.avtag=1 order by m.ornum";
         // }
 
         return _repo.Context.Ado.SqlQuery<Yperm>(sql);
@@ -236,7 +236,7 @@ inner join sys_auth_role_menu rm on rm.mid=m.id
     {
         List<String> btnList = new List<string>();
         List<Yperm> ypermList = FindYpermList(zuser.conds);
-        int posSum = SysAuthPermCache.AUTHPOS + 1; //取出最大权限位
+        int posSum = SysPermApiCache.AUTHPOS + 1; //取出最大权限位
         long[] permArr = new long[posSum];
         foreach (var yperm in ypermList)
         {

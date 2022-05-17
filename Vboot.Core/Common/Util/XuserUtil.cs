@@ -7,7 +7,6 @@ namespace Vboot.Core.Common.Util;
 public class XuserUtil
 {
     public static SysOrg getUser() {
-        String userId = null;
         var user = App.GetService<IUserManager>();
         return new SysOrg(user.UserId, user.Name);
     }

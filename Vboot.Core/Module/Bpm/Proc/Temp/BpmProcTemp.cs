@@ -6,6 +6,6 @@ namespace Vboot.Core.Module.Bpm;
 [SugarTable("bpm_proc_temp", TableDescription = "流程模板表")]
 public class BpmProcTemp : BaseMainEntity
 {
-    [SugarColumn(ColumnDescription = "XML", ColumnDataType = "longtext", IsNullable = true)]
+    [SugarColumn(ColumnDescription = "XML", ColumnDataType = "varchar(max)", IsNullable = true)]
     public string xml { get; set; }
 }

@@ -31,26 +31,26 @@ namespace Vboot.Web.Core.Init
         {
             
             var path = AppDomain.CurrentDomain.RelativeSearchPath ?? AppDomain.CurrentDomain.BaseDirectory;
-            // core表自动生成
-             var coreAssemblies = System.IO.Directory.GetFiles(path, "Vboot.Core.dll").Select(Assembly.LoadFrom)
-                 .ToArray();
-             
-             var coreModelTypes = coreAssemblies
-                 .SelectMany(a => a.DefinedTypes)
-                 .Select(type => type.AsType())
-                 .Where(x => x.IsClass && x.Namespace != null && x.Namespace.StartsWith("Vboot")).ToList();
-             coreModelTypes.ForEach(t =>
-             {
-                 var customAttributeDatas = t.CustomAttributes;
-                 foreach (var attribute in customAttributeDatas)
-                 {
-                     if (attribute.ToString().Contains("SugarTable"))
-                     {
-                         repo.Context.CodeFirst.InitTables(t);
-                         Console.WriteLine(attribute);
-                     }
-                 }
-             });
+            // // core表自动生成
+            var coreAssemblies = System.IO.Directory.GetFiles(path, "Vboot.Core.dll").Select(Assembly.LoadFrom)
+                .ToArray();
+            
+            var coreModelTypes = coreAssemblies
+                .SelectMany(a => a.DefinedTypes)
+                .Select(type => type.AsType())
+                .Where(x => x.IsClass && x.Namespace != null && x.Namespace.StartsWith("Vboot")).ToList();
+            coreModelTypes.ForEach(t =>
+            {
+                var customAttributeDatas = t.CustomAttributes;
+                foreach (var attribute in customAttributeDatas)
+                {
+                    if (attribute.ToString().Contains("SugarTable"))
+                    {
+                        repo.Context.CodeFirst.InitTables(t);
+                        Console.WriteLine(attribute);
+                    }
+                }
+            });
             
             var appAssemblies = System.IO.Directory.GetFiles(path, "Vboot.Application.dll").Select(Assembly.LoadFrom)
                 .ToArray();
@@ -90,10 +90,10 @@ namespace Vboot.Web.Core.Init
             // repo.Context.CodeFirst.InitTables(typeof(SysOrgPostUser));
             // repo.Context.CodeFirst.InitTables(typeof(SysOrgGroup));
             // repo.Context.CodeFirst.InitTables(typeof(SysOrgGroupOrg));
-            // repo.Context.CodeFirst.InitTables(typeof(SysAuthMenu));
-            // repo.Context.CodeFirst.InitTables(typeof(SysAuthRole));
-            // repo.Context.CodeFirst.InitTables(typeof(SysAuthRoleMenu));
-            // repo.Context.CodeFirst.InitTables(typeof(SysAuthRoleOrg));
+            // repo.Context.CodeFirst.InitTables(typeof(SysPermMenu));
+            // repo.Context.CodeFirst.InitTables(typeof(SysPermRole));
+            // repo.Context.CodeFirst.InitTables(typeof(SysPermRoleMenu));
+            // repo.Context.CodeFirst.InitTables(typeof(SysPermRoleOrg));
             // repo.Context.CodeFirst.InitTables(typeof(SysLogAudit));
             // repo.Context.CodeFirst.InitTables(typeof(SysLogEx));
             // repo.Context.CodeFirst.InitTables(typeof(SysLogVisit));

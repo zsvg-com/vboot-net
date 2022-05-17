@@ -57,43 +57,10 @@
             删除代理商
             </summary>
         </member>
-        <member name="P:Vboot.Application.Sa.SaCustMain.addre">
-            <summary>
-            客户地址
-            </summary>
-        </member>
-        <member name="P:Vboot.Application.Sa.SaCustMain.opmid">
-            <summary>
-            经办人ID
-            </summary>
-        </member>
-        <member name="P:Vboot.Application.Sa.SaCustMain.opman">
-            <summary>
-            经办人
-            </summary>
-        </member>
-        <member name="P:Vboot.Application.Sa.SaCustMain.viewers">
-            <summary>
-            可查看者
-            </summary>
-        </member>
         <member name="T:Vboot.Application.Sa.SaCustMainApi">
             <summary>
             客户主信息接口
             </summary>
-        </member>
-        <member name="M:Vboot.Application.Sa.SaCustMainApi.Get">
-            <summary>
-            获取客户主信息的分页数据
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Vboot.Application.Sa.SaCustMainApi.GetOne(System.String)">
-            <summary>
-            获取单个客户的详细信息
-            </summary>
-            <param name="id">客户ID</param>
-            <returns></returns>
         </member>
         <member name="M:Vboot.Application.Sa.SaCustMainApi.Post(Vboot.Application.Sa.SaCustMain)">
             <summary>

@@ -34,7 +34,7 @@ public class SysOrgUserCache
     /// 前台菜单缓存
     /// </summary>
     /// <example></example>
-    [SugarColumn(ColumnDescription = "前台菜单缓存", IsNullable = true, ColumnDataType = "longtext")]
+    [SugarColumn(ColumnDescription = "前台菜单缓存", IsNullable = true, ColumnDataType = "varchar(max)")]
     public string menus { get; set; }
 
     /// <summary>

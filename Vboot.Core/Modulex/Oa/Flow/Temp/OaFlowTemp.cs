@@ -20,7 +20,7 @@ public class OaFlowTemp : BaseMainEntity
     [SugarColumn(ColumnDescription = "全局流程模板ID", IsNullable = true, Length = 32)]
     public string protd { get; set; }
 
-    [SugarColumn(ColumnDescription = "XML", ColumnDataType = "longtext", IsNullable = true)]
+    [SugarColumn(ColumnDescription = "XML", ColumnDataType = "varchar(max)", IsNullable = true)]
     public string vform { get; set; }
 
     [SugarColumn(IsIgnore = true)] public string xml { get; set; }

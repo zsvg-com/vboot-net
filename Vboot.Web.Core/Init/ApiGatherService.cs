@@ -11,39 +11,39 @@ namespace Vboot.Web.Core.Init;
 
 public class ApiGatherService : IScoped
 {
-    private readonly ISqlSugarRepository<SysAuthPerm> repo;
+    private readonly ISqlSugarRepository<SysPermApi> repo;
 
-    public ApiGatherService(ISqlSugarRepository<SysAuthPerm> repo)
+    public ApiGatherService(ISqlSugarRepository<SysPermApi> repo)
     {
         this.repo = repo;
     }
 
 
-    public void Init()
+    public async void Init()
     {
         List<Yurl> codeUrlList = GetScanList();
 
-        List<string> dbUrlList = repo.Context.Queryable<SysAuthPerm>()
+        List<string> dbUrlList = repo.Context.Queryable<SysPermApi>()
             // .Where(t => t.type == "get")
             .Select(t => t.id)
             .ToList();
 
         //收集最大权限位及最大权限位的最大权限码
-        string sql = @"select max(u.pos) as pos,max(u.code) as code from sys_auth_perm u 
-where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
+        string sql = @"select max(u.pos) as pos,max(u.code) as code from sys_perm_api u 
+where u.pos = (select max(uu.pos) from sys_perm_api uu)";
         List<dynamic> maxList = repo.Context.Ado.SqlQuery<dynamic>(sql);
         int pos = 0;
         long code = 0;
         if (maxList != null && maxList.Count > 0 && maxList[0].pos != null)
         {
-            SysAuthPermCache.AUTHPOS = maxList[0].pos;
+            SysPermApiCache.AUTHPOS = maxList[0].pos;
             pos = maxList[0].pos;
             code = maxList[0].code;
         }
 
         //比较两个list得到insertList
-        List<SysAuthPerm> insertList = new List<SysAuthPerm>();
-        List<SysAuthPerm> updateList = new List<SysAuthPerm>();
+        List<SysPermApi> insertList = new List<SysPermApi>();
+        List<SysPermApi> updateList = new List<SysPermApi>();
         foreach (var codeUrl in codeUrlList)
         {
             bool flag = false;
@@ -60,7 +60,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
             {
                 if (!codeUrl.id.StartsWith("~"))
                 {
-                    var perm = new SysAuthPerm();
+                    var perm = new SysPermApi();
                     perm.id = codeUrl.id;
                     perm.url = codeUrl.url;
                     perm.pos = 0;
@@ -73,7 +73,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
                     if (code >= (1L << 62))
                     {
                         pos += 1;
-                        SysAuthPermCache.AUTHPOS++;
+                        SysPermApiCache.AUTHPOS++;
                         code = 1;
                     }
                     else
@@ -88,7 +88,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
                         }
                     }
 
-                    var perm = new SysAuthPerm();
+                    var perm = new SysPermApi();
                     perm.id = codeUrl.id;
                     perm.url = codeUrl.url;
                     perm.pid = codeUrl.pid;
@@ -101,7 +101,7 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
             }
             else //更新
             {
-                var perm = new SysAuthPerm();
+                var perm = new SysPermApi();
                 perm.id = codeUrl.id;
                 perm.url = codeUrl.url;
                 perm.pid = codeUrl.pid;
@@ -111,34 +111,34 @@ where u.pos = (select max(uu.pos) from sys_auth_perm uu)";
             }
         }
 
-        repo.Context.Updateable<SysAuthPerm>().SetColumns(it => it.avtag == false).Where(it => it.avtag == true)
+        repo.Context.Updateable<SysPermApi>().SetColumns(it => it.avtag == false).Where(it => it.avtag == true)
             .ExecuteCommand();
         if (updateList.Count > 0)
         {
-            repo.UpdateAsync(updateList);
+            await repo.UpdateAsync(updateList);
         }
 
         if (insertList.Count > 0)
         {
-            repo.InsertAsync(insertList);
+            await repo.InsertAsync(insertList);
         }
 
-        string getsSql = "SELECT url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='get'";
+        string getsSql = "SELECT url,pos,code from sys_perm_api where avtag= 1 and code<>0 and type='get'";
         List<Yperm> cacheGets = repo.Ado.SqlQuery<Yperm>(getsSql);
 
-        string postsSql = "SELECT url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='post'";
+        string postsSql = "SELECT url,pos,code from sys_perm_api where avtag= 1 and code<>0 and type='post'";
         List<Yperm> cachePosts = repo.Ado.SqlQuery<Yperm>(postsSql);
 
-        string putsSql = "SELECT url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='put'";
+        string putsSql = "SELECT url,pos,code from sys_perm_api where avtag= 1 and code<>0 and type='put'";
         List<Yperm> cachePuts = repo.Ado.SqlQuery<Yperm>(putsSql);
 
-        string deletesSql = "SELECT url,pos,code from sys_auth_perm where avtag= 1 and code<>0 and type='delete'";
+        string deletesSql = "SELECT url,pos,code from sys_perm_api where avtag= 1 and code<>0 and type='delete'";
         List<Yperm> cacheDeletes = repo.Ado.SqlQuery<Yperm>(deletesSql);
 
-        SysAuthPermCache.GET_URLS = cacheGets.ToArray();
-        SysAuthPermCache.POST_URLS = cachePosts.ToArray();
-        SysAuthPermCache.PUT_URLS = cachePuts.ToArray();
-        SysAuthPermCache.DELETE_URLS = cacheDeletes.ToArray();
+        SysPermApiCache.GET_URLS = cacheGets.ToArray();
+        SysPermApiCache.POST_URLS = cachePosts.ToArray();
+        SysPermApiCache.PUT_URLS = cachePuts.ToArray();
+        SysPermApiCache.DELETE_URLS = cacheDeletes.ToArray();
 
         repo.Context.Updateable<SysOrgUser>().SetColumns(it => it.retag == false).Where(it => it.retag == true)
             .ExecuteCommand();

@@ -20,7 +20,7 @@ public class PubInitApi : IDynamicApiController, ITransient
 
     [HttpPost("/pub/org/init")]
     [AllowAnonymous]
-    public async Task SysOrgInit()
+    public async Task PubOrgInit()
     {
         await _orgInitService.InitAllDept();
         await _orgInitService.InitAllUser();
@@ -30,7 +30,7 @@ public class PubInitApi : IDynamicApiController, ITransient
 
     [HttpPost("/pub/auth/init")]
     [AllowAnonymous]
-    public async Task SysAuthInit()
+    public async Task PubAuthInit()
     {
         await _authInitService.InitAllMenu();
     }

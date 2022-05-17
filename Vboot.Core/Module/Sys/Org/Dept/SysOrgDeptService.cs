@@ -140,7 +140,7 @@ public class SysOrgDeptService : BaseMainService<SysOrgDept>, ITransient
     }
 
 
-    public new async Task DeleteAsync(string[] ids)
+    public async Task DeleteAsync(string[] ids)
     {
         //最好是通过外键来控制，部门还有其他地方会用到
         foreach (var id in ids)
