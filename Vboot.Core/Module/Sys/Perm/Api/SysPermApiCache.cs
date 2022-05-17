@@ -14,6 +14,5 @@ public class SysPermApiCache
 
     public static Yperm[] DELETE_URLS = Array.Empty<Yperm>();
 
-
     public static int AUTHPOS = 0;
 }

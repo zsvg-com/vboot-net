@@ -13,7 +13,7 @@
         "Version": "版本号0.1",
         "Contact": {
           "Name": "前台UI访问地址",
-          "Url": "http://localhost:5000/vben.html"
+          "Url": "http://localhost:5000/vue.html"
         }
       },
       {

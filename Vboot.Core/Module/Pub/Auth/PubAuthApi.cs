@@ -72,7 +72,7 @@ public class AuthApi : IDynamicApiController, ITransient
             {ClaimConst.TENANT_ID, "1"},
             {ClaimConst.CLAINM_ACCOUNT, input.username},
             {ClaimConst.CLAINM_NAME, duser.name},
-            {ClaimConst.CLAINM_SUPERADMIN, zuser.id == "sa"},
+            {ClaimConst.CLAINM_SUPERADMIN, zuser.id == "sa"?1:3},
             {ClaimConst.CLAINM_PERMS, zuser.perms},
         });
 

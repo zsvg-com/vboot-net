@@ -51,11 +51,11 @@ public class JwtHandler : AppAuthorizeHandler
     {
         // 管理员跳过判断
         var userManager = App.GetService<IUserManager>();
-        if (userManager.SuperAdmin||true) return true;
+        if (userManager.SuperAdmin) return true;
         var url = httpContext.Request.Path.Value.Substring(1);
-        if (url.StartsWith("/sys"))
+        if (url.StartsWith("sys"))
         {
-            //只有管理员有sy权限
+            //只有管理员有sys权限
             return false;
         }
 
