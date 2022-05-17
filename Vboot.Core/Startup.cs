@@ -17,19 +17,19 @@ public class Startup : AppStartup
         services.AddSqlSugar(new ConnectionConfig
         {
             //mysql的配置
-            ConnectionString =
-                "Data Source=localhost;Database=vboot-net;User ID=root;Password=123456;pooling=true;port=3306;sslmode=none;CharSet=utf8;", //连接符字串
-            DbType = DbType.MySql,
-            ConfigureExternalServices = new ConfigureExternalServices
-            {
-                EntityService = (c, p) =>
-                {
-                    if (p.DataType == "varchar(max)") 
-                    {
-                        p.DataType = "longtext";
-                    }
-                }
-            },
+            // ConnectionString =
+            //     "Data Source=localhost;Database=vboot-net;User ID=root;Password=123456;pooling=true;port=3306;sslmode=none;CharSet=utf8;", //连接符字串
+            // DbType = DbType.MySql,
+            // ConfigureExternalServices = new ConfigureExternalServices
+            // {
+            //     EntityService = (c, p) =>
+            //     {
+            //         if (p.DataType == "varchar(max)") 
+            //         {
+            //             p.DataType = "longtext";
+            //         }
+            //     }
+            // },
          
             
             //oracle的配置
@@ -38,8 +38,8 @@ public class Startup : AppStartup
             
             
             //sqlserver的配置
-            // ConnectionString = "server=.;uid=sa;pwd=123456;database=vboot",//连接符字串
-            // DbType = DbType.SqlServer,
+            ConnectionString = "server=.;uid=sa;pwd=123456;database=vboot",//连接符字串
+            DbType = DbType.SqlServer,
             
             
             IsAutoCloseConnection = true,
