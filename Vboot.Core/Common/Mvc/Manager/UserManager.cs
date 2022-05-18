@@ -41,10 +41,10 @@ public class UserManager : IUserManager, IScoped
                ((int) AdminType.SuperAdmin).ToString();
     }
 
-    public SysOrgUser User
-    {
-        get => _sysUserRep.FirstOrDefault(u => u.id == UserId);
-    }
+    // public SysOrgUser User
+    // {
+    //     get => _sysUserRep.FirstOrDefault(u => u.id == UserId);
+    // }
 
     public UserManager(ISqlSugarRepository<SysOrgUser> sysUserRep,
         IHttpContextAccessor httpContextAccessor)

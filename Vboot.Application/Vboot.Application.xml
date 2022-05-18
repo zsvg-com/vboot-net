@@ -57,25 +57,5 @@
             删除代理商
             </summary>
         </member>
-        <member name="T:Vboot.Application.Sa.SaCustMainApi">
-            <summary>
-            客户主信息接口
-            </summary>
-        </member>
-        <member name="M:Vboot.Application.Sa.SaCustMainApi.Post(Vboot.Application.Sa.SaCustMain)">
-            <summary>
-            新增客户
-            </summary>
-        </member>
-        <member name="M:Vboot.Application.Sa.SaCustMainApi.Put(Vboot.Application.Sa.SaCustMain)">
-            <summary>
-            修改客户
-            </summary>
-        </member>
-        <member name="M:Vboot.Application.Sa.SaCustMainApi.Delete(System.String)">
-            <summary>
-            删除客户
-            </summary>
-        </member>
     </members>
 </doc>

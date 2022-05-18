@@ -8,7 +8,7 @@ public interface IUserManager
     string Account { get; }
     string Name { get; }
     bool SuperAdmin { get; }
-    SysOrgUser User { get; }
+    // SysOrgUser User { get; }
     string UserId { get; }
     string Perms { get; }
 

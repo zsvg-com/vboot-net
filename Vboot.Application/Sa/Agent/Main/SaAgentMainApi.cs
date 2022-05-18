@@ -26,6 +26,7 @@ public class SaAgentMainApi : IDynamicApiController
     [QueryParameters]
     public async Task<dynamic> Get()
     {
+        _service.JsTest();
         var pp = XreqUtil.GetPp();
         var items = await _service.repo.Context.Queryable<SaAgentMain>()
             .Select((t) => new {t.id, t.name, t.addre, t.crtim, t.uptim})

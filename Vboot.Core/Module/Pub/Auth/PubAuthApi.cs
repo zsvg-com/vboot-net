@@ -72,7 +72,7 @@ public class AuthApi : IDynamicApiController, ITransient
             {ClaimConst.TENANT_ID, "1"},
             {ClaimConst.CLAINM_ACCOUNT, input.username},
             {ClaimConst.CLAINM_NAME, duser.name},
-            {ClaimConst.CLAINM_SUPERADMIN, zuser.id == "sa"?1:3},
+            {ClaimConst.CLAINM_SUPERADMIN, zuser.id == "sa" ? 1 : 3},
             {ClaimConst.CLAINM_PERMS, zuser.perms},
         });
 
@@ -109,61 +109,110 @@ public class AuthApi : IDynamicApiController, ITransient
     /// <summary>
     /// 获取用户信息
     /// </summary>
+    // [HttpGet("/getUserInfo")]
+    // [AllowAnonymous]
+    // public async Task<LoginOutput> getUserInfo()
+    // {
+    //     var user = _userManager.User;
+    //
+    //     var httpContext = App.GetService<IHttpContextAccessor>().HttpContext;
+    //     var loginOutput = user.Adapt<LoginOutput>();
+    //
+    //     var crtim = user.lalot = DateTime.Now;
+    //     var ip = HttpNewUtil.Ip;
+    //     ip = user.laloi = string.IsNullOrEmpty(user.laloi) ? httpContext.GetRemoteIpAddressToIPv4() : ip;
+    //
+    //     var clent = Parser.GetDefault().Parse(httpContext.Request.Headers["User-Agent"]);
+    //     var agbro = clent.UA.Family + clent.UA.Major;
+    //     var ageos = clent.OS.Family + clent.OS.Major;
+    //
+    //     // 员工信息
+    //     // loginOutput.LoginEmpInfo = await _sysEmpService.GetEmpInfo(userId);
+    //
+    //     // 角色信息
+    //     // loginOutput.Roles = await _sysRoleService.GetUserRoleList(userId);
+    //
+    //     // 权限信息
+    //     // loginOutput.Permissions = await _sysMenuService.GetLoginPermissionList(userId);
+    //
+    //     // 数据范围信息(机构Id集合)
+    //     // loginOutput.DataScopes = await _sysUserService.GetUserDataScopeIdList(userId);
+    //
+    //     // 具备应用信息（多系统，默认激活一个，可根据系统切换菜单）,返回的结果中第一个为激活的系统
+    //     // loginOutput.Apps = await _sysAppService.GetLoginApps(userId);
+    //
+    //     // // 菜单信息
+    //     // if (loginOutput.Apps.Count > 0)
+    //     // {
+    //     //     var defaultActiveAppCode = loginOutput.Apps.FirstOrDefault().Code;
+    //     //     loginOutput.Menus = await _sysMenuService.GetLoginMenusAntDesign(userId, "");
+    //     //     loginOutput.Menus.ForEach(item => { item.Hidden = item.Application != defaultActiveAppCode; });
+    //     // }
+    //
+    //
+    //     // 增加登录日志
+    //     await _eventPublisher.PublishAsync(new ChannelEventSource("Create:LoginLog",
+    //         new SysLogLogin
+    //         {
+    //             id = YitIdHelper.NextId() + "",
+    //             name = user.name,
+    //             ip = ip,
+    //             agbro = agbro,
+    //             ageos = ageos,
+    //             crtim = crtim,
+    //             usnam = user.usnam
+    //         }));
+    //
+    //
+    //     return loginOutput;
+    // }
+
+
+    /// <summary>
+    /// 获取用户信息
+    /// </summary>
     [HttpGet("/getUserInfo")]
     [AllowAnonymous]
-    public async Task<LoginOutput> getUserInfo()
+    public async Task<Dictionary<string, object>> getUserInfo()
     {
-        var user = _userManager.User;
+        Dictionary<string, object> backDict = new Dictionary<string, object>();
 
-        var httpContext = App.GetService<IHttpContextAccessor>().HttpContext;
-        var loginOutput = user.Adapt<LoginOutput>();
-
-        var crtim = user.lalot = DateTime.Now;
-        var ip = HttpNewUtil.Ip;
-        ip = user.laloi = string.IsNullOrEmpty(user.laloi) ? httpContext.GetRemoteIpAddressToIPv4() : ip;
-
-        var clent = Parser.GetDefault().Parse(httpContext.Request.Headers["User-Agent"]);
-        var agbro = clent.UA.Family + clent.UA.Major;
-        var ageos = clent.OS.Family + clent.OS.Major;
-
-        // 员工信息
-        // loginOutput.LoginEmpInfo = await _sysEmpService.GetEmpInfo(userId);
-
-        // 角色信息
-        // loginOutput.Roles = await _sysRoleService.GetUserRoleList(userId);
-
-        // 权限信息
-        // loginOutput.Permissions = await _sysMenuService.GetLoginPermissionList(userId);
-
-        // 数据范围信息(机构Id集合)
-        // loginOutput.DataScopes = await _sysUserService.GetUserDataScopeIdList(userId);
-
-        // 具备应用信息（多系统，默认激活一个，可根据系统切换菜单）,返回的结果中第一个为激活的系统
-        // loginOutput.Apps = await _sysAppService.GetLoginApps(userId);
-
-        // // 菜单信息
-        // if (loginOutput.Apps.Count > 0)
-        // {
-        //     var defaultActiveAppCode = loginOutput.Apps.FirstOrDefault().Code;
-        //     loginOutput.Menus = await _sysMenuService.GetLoginMenusAntDesign(userId, "");
-        //     loginOutput.Menus.ForEach(item => { item.Hidden = item.Application != defaultActiveAppCode; });
-        // }
+        if (_userManager.UserId == null)
+        {
+            backDict.Add("menus", new List<Zmenu>());
+            backDict.Add("btns", new List<String>());
+            backDict.Add("zuser", null);
+            return backDict;
+        }
+        Zuser zuser = new Zuser
+        {
+            id = _userManager.UserId,
+            name = _userManager.Name,
+            usnam = _userManager.Account
+        };
+        var duser = await _loginService.getDbUser(zuser.usnam);
+        _loginService.InitUser(zuser, duser, backDict);
 
 
         // 增加登录日志
+        var httpContext = App.GetService<IHttpContextAccessor>().HttpContext;
+        var ip =  httpContext.GetRemoteIpAddressToIPv4();
+        var crtim = DateTime.Now;
+        var clent = Parser.GetDefault().Parse(httpContext.Request.Headers["User-Agent"]);
+        var agbro = clent.UA.Family + clent.UA.Major;
+        var ageos = clent.OS.Family + clent.OS.Major;
         await _eventPublisher.PublishAsync(new ChannelEventSource("Create:LoginLog",
             new SysLogLogin
             {
                 id = YitIdHelper.NextId() + "",
-                name = user.name,
+                name = zuser.name,
                 ip = ip,
                 agbro = agbro,
                 ageos = ageos,
                 crtim = crtim,
-                usnam = user.usnam
+                usnam = zuser.usnam
             }));
 
-
-        return loginOutput;
+        return backDict;
     }
 }
