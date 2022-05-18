@@ -55,12 +55,12 @@ public class Startup : AppStartup
 
                 if (sql.StartsWith("UPDATE") || sql.StartsWith("INSERT"))
                 {
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Blue;
                 }
 
                 if (sql.StartsWith("DELETE"))
                 {
-                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                 }
 
                 Console.WriteLine(sql);

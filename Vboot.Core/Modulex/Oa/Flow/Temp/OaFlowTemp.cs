@@ -11,6 +11,8 @@ public class OaFlowTemp : BaseMainEntity
     [SugarColumn(ColumnDescription = "分类ID", IsNullable = true, Length = 32)]
     public string catid { get; set; }
 
+    [SugarColumn(IsIgnore = true)] public ZidName cate { get; set; }
+
     [SugarColumn(ColumnDescription = "备注", IsNullable = true, Length = 128)]
     public string notes { get; set; }
 
@@ -20,8 +22,8 @@ public class OaFlowTemp : BaseMainEntity
     [SugarColumn(ColumnDescription = "全局流程模板ID", IsNullable = true, Length = 32)]
     public string protd { get; set; }
 
-    [SugarColumn(ColumnDescription = "XML", ColumnDataType = "varchar(max)", IsNullable = true)]
-    public string vform { get; set; }
+    [SugarColumn(IsIgnore = true)] public string prxml { get; set; }
 
-    [SugarColumn(IsIgnore = true)] public string xml { get; set; }
+    [SugarColumn(ColumnDescription = "vform", ColumnDataType = "varchar(max)", IsNullable = true)]
+    public string vform { get; set; }
 }

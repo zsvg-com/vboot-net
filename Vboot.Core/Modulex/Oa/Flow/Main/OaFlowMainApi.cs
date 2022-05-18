@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
 using Vboot.Core.Common;
 using Vboot.Core.Common.Util;
+using Vboot.Core.Module.Sys;
 using Yitter.IdGenerator;
 
 namespace Vboot.Core.Modulex.Oa;
 
-[ApiDescriptionSettings("Ext", Tag = "流程管理-流程分类")]
+[ApiDescriptionSettings("Ext", Tag = "流程管理-流程实例")]
 public class OaFlowMainApi : IDynamicApiController
 {
     private readonly OaFlowMainService _service;
@@ -25,8 +26,10 @@ public class OaFlowMainApi : IDynamicApiController
     public async Task<dynamic> Get()
     {
         var pp = XreqUtil.GetPp();
-        var items = await _service.repo.Context.Queryable<OaFlowMain>()
-            .Select((t) => new {t.id, t.name, t.notes})
+        var items = await _service.repo.Context.Queryable<OaFlowMain, OaFlowTemp,SysOrg>((t, c,o)
+                => new JoinQueryInfos(JoinType.Left, c.id == t.temid,JoinType.Left, o.id == t.crmid))
+            .Select((t,c,o) => 
+                new {t.id, t.name, t.notes,temna=c.name,crman=o.name,t.crtim})
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);
         return RestPageResult.Build(pp.total.Value, items);
     }

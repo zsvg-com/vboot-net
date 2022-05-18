@@ -4,7 +4,7 @@ using Vboot.Core.Common;
 
 namespace Vboot.Core.Modulex.Oa;
 
-[SugarTable("oa_flow_temp", TableDescription = "OA流程实例表")]
+[SugarTable("oa_flow_main", TableDescription = "OA流程实例表")]
 [Description("OA流程实例表")]
 public class OaFlowMain : BaseMainEntity
 {

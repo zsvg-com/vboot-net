@@ -63,11 +63,19 @@ public class OaFlowCateApi : IDynamicApiController
     public async Task Post(OaFlowCate cate)
     {
         cate.id = YitIdHelper.NextId() + "";
+        if (cate.parent!=null&&cate.parent.id!="")
+        {
+            cate.pid = cate.parent.id;
+        }
         await _service.InsertAsync(cate);
     }
 
     public async Task Put(OaFlowCate cate)
     {
+        if (cate.parent!=null&&cate.parent.id!="")
+        {
+            cate.pid = cate.parent.id;
+        }
         await _service.UpdateAsync(cate);
     }
 

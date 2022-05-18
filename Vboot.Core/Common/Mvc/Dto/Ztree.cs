@@ -10,6 +10,8 @@ public class Ztree
     public string id { get; set; }
 
     public string name { get; set; }
+    
+    public string type { get; set; }
 
     [JsonIgnore] public string pid { get; set; }
 

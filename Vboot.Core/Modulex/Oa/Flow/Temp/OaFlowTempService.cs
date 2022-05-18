@@ -15,7 +15,7 @@ public class OaFlowTempService : BaseMainService<OaFlowTemp>, ITransient
         bpmProcTemp.name = oaFlowTemp.name;
         bpmProcTemp.crman = oaFlowTemp.crman;
         bpmProcTemp.crtim = oaFlowTemp.crtim;
-        bpmProcTemp.xml=oaFlowTemp.xml;
+        bpmProcTemp.xml=oaFlowTemp.prxml;
         bpmProcTemp.id=YitIdHelper.NextId() + "";
         await repo.Context.Insertable(bpmProcTemp).ExecuteCommandAsync();
         oaFlowTemp.protd=bpmProcTemp.id;
@@ -24,8 +24,8 @@ public class OaFlowTempService : BaseMainService<OaFlowTemp>, ITransient
     
     public async Task Updatex(OaFlowTemp oaFlowTemp) {
         var bpmProcTemp = await repo.Context.Queryable<BpmProcTemp>()
-            .Where(it => it.id == oaFlowTemp.id).FirstAsync();
-        bpmProcTemp.xml = oaFlowTemp.xml;
+            .Where(it => it.id == oaFlowTemp.protd).FirstAsync();
+        bpmProcTemp.xml = oaFlowTemp.prxml;
         await repo.Context.Updateable(bpmProcTemp).ExecuteCommandAsync();
         await UpdateAsync(oaFlowTemp);
     }

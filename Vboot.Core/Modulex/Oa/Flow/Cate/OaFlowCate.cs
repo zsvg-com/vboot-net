@@ -21,6 +21,9 @@ public class OaFlowCate : BaseMainEntity
 
     [SqlSugar.SugarColumn(IsIgnore = true)]
     public string panam { get; set; }
+    
+    [SqlSugar.SugarColumn(IsIgnore = true)]
+    public OaFlowCate parent { get; set; }
 
     [SqlSugar.SugarColumn(IsIgnore = true)]
     public List<OaFlowCate> children { get; set; }
