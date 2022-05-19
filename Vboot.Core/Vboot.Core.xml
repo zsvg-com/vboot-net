@@ -1175,112 +1175,6 @@
             字符串转换为对象
             </summary>
         </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginInput.username">
-            <example>sa</example>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginInput.password">
-            <example>1</example>
-        </member>
-        <member name="T:Vboot.Core.Module.Pub.LoginOutput">
-            <summary>
-            用户登录输出参数
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.id">
-            <summary>
-            主键
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.usnam">
-            <summary>
-            账号
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.ninam">
-            <summary>
-            昵称
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.name">
-            <summary>
-            姓名
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.avatar">
-            <summary>
-            头像
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.email">
-            <summary>
-            邮箱
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.monum">
-            <summary>
-            手机
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.AdminType">
-            <summary>
-            管理员类型（0超级管理员 1非管理员）
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.laloi">
-            <summary>
-            最后登陆IP
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.lalot">
-            <summary>
-            最后登陆时间
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.LastLoginAddress">
-            <summary>
-            最后登陆地址
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.LastLoginBrowser">
-            <summary>
-            最后登陆所用浏览器
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.LastLoginOs">
-            <summary>
-            最后登陆所用系统
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.Permissions">
-            <summary>
-            权限信息
-            </summary>
-        </member>
-        <member name="P:Vboot.Core.Module.Pub.LoginOutput.DataScopes">
-            <summary>
-            数据范围（机构）信息
-            </summary>
-        </member>
-        <member name="T:Vboot.Core.Module.Pub.AuthApi">
-            <summary>
-            登录注销
-            </summary>
-        </member>
-        <member name="M:Vboot.Core.Module.Pub.AuthApi.LoginAsync(Vboot.Core.Module.Pub.LoginInput)">
-            <summary>
-            登录
-            </summary>
-        </member>
-        <member name="M:Vboot.Core.Module.Pub.AuthApi.LogoutAsync">
-            <summary>
-            注销
-            </summary>
-        </member>
-        <member name="M:Vboot.Core.Module.Pub.AuthApi.getUserInfo">
-            <summary>
-            获取用户信息
-            </summary>
-        </member>
         <member name="T:Vboot.Core.Module.Sys.JobOutput">
             <summary>
             任务信息---任务详情
@@ -1859,6 +1753,112 @@
             前台按钮缓存
             </summary>
             <example></example>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginInput.username">
+            <example>sa</example>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginInput.password">
+            <example>1</example>
+        </member>
+        <member name="T:Vboot.Core.Module.Pub.LoginOutput">
+            <summary>
+            用户登录输出参数
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.usnam">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.ninam">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.avatar">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.monum">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.AdminType">
+            <summary>
+            管理员类型（0超级管理员 1非管理员）
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.laloi">
+            <summary>
+            最后登陆IP
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.lalot">
+            <summary>
+            最后登陆时间
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.LastLoginAddress">
+            <summary>
+            最后登陆地址
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.LastLoginBrowser">
+            <summary>
+            最后登陆所用浏览器
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.LastLoginOs">
+            <summary>
+            最后登陆所用系统
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.Permissions">
+            <summary>
+            权限信息
+            </summary>
+        </member>
+        <member name="P:Vboot.Core.Module.Pub.LoginOutput.DataScopes">
+            <summary>
+            数据范围（机构）信息
+            </summary>
+        </member>
+        <member name="T:Vboot.Core.Module.Pub.AuthApi">
+            <summary>
+            登录注销
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Pub.AuthApi.LoginAsync(Vboot.Core.Module.Pub.LoginInput)">
+            <summary>
+            登录
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Pub.AuthApi.LogoutAsync">
+            <summary>
+            注销
+            </summary>
+        </member>
+        <member name="M:Vboot.Core.Module.Pub.AuthApi.getUserInfo">
+            <summary>
+            获取用户信息
+            </summary>
         </member>
     </members>
 </doc>

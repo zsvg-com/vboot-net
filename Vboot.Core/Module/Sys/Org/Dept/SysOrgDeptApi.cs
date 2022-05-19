@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Furion.DynamicApiController;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
@@ -18,12 +19,28 @@ public class SysOrgDeptApi : IDynamicApiController
     }
 
     [QueryParameters]
-    public async Task<dynamic> Get()
+    public async Task<dynamic> Get(string name, string pid)
     {
-        // int i = 0;
-        // int j = 0 / i;
         var pp = XreqUtil.GetPp();
+        var expable = Expressionable.Create<SysOrgDept>();
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            expable.And(t => t.name.Contains(name.Trim()));
+        }
+        else
+        {
+            if (pid == "")
+            {
+                expable.And(t => t.pid == null);
+            }
+            else if (!string.IsNullOrWhiteSpace(pid))
+            {
+                expable.And(t => t.pid == pid);
+            }
+        }
+
         var items = await _service.repo.Context.Queryable<SysOrgDept>()
+            .Where(expable.ToExpression())
             .OrderBy(u => u.id, OrderByType.Desc)
             .Select((t) => new {t.id, t.name, t.notes, t.crtim, t.uptim})
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);

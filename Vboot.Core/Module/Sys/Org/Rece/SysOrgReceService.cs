@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Furion.DependencyInjection;
 using SqlSugar;
 using Vboot.Core.Common.Util;
@@ -6,53 +8,44 @@ using Yitter.IdGenerator;
 
 namespace Vboot.Core.Module.Sys;
 
-public class SysOrgReceService:  ITransient
+public class SysOrgReceService : ITransient
 {
-
-    public void update(List<SysOrgRece> reces)
+    public async Task update(List<SysOrgRece> reces)
     {
         string userid = XuserUtil.getUserId();
+
+        List<string> orgidList = new List<string>();
         foreach (var rece in reces)
         {
             rece.orgid = rece.id;
             rece.id = YitIdHelper.NextId() + "";
             rece.userid = userid;
+            rece.uptim = DateTime.Now;
+            orgidList.Add(rece.orgid);
         }
 
-        // //1.如果当前数量小于10，则去数据库查询最新的差额记录数
-        // if (reces.Count < 10) {
-        //     
-        //     
-        //     Sqler sqler = new Sqler("t.*", "sys_org_rece", 1, 10 - reces.size());
-        //     sqler.addDescOrder("t.uptim");
-        //     sqler.addEqual("t.userid", userid);
-        //     
-        //     for (SysOrgRece dbRece : list) {
-        //         boolean flag = false;
-        //         for (SysOrgRece rece : reces) {
-        //             if (dbRece.getOrgid().equals(rece.getOrgid())) {
-        //                 flag = true;
-        //             }
-        //         }
-        //         if (!flag) {
-        //             reces.add(dbRece);
-        //         }
-        //     }
-        //     
-        // }
-        //
-        // //2.清空当前用户的最近使用记录
-        // jdbcDao.update("delete from sys_org_rece where userid=?", userid);
-        //
-        // //3.更新记录
-        // repo.saveAll(reces);
-        // return reces.size();
+        //数据库删除本次已传的记录
+        await _repo.Context.Deleteable<SysOrgRece>().Where("userid=@userid",new { userid})
+            .Where("orgid in (@orgid)", new {orgid = orgidList.ToArray()}).ExecuteCommandAsync();
+        
+        //删除当前数据库最近10次前的数据
+        RefAsync<int> total = 0;
+        var items = await _repo.Context.Queryable<SysOrgRece>()
+            .Where(it=>it.userid==userid)
+            .OrderBy(u => u.uptim, OrderByType.Desc)
+            .Select((t) => t.id)
+            .ToPageListAsync(2, 10, total);
+        if (items.Count > 0)
+        {
+            await _repo.Context.Deleteable<SysOrgRece>().In(items.ToArray()).ExecuteCommandAsync();
+        }
+
+        //插入本次使用的记录
+        await _repo.InsertAsync(reces);
     }
-    
-    
-    
-    
-    private readonly ISqlSugarRepository<SysOrgRece> _repo;
+
+
+    public readonly ISqlSugarRepository<SysOrgRece> _repo;
 
     public SysOrgReceService(ISqlSugarRepository<SysOrgRece> repo)
     {

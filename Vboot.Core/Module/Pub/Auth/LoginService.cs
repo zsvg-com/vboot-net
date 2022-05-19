@@ -220,7 +220,7 @@ inner join sys_perm_role_menu rm on rm.mid=m.id
 
     private List<Yperm> FindYpermList(string conds)
     {
-        string sql = @"select distinct m.perm url,p.pos,p.code from sys_perm_menu m 
+        string sql = @"select distinct m.perm url,p.pos,p.code,m.ornum from sys_perm_menu m 
 inner join sys_perm_role_menu rm on rm.mid=m.id 
     inner join sys_perm_role_org ru on ru.rid=rm.rid 
                           left join sys_perm_api p on p.id=m.perm 

@@ -29,7 +29,7 @@
             代理商主信息接口
             </summary>
         </member>
-        <member name="M:Vboot.Application.Sa.SaAgentMainApi.Get">
+        <member name="M:Vboot.Application.Sa.SaAgentMainApi.Get(System.String)">
             <summary>
             获取代理商主信息的分页数据
             </summary>

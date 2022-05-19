@@ -24,11 +24,12 @@ public class SaAgentMainApi : IDynamicApiController
     /// </summary>
     /// <returns></returns>
     [QueryParameters]
-    public async Task<dynamic> Get()
+    public async Task<dynamic> Get(string name)
     {
         _service.JsTest();
         var pp = XreqUtil.GetPp();
         var items = await _service.repo.Context.Queryable<SaAgentMain>()
+            .WhereIF(!string.IsNullOrWhiteSpace(name), t => t.name.Contains(name.Trim()))
             .Select((t) => new {t.id, t.name, t.addre, t.crtim, t.uptim})
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);
         return RestPageResult.Build(pp.total.Value, items);

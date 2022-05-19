@@ -21,10 +21,11 @@ public class SysPermRoleApi : IDynamicApiController
     }
 
     [QueryParameters]
-    public async Task<dynamic> Get()
+    public async Task<dynamic> Get(string name)
     {
         var pp = XreqUtil.GetPp();
         var items = await _service.repo.Context.Queryable<SysPermRole>()
+            .WhereIF(!string.IsNullOrWhiteSpace(name), t => t.name.Contains(name.Trim()))
             .OrderBy(u => u.ornum)
             .Select((t) => new {t.id, t.name, t.notes, t.crtim, t.uptim})
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);

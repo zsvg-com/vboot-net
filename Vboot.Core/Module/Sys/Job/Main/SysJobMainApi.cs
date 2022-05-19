@@ -26,8 +26,8 @@ public class SysJobMainApi : IDynamicApiController
     {
         var pp = XreqUtil.GetPp();
         var items = await _service.repo.Context.Queryable<SysJobMain>()
-            .Select((t) => new {t.id, t.name, t.crtim, t.uptim, t.code, t.reurl, t.avtag, t.cron})
             .WhereIF(!string.IsNullOrWhiteSpace(name), t => t.name.Contains(name.Trim()))
+            .Select((t) => new {t.id, t.name, t.crtim, t.uptim, t.code, t.reurl, t.avtag, t.cron})
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);
         return RestPageResult.Build(pp.total.Value, items);
     }

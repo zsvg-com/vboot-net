@@ -106,9 +106,6 @@ public class AuthApi : IDynamicApiController, ITransient
     //     return "userinfo";
     // }
 
-    /// <summary>
-    /// 获取用户信息
-    /// </summary>
     // [HttpGet("/getUserInfo")]
     // [AllowAnonymous]
     // public async Task<LoginOutput> getUserInfo()

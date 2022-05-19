@@ -1,8 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using Furion;
+﻿using System.Threading.Tasks;
 using Furion.DynamicApiController;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
 using Vboot.Core.Common;
@@ -23,11 +20,12 @@ public class OaFlowMainApi : IDynamicApiController
     }
 
     [QueryParameters]
-    public async Task<dynamic> Get()
+    public async Task<dynamic> Get(string name)
     {
         var pp = XreqUtil.GetPp();
         var items = await _service.repo.Context.Queryable<OaFlowMain, OaFlowTemp,SysOrg>((t, c,o)
                 => new JoinQueryInfos(JoinType.Left, c.id == t.temid,JoinType.Left, o.id == t.crmid))
+            .WhereIF(!string.IsNullOrWhiteSpace(name), t => t.name.Contains(name.Trim()))
             .Select((t,c,o) => 
                 new {t.id, t.name, t.notes,temna=c.name,crman=o.name,t.crtim})
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);

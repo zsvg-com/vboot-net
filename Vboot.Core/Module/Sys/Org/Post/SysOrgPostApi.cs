@@ -24,10 +24,27 @@ public class SysOrgPostApi : IDynamicApiController
     }
 
     [QueryParameters]
-    public async Task<dynamic> Get()
+    public async Task<dynamic> Get(string name, string deptid)
     {
         var pp = XreqUtil.GetPp();
+        var expable = Expressionable.Create<SysOrgPost>();
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            expable.And(t => t.name.Contains(name.Trim()));
+        }
+        else
+        {
+            if (deptid=="")
+            {
+                expable.And(t => t.deptid == null);
+            }
+            else if (!string.IsNullOrWhiteSpace(deptid))
+            {
+                expable.And(t => t.deptid == deptid);
+            }
+        }
         var items = await _postService.repo.Context.Queryable<SysOrgPost>()
+            .Where(expable.ToExpression())
             .OrderBy(u => u.ornum)
             .Select((t) => new {t.id, t.name, t.notes, t.crtim, t.uptim})
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);
