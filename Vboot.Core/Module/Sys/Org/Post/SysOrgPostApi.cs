@@ -57,9 +57,12 @@ public class SysOrgPostApi : IDynamicApiController
 
         post.id = YitIdHelper.NextId() + "";
         var postUsers = new List<SysOrgPostOrg>();
-        foreach (var user in post.users)
+        if (post.users != null)
         {
-            postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
+            foreach (var user in post.users)
+            {
+                postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
+            }
         }
 
         await _postService.InsertAsync(post, postUsers);
@@ -73,11 +76,13 @@ public class SysOrgPostApi : IDynamicApiController
         }
 
         var postUsers = new List<SysOrgPostOrg>();
-        foreach (var user in post.users)
+        if (post.users != null)
         {
-            postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
+            foreach (var user in post.users)
+            {
+                postUsers.Add(new SysOrgPostOrg {pid = post.id, oid = user.id});
+            }
         }
-
         await _postService.UpdateAsync(post, postUsers);
     }
 

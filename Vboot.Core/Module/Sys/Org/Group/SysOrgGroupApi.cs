@@ -44,22 +44,26 @@ public class SysOrgGroupApi : IDynamicApiController
     {
         group.id = YitIdHelper.NextId() + "";
         var gmmaps = new List<SysOrgGroupOrg>();
-        foreach (var member in group.members)
+        if (group.members != null)
         {
-            gmmaps.Add(new SysOrgGroupOrg {gid = group.id, oid = member.id});
+            foreach (var member in group.members)
+            {
+                gmmaps.Add(new SysOrgGroupOrg {gid = group.id, oid = member.id});
+            }
         }
-
         await _groupService.InsertAsync(group, gmmaps);
     }
 
     public async Task Put(SysOrgGroup group)
     {
         var gmmaps = new List<SysOrgGroupOrg>();
-        foreach (var member in group.members)
+        if (group.members != null)
         {
-            gmmaps.Add(new SysOrgGroupOrg {gid = group.id, oid = member.id});
+            foreach (var member in group.members)
+            {
+                gmmaps.Add(new SysOrgGroupOrg {gid = group.id, oid = member.id});
+            }
         }
-
         await _groupService.UpdateAsync(group, gmmaps);
     }
 

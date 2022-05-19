@@ -36,6 +36,21 @@ public class OaFlowTempApi : IDynamicApiController
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);
         return RestPageResult.Build(pp.total.Value, items);
     }
+    
+    
+    [QueryParameters]
+    public async Task<dynamic> GetList(string catid, string name)
+    {
+        var list = await _service.repo.Context.Queryable<OaFlowTemp, OaFlowCate>((t, c)
+                => new JoinQueryInfos(JoinType.Left, c.id == t.catid))
+            .OrderBy(t => t.ornum)
+            .WhereIF(!string.IsNullOrWhiteSpace(name), t => t.name.Contains(name.Trim()))
+            .WhereIF(!string.IsNullOrWhiteSpace(catid), t => t.catid == catid)
+            .Select((t, c) => 
+                new {t.id, t.name, t.notes, catna = c.name})
+            .ToListAsync();
+        return list;
+    }
 
     public async Task<OaFlowTemp> GetOne(string id)
     {
