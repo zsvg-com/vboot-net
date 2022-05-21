@@ -18,15 +18,18 @@ public class BpmProcTempApi : IDynamicApiController
     }
 
     [QueryParameters]
-    public async Task<dynamic> Get()
+    public async Task<dynamic> Get(string name)
     {
         var pp=XreqUtil.GetPp();
         var items = await _service.repo.Context.Queryable<BpmProcTemp>()
+            .OrderBy(t => t.crtim, OrderByType.Desc)
             .OrderBy(t => t.crtim, OrderByType.Desc)
             .Select((t) => new {t.id, t.name, t.crtim})
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);
         return RestPageResult.Build(pp.total.Value, items);
     }
+    
+    
 
     public async Task<BpmProcTemp> GetOne(string id)
     {

@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Furion;
 using Furion.DependencyInjection;
+using Furion.EventBus;
 using Furion.FriendlyException;
 using Furion.JsonSerialization;
+using Microsoft.AspNetCore.Http;
 using SqlSugar;
+using UAParser;
 using Vboot.Core.Common;
 using Vboot.Core.Module.Sys;
 using Vboot.Web.Core;
+using Yitter.IdGenerator;
 
 namespace Vboot.Core.Module.Pub;
 
@@ -353,4 +358,5 @@ inner join sys_perm_role_menu rm on rm.mid=m.id
         _repo.Context.Updateable(new SysOrgUser() {id = zuser.id, retag = true})
             .UpdateColumns(it => new {it.retag}).ExecuteCommand();
     }
+
 }

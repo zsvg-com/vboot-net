@@ -14,4 +14,19 @@ public class BpmProcMain : BaseMainEntity
     
     [SugarColumn(ColumnDescription = "模板id", IsNullable = true, Length = 32)]
     public string temid { get; set; }
+    
+    [SugarColumn(ColumnDescription = "状态", IsNullable = true, Length = 8)]
+    public string state { get; set; }
+
+    public BpmProcMain()
+    {
+        
+    }
+
+    public BpmProcMain(Zbpm zbpm) {
+        id=zbpm.proid;
+        name=zbpm.prona;
+        temid=zbpm.temid;
+        crmid = zbpm.haman;
+    }
 }

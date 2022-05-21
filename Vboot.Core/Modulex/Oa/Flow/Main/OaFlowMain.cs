@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using SqlSugar;
 using Vboot.Core.Common;
+using Vboot.Core.Module.Bpm;
 
 namespace Vboot.Core.Modulex.Oa;
 
@@ -18,8 +19,13 @@ public class OaFlowMain : BaseMainEntity
     
     [SugarColumn(ColumnDescription = "全局流程模板ID", IsNullable = true, Length = 32)]
     public string temid { get; set; }
-
-
+    
+    [SugarColumn(IsIgnore = true)] 
+    public Zbpm zbpm { get; set; }
+    
+    [SugarColumn(ColumnDescription = "状态", IsNullable = true, Length = 8)]
+    public string state { get; set; }
+    
     
     
 

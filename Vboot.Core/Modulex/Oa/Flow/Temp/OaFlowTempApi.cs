@@ -34,6 +34,8 @@ public class OaFlowTempApi : IDynamicApiController
             .Select((t, c,o,o2) => 
                 new {t.crtim,t.uptim,t.id, t.name, t.notes, catna = c.name,crman=o.name,upman=o2.name})
             .ToPageListAsync(pp.page, pp.pageSize, pp.total);
+        
+        
         return RestPageResult.Build(pp.total.Value, items);
     }
     
@@ -67,7 +69,7 @@ public class OaFlowTempApi : IDynamicApiController
         };
 
         main.prxml = await _service.repo.Context.Queryable<BpmProcTemp>()
-            .Where(it => it.id == main.protd).Select(it => it.xml).SingleAsync();
+            .Where(it => it.id == main.protd).Select(it => it.orxml).SingleAsync();
 
         return main;
     }

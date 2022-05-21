@@ -16,5 +16,13 @@ public class Znode
     public string tarna { get; set; }//目标节点名称
     
     public string exman { get; set; }//应处理人
-    
+
+    public Znode()
+    {
+    }
+
+    public Znode(string facno)
+    {
+        this.facno = facno;
+    }
 }

@@ -27,9 +27,10 @@ namespace Vboot.Core.Common
             await repo.UpdateAsync(entity);
         }
 
-        public async Task DeleteAsync(string[] ids)
+        public async Task DeleteAsync(string ids)
         {
-            await repo.Context.Deleteable<TEntity>().In(ids).ExecuteCommandAsync();
+            var idArr = ids.Split(",");
+            await repo.Context.Deleteable<TEntity>().In(idArr).ExecuteCommandAsync();
         }
     }
 }

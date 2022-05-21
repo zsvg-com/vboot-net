@@ -47,7 +47,6 @@ public class AssDictCateApi : IDynamicApiController
 
     public async Task Delete(string ids)
     {
-        var idArr = ids.Split(",");
-        await _service.DeleteAsync(idArr);
+        await _service.DeleteAsync(ids);
     }
 }

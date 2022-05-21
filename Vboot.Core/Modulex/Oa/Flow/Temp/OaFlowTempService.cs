@@ -9,28 +9,35 @@ namespace Vboot.Core.Modulex.Oa;
 
 public class OaFlowTempService : BaseMainService<OaFlowTemp>, ITransient
 {
-    
-    public async Task Insertx(OaFlowTemp oaFlowTemp) {
+    public async Task Insertx(OaFlowTemp oaFlowTemp)
+    {
         BpmProcTemp bpmProcTemp = new BpmProcTemp();
         bpmProcTemp.name = oaFlowTemp.name;
         bpmProcTemp.crman = oaFlowTemp.crman;
         bpmProcTemp.crtim = oaFlowTemp.crtim;
-        bpmProcTemp.xml=oaFlowTemp.prxml;
-        bpmProcTemp.id=YitIdHelper.NextId() + "";
+        bpmProcTemp.orxml = oaFlowTemp.prxml;
+        bpmProcTemp.chxml = "<?xml version=\"1.0\" encoding=\"gb2312\"?>"
+                            + "\n<process" + bpmProcTemp.orxml.Split("bpmn2:process")[1]
+                                .Replace("bpmn2:", "").Replace("activiti:", "") + "process>";
+        bpmProcTemp.id = YitIdHelper.NextId() + "";
         await repo.Context.Insertable(bpmProcTemp).ExecuteCommandAsync();
-        oaFlowTemp.protd=bpmProcTemp.id;
+        oaFlowTemp.protd = bpmProcTemp.id;
         await InsertAsync(oaFlowTemp);
     }
-    
-    public async Task Updatex(OaFlowTemp oaFlowTemp) {
+
+    public async Task Updatex(OaFlowTemp oaFlowTemp)
+    {
         var bpmProcTemp = await repo.Context.Queryable<BpmProcTemp>()
             .Where(it => it.id == oaFlowTemp.protd).FirstAsync();
-        bpmProcTemp.xml = oaFlowTemp.prxml;
+        bpmProcTemp.orxml = oaFlowTemp.prxml;
+        bpmProcTemp.chxml = "<?xml version=\"1.0\" encoding=\"gb2312\"?>"
+                            + "\n<process" + bpmProcTemp.orxml.Split("bpmn2:process")[1]
+                                .Replace("bpmn2:", "").Replace("activiti:", "") + "process>";
         await repo.Context.Updateable(bpmProcTemp).ExecuteCommandAsync();
         await UpdateAsync(oaFlowTemp);
     }
-    
-    
+
+
     public OaFlowTempService(ISqlSugarRepository<OaFlowTemp> repo)
     {
         this.repo = repo;

@@ -82,11 +82,31 @@ public class AuthApi : IDynamicApiController, ITransient
         //设置swagger自动登录
         _httpContextAccessor.HttpContext.SigninToSwagger(accessToken);
 
-        //记录登录日志
+        //记录用户最后一次登录的ip与地点
         var httpContext = App.HttpContext;
         await _eventPublisher.PublishAsync(new ChannelEventSource("Update:UserLoginInfo",
             new SysOrgUser {id = duser.id, laloi = httpContext.GetLocalIpAddressToIPv4(), lalot = DateTime.Now}));
 
+        // 增加登录日志
+        var ip =  httpContext.GetRemoteIpAddressToIPv4();
+        var crtim = DateTime.Now;
+        var clent = Parser.GetDefault().Parse(httpContext.Request.Headers["User-Agent"]);
+        var agbro = clent.UA.Family + clent.UA.Major;
+        var ageos = clent.OS.Family + clent.OS.Major;
+        await _eventPublisher.PublishAsync(new ChannelEventSource("Create:LoginLog",
+            new SysLogLogin
+            {
+                id = YitIdHelper.NextId() + "",
+                name = zuser.name,
+                ip = ip,
+                agbro = agbro,
+                ageos = ageos,
+                crtim = crtim,
+                usnam = zuser.usnam
+            }));
+        
+        
+        
         return backDict;
     }
 

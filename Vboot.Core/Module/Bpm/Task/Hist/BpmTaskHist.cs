@@ -19,7 +19,7 @@ public class BpmTaskHist
     public string nodid { get; set; }
 
     [SugarColumn(ColumnDescription = "开始时间", IsNullable = true, IsOnlyIgnoreUpdate = true)]
-    public DateTime? sttim { get; set; }
+    public DateTime? sttim { get; set; }=DateTime.Now;
     
     [SugarColumn(ColumnDescription = "结束时间", IsNullable = true)]
     public DateTime? entim { get; set; }

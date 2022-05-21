@@ -34,7 +34,7 @@ public class Zbpm
     
     public string opinf { get; set; }//操作名称:通过，驳回到谁，沟通谁
     
-    public string xml { get; set; }
+    public string chxml { get; set; }//优化过的vboot可解析的的xml
     
     public string haman { get; set; }//当前处理人ID
     

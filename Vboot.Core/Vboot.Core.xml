@@ -1164,17 +1164,6 @@
         <member name="M:Vboot.Core.Common.Util.XstrUtil.RenameUrlCase(System.String)">
             <summary>将大驼峰命名转为蛇形命名</summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Vboot.Core.Modulex.Wf.XSerializer.ObjectToXml``1(``0)" -->
-        <member name="M:Vboot.Core.Modulex.Wf.XSerializer.ObjectToXml``1(``0,System.Text.Encoding)">
-            <summary>
-            序列化成XML 清空格式
-            </summary>
-        </member>
-        <member name="M:Vboot.Core.Modulex.Wf.XSerializer.XmlToObject``1(System.String)">
-            <summary>
-            字符串转换为对象
-            </summary>
-        </member>
         <member name="T:Vboot.Core.Module.Sys.JobOutput">
             <summary>
             任务信息---任务详情

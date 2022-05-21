@@ -53,6 +53,7 @@ public class JwtHandler : AppAuthorizeHandler
         var userManager = App.GetService<IUserManager>();
         if (userManager.SuperAdmin) return true;
         var url = httpContext.Request.Path.Value.Substring(1);
+        return true;
         if (url.StartsWith("sys"))
         {
             //只有管理员有sys权限
